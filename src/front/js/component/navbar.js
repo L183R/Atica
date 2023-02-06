@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Login } from "./login.js";
-import { Logview } from "../pages/logview";
+import { Login } from "./login.jsx";
+import { Logview } from "../pages/logview.jsx";
 
 export const Navbar = () => {
   return (
@@ -24,3 +24,4 @@ export const Navbar = () => {
     </nav>
   );
 };
+

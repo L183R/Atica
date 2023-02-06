@@ -1,7 +1,3 @@
-// import React, { useState, useEffect, useContext } from "react";
-// import PropTypes from "prop-types";
-// import { Link, useParams } from "react-router-dom";
-// import { Context } from "../store/appContext";
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Navigate } from "react-router-dom";
@@ -11,9 +7,6 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const { store, actions } = useContext(Context);
 
-  // useEffect(() => {
-  //     actions.detallesPersonaje(params.theid)
-  // }, [])
   function enviarDatos(e) {
     e.preventDefault();
     actions.login(email, password);
