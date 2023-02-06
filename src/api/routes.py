@@ -50,6 +50,21 @@ def login():
     return jsonify(access_token=access_token)
 
 
+# @api.route('/signup', methods=['POST'])
+# def add_new_user():
+#     request_body = request.json
+#     userquery = User.query.filter_by(email=request_body["email"]).first()
+#     print(userquery)
+#     if  userquery is None:
+#         new_user = User(
+#         username=request_body["username"], 
+#         email=request_body["email"],
+#         password=request_body["password"])
+#         db.session.add(new_user)
+#         db.session.commit()
+#         return jsonify({"msg": "El usuario se creó "}),200
+#     return jsonify({"msg": "El usuario ya existe "}),400
+
 
 
 
