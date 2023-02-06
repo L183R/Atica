@@ -7,8 +7,8 @@ class User(db.Model):
     # username = db.Column(db.String(120), unique=True, nullable=False) 
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    user_id = db.relationship('Projects', backref='user', lazy=True)
-    user_id = db.relationship('Posts', backref='user', lazy=True)
+    user_projects = db.relationship('Projects', backref='user', lazy=True)
+    user_post = db.relationship('Posts', backref='user', lazy=True)
 
 
     def __repr__(self):
@@ -30,10 +30,10 @@ class Projects(db.Model):
     dataTime = db.Column(db.Date, unique=False, nullable=False) #consultar formato de la variable
     contact = db.Column(db.String(256), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    project_id = db.relationship('Posts', backref='project', lazy=True)
+    project_id = db.relationship('Posts', backref='projects', lazy=True)
 
     def __repr__(self):
-        return f'<Projects {self.text}>'
+        return f'<Projects {self.id}>'
 
     def serialize(self):
         return {
@@ -48,10 +48,10 @@ class Posts(db.Model):
     text = db.Column(db.String(1024), unique=True, nullable=False)
     dataTime = db.Column(db.Date, unique=False, nullable=False) #consultar formato de la variable
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), nullable=False)
+    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
 
     def __repr__(self):
-        return f'<Posts {self.text}>'
+        return f'<Posts {self.id}>'
 
     def serialize(self):
         return {
