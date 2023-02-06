@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Login } from "./login.js";
+import { Logview } from "../pages/logview";
 
 export const Navbar = () => {
   return (
