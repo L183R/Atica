@@ -19,53 +19,29 @@ export const Home = () => {
 
 
 
-
-
 		<
-		!--DIV DE USUARIO Y CORREO ELECTRONICO-- >
+		div className = "text-center mt-5" >
 		<
-		div class = "form-group" >
+		h1 > Hello Rigo!! < /h1> <
+		p >
 		<
-		input class = "form-control mb-3"
-		type = "text"
-		name = "Username"
-		placeholder = "Usuario" /
-		>
-		<
-		input class = "form-control mb-3"
-		type = "email"
-		name = "email"
-		placeholder = "Email" /
-		>
-		<
+		img src = {
+			rigoImageUrl
+		}
+		/> <
+		/p> <
+		div className = "alert alert-info" > {
+			store.message || "Loading message from the backend (make sure your python backend is running)..."
+		} <
+		/div> <
+		p >
+		This boilerplate comes with lots of documentation: {
+			" "
+		} <
+		a href = "https://start.4geeksacademy.com/starters/react-flask" >
+		Read documentation <
+		/a> <
+		/p> <
 		/div>
-
-
-
-
-
-
-
-
-
-
-		/*
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
-		</div> */
-
-
 	);
 };
