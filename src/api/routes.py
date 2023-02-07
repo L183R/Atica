@@ -47,6 +47,12 @@ def login():
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
 
+    @app.route("/logout", methods=["POST"])
+    def logout():
+        response = jsonify({"msg": "logout successful"})
+    unset_jwt_cookies(response)
+    return response
+
 
 @api.route('/signup', methods=['POST'])
 def add_new_user():
@@ -63,6 +69,9 @@ def add_new_user():
         db.session.commit()
         return jsonify({"msg": "El usuario se creó "}),200
     return jsonify({"msg": "El usuario ya existe "}),400
+
+
+    
 
     if __name__ == "__main__":
         app.run()
