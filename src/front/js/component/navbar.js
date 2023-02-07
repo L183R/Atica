@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Login } from "./login.js";
 import { Logview } from "../pages/logview";
 
+
 export const Navbar = () => {
   return (
     <nav className="navbar navbar-light bg-light">
@@ -18,6 +19,9 @@ export const Navbar = () => {
           </Link>
           <Link to="/login">
             <button className="btn btn-primary">login</button>
+          </Link>
+          <Link to="/signup">
+            <button className="btn btn-primary">Registrarse</button>
           </Link>
         </div>
       </div>
