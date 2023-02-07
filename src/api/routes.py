@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, json
-from api.models import db, User
+from api.models import db, User, Projects
 from api.utils import generate_sitemap, APIException
 from flask_sqlalchemy import SQLAlchemy
 
@@ -66,6 +66,22 @@ def add_new_user():
 
     if __name__ == "__main__":
         app.run()
+# ____________________________________
+
+@api.route('/newproject', methods=['POST'])
+def add_project():
+    text = request.json.get('text')
+    contact = request.json.get('contact')
+
+    new_project = Projects(text=text, contact=contact)
+
+    try:
+        db.session.add(new_project)
+        db.session.commit()
+        return jsonify(new_project.serialize()), 201
+    except Exception as e:
+        db.session.rollback()
+        return str(e), 500
 # ____________________________________
 
 if __name__ == '__main__':
