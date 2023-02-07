@@ -70,9 +70,6 @@ def add_new_user():
         return jsonify({"msg": "El usuario se creó "}),200
     return jsonify({"msg": "El usuario ya existe "}),400
 
-
-    
-
     if __name__ == "__main__":
         app.run()
 # ____________________________________

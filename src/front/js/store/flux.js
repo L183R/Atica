@@ -26,7 +26,7 @@ const getState = ({
 
             login: (userEmail, userPassword) => {
                 fetch(
-                        "https://3001-l183r-atica-laj9vv8v91m.ws-us85.gitpod.io/api/login", {
+                        "https://3001-l183r-atica-udocd711lm1.ws-us85.gitpod.io/api/login", {
                             method: "POST",
                             // mode: "no-cors",
                             // credentials: "include",
@@ -60,7 +60,7 @@ const getState = ({
             },
 
             signup: (userEmail, userPassword, userName) => {
-                fetch("https://3001-l183r-atica-laj9vv8v91m.ws-us85.gitpod.io/api/signup", {
+                fetch("https://3001-l183r-atica-udocd711lm1.ws-us85.gitpod.io/api/signup", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
@@ -93,6 +93,7 @@ const getState = ({
                     .catch((err) => console.log(err))
             },
 
+
             getMessage: async () => {
                 try {
                     // fetching data from the backend
@@ -106,6 +107,12 @@ const getState = ({
                 } catch (error) {
                     console.log("Error loading message from backend", error);
                 }
+            },
+            logout: () => {
+                localStorage.removeItem('token');
+                setStore({
+                    auth: false
+                })
             },
             changeColor: (index, color) => {
                 //get the store
