@@ -1,12 +1,55 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React, {
+	useContext
+} from "react";
+import {
+	Context
+} from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
+	const {
+		store,
+		actions
+	} = useContext(Context);
 
 	return (
+
+
+
+
+
+
+
+		<
+		!--DIV DE USUARIO Y CORREO ELECTRONICO-- >
+		<
+		div class = "form-group" >
+		<
+		input class = "form-control mb-3"
+		type = "text"
+		name = "Username"
+		placeholder = "Usuario" /
+		>
+		<
+		input class = "form-control mb-3"
+		type = "email"
+		name = "email"
+		placeholder = "Email" /
+		>
+		<
+		/div>
+
+
+
+
+
+
+
+
+
+
+		/*
 		<div className="text-center mt-5">
 			<h1>Hello Rigo!!</h1>
 			<p>
@@ -21,6 +64,8 @@ export const Home = () => {
 					Read documentation
 				</a>
 			</p>
-		</div>
+		</div> */
+
+
 	);
 };
