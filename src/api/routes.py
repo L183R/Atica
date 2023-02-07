@@ -76,15 +76,12 @@ def add_new_user():
     if __name__ == "__main__":
         app.run()
 
-@api.route('/viewproyect/<int:id>', methods=['GET'])
-def handle_project():
+@api.route('/viewproject/<int:id>', methods=['GET'])
+def handle_project(id):
     
     el_proyecto = Projects.query.filter_by(id=id).first()
 
     return jsonify(el_proyecto.serialize()), 200
-    
-
-    return jsonify(results), 200
 
 # ____________________________________
 
