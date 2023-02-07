@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime, date
 
 db = SQLAlchemy()
 
@@ -27,7 +28,7 @@ class User(db.Model):
 class Projects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(2048), unique=True, nullable=False)
-    dataTime = db.Column(db.Date, unique=False, nullable=False) #consultar formato de la variable
+    dataTime = db.Column(db.Date, default=datetime.now(), nullable=False)
     contact = db.Column(db.String(256), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     project_id = db.relationship('Posts', backref='projects', lazy=True)
@@ -46,7 +47,7 @@ class Projects(db.Model):
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(1024), unique=True, nullable=False)
-    dataTime = db.Column(db.Date, unique=False, nullable=False) #consultar formato de la variable
+    dataTime = db.Column(db.Date, default=datetime.now(), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
 
