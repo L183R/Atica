@@ -11,6 +11,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Logview } from "./pages/logview";
 import { Login } from "./component/login.js";
+import { ProjectDetailsView } from "./pages/projectDetailsView";
+import { ComentariosProyecto } from "./component/comentariosProyecto";
 import { Registro } from "./component/formregistro.jsx";
 import { ViewRegistro } from "./pages/viewregistro.jsx";
 
@@ -27,11 +29,19 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
+            <Route
+              element={<ProjectDetailsView />}
+              path="/projectDetailsView"
+            />
+            <Route
+              element={<ComentariosProyecto />}
+              path="/comentariosProyecto"
+            />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Login />} path="/login" />
             <Route element={<Registro />} path="/registro" />
             <Route element={<Logview />} path="/logview" />
-						<Route path="/signup" element={<ViewRegistro />} />
+            <Route path="/signup" element={<ViewRegistro />} />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
