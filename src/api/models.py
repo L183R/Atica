@@ -41,8 +41,8 @@ class Projects(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "category": self.text,
-            "title": self.text,
+            "category": self.category,
+            "title": self.title,
             "text": self.text,
             "dataTime": self.dataTime,
             "contact": self.contact,
