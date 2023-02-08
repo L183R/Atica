@@ -1,10 +1,8 @@
-// import React, { useState, useEffect, useContext } from "react";
-// import PropTypes from "prop-types";
-// import { Link, useParams } from "react-router-dom";
-// import { Context } from "../store/appContext";
+
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -50,9 +48,11 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          <Link to="/demo">
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
+          </Link>
         </form>
       )}
     </>

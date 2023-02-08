@@ -13,6 +13,8 @@ import { Logview } from "./pages/logview";
 import { Login } from "./component/login.js";
 import { ProjectDetailsView } from "./pages/projectDetailsView";
 import { ComentariosProyecto } from "./component/comentariosProyecto";
+import { Registro } from "./component/formregistro.jsx";
+import { ViewRegistro } from "./pages/viewregistro.jsx";
 
 //create your first component
 const Layout = () => {
@@ -37,7 +39,9 @@ const Layout = () => {
             />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Login />} path="/login" />
+            <Route element={<Registro />} path="/registro" />
             <Route element={<Logview />} path="/logview" />
+            <Route path="/signup" element={<ViewRegistro />} />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

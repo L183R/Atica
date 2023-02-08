@@ -26,7 +26,7 @@ const getState = ({
 
             login: (userEmail, userPassword) => {
                 fetch(
-                        "https://3001-l183r-atica-35mqucm2l2q.ws-us85.gitpod.io/api/login", {
+                        "https://3001-l183r-atica-udocd711lm1.ws-us85.gitpod.io/api/login", {
                             method: "POST",
                             // mode: "no-cors",
                             // credentials: "include",
@@ -59,6 +59,41 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
+            signup: (userEmail, userPassword, userName) => {
+                fetch("https://3001-l183r-atica-udocd711lm1.ws-us85.gitpod.io/api/signup", {
+                        method: 'POST',
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            'Content-Type': 'application/json'
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            "username": userName,
+                            "password": userPassword,
+                            "email": userEmail
+                        }) // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        if (response.status === 200) {
+                            setStore({
+                                auth: true
+                            })
+                        }
+                        return response.json()
+                    })
+                    .then((data) => {
+                        console.log(data)
+                        if (data.msg === "Bad email or password") {
+                            alert(data.msg)
+                        }
+                        localStorage.setItem("token", data.access_token)
+                    })
+                    .catch((err) => console.log(err))
+            },
+
+
             getMessage: async () => {
                 try {
                     // fetching data from the backend
@@ -72,6 +107,13 @@ const getState = ({
                 } catch (error) {
                     console.log("Error loading message from backend", error);
                 }
+            },
+
+            logout: () => {
+                localStorage.removeItem('token');
+                setStore({
+                    auth: false
+                })
             },
             changeColor: (index, color) => {
                 //get the store
