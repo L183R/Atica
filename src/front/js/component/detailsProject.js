@@ -23,6 +23,13 @@ export const DetailsProject = () => {
             dolor fuga distinct. Nam liber tempor cum soluta nobis elige quod
             maxim placeat facer possim omnis volupt
           </p>
+          <h6 className="text-primary">Categoria:</h6>
+          <button type="button" className="btn btn-info lm-10">
+            contacto
+          </button>
+          <button>
+            <i className="fa fa-angle-double-left" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </>
