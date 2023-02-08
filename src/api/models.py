@@ -27,7 +27,9 @@ class User(db.Model):
 
 class Projects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(2048), unique=True, nullable=False)
+    category = db.Column(db.String(64), unique=False, nullable=False)
+    title = db.Column(db.String(64), unique=False, nullable=False)
+    text = db.Column(db.String(2048), unique=False, nullable=False)
     dataTime = db.Column(db.Date, default=datetime.now(), nullable=False)
     contact = db.Column(db.String(256), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -39,6 +41,8 @@ class Projects(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "category": self.category,
+            "title": self.title,
             "text": self.text,
             "dataTime": self.dataTime,
             "contact": self.contact,
@@ -61,4 +65,4 @@ class Posts(db.Model):
             "dataTime": self.dataTime,
             "user_id": self.user_id,
             "project_id": self.project_id,
-        }       
+        }

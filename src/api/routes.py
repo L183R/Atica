@@ -89,7 +89,24 @@ def add_project():
         db.session.rollback()
         return str(e), 500
 # ____________________________________
+@api.route('/viewproject/<int:id>', methods=['GET'])
+def handle_project(id):
+    
+    el_proyecto = Projects.query.filter_by(id=id).first()
 
+    return jsonify(el_proyecto.serialize()), 200
+
+# ____________________________________
+@api.route('/projectlist', methods=['GET'])
+def handle_project_list():
+    
+    project_list = Projects.query.order_by(Projects.dataTime.desc())
+
+    results = list(map(lambda item: item.serialize(),project_list))
+
+    return jsonify(results), 200
+
+# ____________________________________
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
     app.run(host='0.0.0.0', port=PORT, debug=False)
