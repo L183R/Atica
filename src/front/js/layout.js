@@ -44,12 +44,12 @@ const Layout = () => {
             <Route element={<Registro />} path="/registro" />
             <Route element={<NuevoPosteo />} path="/newpost" />
             <Route element={<Logview />} path="/logview" />
-<<<<<<< HEAD
+
 						<Route element={<ViewRegistro />} path="/signup" />
             <Route element={<NuevoPosteoView />} path="/nuevoposteoview" />
-=======
+
             <Route path="/signup" element={<ViewRegistro />} />
->>>>>>> 942e14d645ad56ef25c2ad933b6ad6507483b5b1
+
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
