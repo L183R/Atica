@@ -27,9 +27,9 @@ class User(db.Model):
 
 class Projects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    category = db.Column(db.String(64), unique=True, nullable=False)
-    title = db.Column(db.String(64), unique=True, nullable=False)
-    text = db.Column(db.String(2048), unique=True, nullable=False)
+    category = db.Column(db.String(64), unique=False, nullable=False)
+    title = db.Column(db.String(64), unique=False, nullable=False)
+    text = db.Column(db.String(2048), unique=False, nullable=False)
     dataTime = db.Column(db.Date, default=datetime.now(), nullable=False)
     contact = db.Column(db.String(256), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
