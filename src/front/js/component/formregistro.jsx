@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Registro = () => {
 
@@ -80,12 +81,14 @@ export const Registro = () => {
           </div>
 
           <div className="form-group">
+          <Link to="/demo">
             <button
               className="btn btn-registrar btn-block mb-3 col-12"
               type="submit"
             >
               Registrarse
             </button>
+            </Link>
           </div>
 
           <div className="form-group">
