@@ -108,6 +108,7 @@ const getState = ({
                     console.log("Error loading message from backend", error);
                 }
             },
+
             logout: () => {
                 localStorage.removeItem('token');
                 setStore({
