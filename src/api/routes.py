@@ -41,11 +41,14 @@ def login():
     user= User.query.filter_by(email=email).first()
 
 
+
     if email != user.email or password != user.password:
         return jsonify({"msg": "Bad email or password"}), 401
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+
 
     @app.route("/logout", methods=["POST"])
     def logout():
@@ -69,6 +72,12 @@ def add_new_user():
         db.session.commit()
         return jsonify({"msg": "El usuario se creó "}),200
     return jsonify({"msg": "El usuario ya existe "}),400
+
+    @api.route("/profile", methods = ["GET"])
+    @jwt_required()
+    def get_profile(): current_user = get_jwt_identity()
+    return jsonify(logged_in_as = current_user),
+    200
 
     if __name__ == "__main__":
         app.run()

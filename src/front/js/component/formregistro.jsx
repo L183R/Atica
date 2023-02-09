@@ -59,14 +59,14 @@ export const Registro = () => {
         type="password"
         className="form-control"
         id="exampleInputPassword1"
-        onChange={(e)=>password1=(e.target.value)}
+        onChange={(e)=>setPassword(e.target.value)}
         placeholder="Contraseña"
       />
       <input
         type="password"
         className="form-control"
         id="exampleInputPassword2"
-        onChange={(e)=>password2=(e.target.value)}
+        onChange={(e)=>setPassword(e.target.value)}
         placeholder="Confirmar contraseña"
       />
           </div>

@@ -17,7 +17,9 @@ const getState = ({
                     initial: "white",
                 },
             ],
+            auth: false
         },
+
         actions: {
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
@@ -26,7 +28,7 @@ const getState = ({
 
             login: (userEmail, userPassword) => {
                 fetch(
-                        "https://3001-l183r-atica-udocd711lm1.ws-us85.gitpod.io/api/login", {
+                        "https://3001-l183r-atica-d803jhyz4zm.ws-us86.gitpod.io/api/login", {
                             method: "POST",
                             // mode: "no-cors",
                             // credentials: "include",
@@ -59,8 +61,9 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
+
             signup: (userEmail, userPassword, userName) => {
-                fetch("https://3001-l183r-atica-udocd711lm1.ws-us85.gitpod.io/api/signup", {
+                fetch("https://3001-l183r-atica-d803jhyz4zm.ws-us86.gitpod.io/api/signup", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
@@ -92,6 +95,37 @@ const getState = ({
                     })
                     .catch((err) => console.log(err))
             },
+
+
+            // enviarForm: (postCategoria, postContacto, postDescripcion, postProject, postTitulo, postUser) => {
+            //     fetch("https://3001-l183r-atica-d803jhyz4zm.ws-us86.gitpod.io/api/newproject", {
+            //             method: 'POST',
+            //             // mode: "no-cors",
+            //             // credentials: "include",
+            //             headers: {
+            //                 'Content-Type': 'application/json'
+            //                 // 'Content-Type': 'application/x-www-form-urlencoded',
+            //             },
+            //             body: JSON.stringify({
+            //                 "category": postCategoria,
+            //                 "title": postTitulo,
+            //                 "text": postDescripcion,
+            //                 "contact": postContacto,
+            //                 "user_id": postUser,
+            //                 "project_id": postProject
+            //             }) // body data type must match "Content-Type" header
+            //         })
+            //         .then((response) => {
+            //             console.log(response.status);
+            //             return response.json()
+            //         })
+            //         .then((data) => {
+            //             console.log(data)
+            //         })
+            //         .catch((err) => console.log(err))
+            // },
+
+
 
 
             getMessage: async () => {
