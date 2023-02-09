@@ -18,7 +18,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-light bg-light">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1"> ÁTICA :)</span>
+          <span className="navbar-brand mb-0 h1"> ÁTICA c:</span>
         </Link>
           <div className="mx-1">
           <Link to="/login">

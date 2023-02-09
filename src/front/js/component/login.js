@@ -20,9 +20,7 @@ export const Login = () => {
   }
   return (
     <>
-      {store.auth === true ? (
-        <Navigate to="/demo" />
-      ) : (
+    {store.auth === true ? <Navigate to="/demo"/>:
         <form className="w-50 mx-auto" onSubmit={enviarDatos}>
           <div className="mb-3 container">
             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -48,13 +46,11 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <Link to="/demo">
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
-          </Link>
         </form>
-      )}
+}
     </>
   );
 };
