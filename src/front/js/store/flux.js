@@ -17,6 +17,7 @@ const getState = ({
                     initial: "white",
                 },
             ],
+
         },
         actions: {
             // Use getActions to call a function within a fuction
