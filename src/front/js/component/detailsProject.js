@@ -1,8 +1,13 @@
-import React, { Component } from "react";
-import { Navigate } from "react-router-dom";
+import React, { Component, useContext } from "react";
+import { Context } from "../store/appContext.js";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "..//..//styles/detailsProject.css";
+import { ProjectsGral } from "./projectsGral.jsx";
+
 export const DetailsProject = () => {
+  const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <>
       <div className="card d-flex justify-content-center w-50 mx-auto">
@@ -27,9 +32,12 @@ export const DetailsProject = () => {
           <button type="button" className="btn btn-info lm-10">
             contacto
           </button>
-          <button>
-            <i className="fa fa-angle-double-left" aria-hidden="true"></i>
-          </button>
+          <Link to="/projectsGral">
+            <button>
+              <i className="fa fa-angle-double-left" aria-hidden="true"></i>
+            </button>
+          </Link>
+          <button className="btn btn-light border-warning">💛</button>
         </div>
       </div>
     </>
