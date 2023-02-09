@@ -39,7 +39,7 @@ def login():
     password = request.json.get("password", None)
 
     user= User.query.filter_by(email=email).first()
-
+    print(user)
 
 
     if email != user.email or password != user.password:

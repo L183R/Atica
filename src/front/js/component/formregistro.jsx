@@ -9,10 +9,10 @@ export const Registro = () => {
   const [password, setPassword] = useState("");
   const [nombre, setNombre] = useState("");
   const { store, actions } = useContext(Context);
-  const [malUsuario, setMalUsuario] = useState("");
-  const [malCorreo, setMalCorreo] = useState("");
-  const [malaContraseña1, setMalaContraseña1] = useState("");
-  const [malaContraseña2, setMalaContraseña2] = useState("");
+  const [malUsuario, setMalUsuario] = useState(0);
+  const [malCorreo, setMalCorreo] = useState(0);
+  const [malaContraseña1, setMalaContraseña1] = useState(0);
+  const [malaContraseña2, setMalaContraseña2] = useState(0);
   let usuario = "";
   let correo = "";
   let contraseña1 = "";
@@ -29,28 +29,37 @@ export const Registro = () => {
 
   function confirmaLaCosa() {
     if (usuario.length < 5) {
-      setMalUsuario(() => 1);
+      // setMalUsuario(() => 1);
+      setMalUsuario(1)
+      console.log(malUsuario)
     } else if (usuario.length > 20) {
-      setMalUsuario(() => 2);
+      setMalUsuario(2);
+      console.log(malUsuario)
     } else {
-      setMalUsuario(() => 0);
+      setMalUsuario(0);
+      console.log(malUsuario)
     }
     if (contraseña1.length < 8) {
-      setMalaContraseña1(() => 1);
+      setMalaContraseña1(1);
+      
     } else if (contraseña1.length > 20) {
-      setMalaContraseña1(() => 2);
+      setMalaContraseña1(2);
     } else {
-      setMalaContraseña1(() => 0);
+      setMalaContraseña1(0);
     }
-    if (contraseña1 != contraseña2) {
-      setMalaContraseña2(() => 1);
+    if (contraseña1 !== contraseña2) {
+      setMalaContraseña2(1);
     }else {
-      setMalaContraseña2(() => 0);
+      setMalaContraseña2(0);
     }
-    if (malUsuario==0 && malCorreo==0 && malaContraseña1==0 && malaContraseña2==0 )
-    {actions.signup(usuario, contraseña1, correo)}
+confirmaLaCosa2()
   }
 
+function confirmaLaCosa2(){
+  if (malUsuario===0 && malCorreo===0 && malaContraseña1===0 && malaContraseña2===0){console.log(malUsuario);
+    actions.signup(usuario, contraseña1, correo)
+  }
+}
 
   return (
 <>

@@ -65,7 +65,7 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
-            signup: (userEmail, userPassword, userName) => {
+            signup: (userName, userPassword, userEmail) => {
                 fetch("https://3001-l183r-atica-2vf2jorxvkh.ws-us86.gitpod.io/api/signup", {
                         method: 'POST',
                         // mode: "no-cors",
