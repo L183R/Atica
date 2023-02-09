@@ -18,7 +18,6 @@ export const Registro = () => {
   let contraseña1 = "";
   let contraseña2 = "";
 
-  
   // function enviarDatos(e) {
   //   e.preventDefault();
   //   actions.signup(email, password, nombre);
@@ -49,7 +48,7 @@ export const Registro = () => {
       setMalaContraseña2(() => 0);
     }
     if (malUsuario==0 && malCorreo==0 && malaContraseña1==0 && malaContraseña2==0 )
-    {store.actions.signup(usuario, contraseña1, correo)}
+    {actions.signup(usuario, contraseña1, correo)}
   }
 
 

@@ -17,7 +17,12 @@ const getState = ({
                     initial: "white",
                 },
             ],
+            auth: false,
 
+            usuario: "",
+            correo: "",
+            contraseña1: "",
+            contraseña2: ""
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -61,7 +66,7 @@ const getState = ({
             },
 
             signup: (userEmail, userPassword, userName) => {
-                fetch("https://3001-l183r-atica-laj9vv8v91m.ws-us85.gitpod.io/api/signup", {
+                fetch("https://3001-l183r-atica-2vf2jorxvkh.ws-us86.gitpod.io/api/signup", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
