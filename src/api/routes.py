@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, json
-from api.models import db, User, Projects
+from api.models import db, User, Projects, Posts
 from api.utils import generate_sitemap, APIException
 from flask_sqlalchemy import SQLAlchemy
 
@@ -123,23 +123,14 @@ def add_commentary():
         db.session.rollback()
         return str(e), 500
 # ____________________________________
-# @api.route('/commentarylist/<int:project_id>', methods=['GET'])
-# def handle_commentary_list(project_id):
+@api.route('/commentarylist/<int:project_id>', methods=['GET'])
+def handle_commentary_list(project_id):
     
-#     commentaries_list = Posts.query.filter_by(project_id=project_id).order_by(Posts.dataTime.asc())
+    commentaries_list = Posts.query.filter_by(project_id=project_id).order_by(Posts.dataTime.asc())
 
-#     results = list(map(lambda item: item.serialize(),commentaries_list))
+    results = list(map(lambda item: item.serialize(),commentaries_list))
 
-#     return jsonify(results), 200
-
-#     @api.route('/projectlist', methods=['GET'])
-# def handle_project_list():
-    
-#     project_list = Projects.query.order_by(Projects.dataTime.desc())
-
-#     results = list(map(lambda item: item.serialize(),project_list))
-
-#     return jsonify(results), 200
+    return jsonify(results), 200
 
 # ____________________________________
 if __name__ == '__main__':
