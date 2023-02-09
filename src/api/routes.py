@@ -107,6 +107,41 @@ def handle_project_list():
     return jsonify(results), 200
 
 # ____________________________________
+@api.route('/newcommentary/<int:user_id>/<int:project_id>', methods=['POST'])
+def add_commentary():
+    text = request.json.get('text')
+    user_id = request.json.get('user_id')
+    project_id = request.json.get('project_id')
+
+    new_commentary = Projects(text=text, user_id=user_id, project_id=project_id)
+
+    try:
+        db.session.add(new_commentary)
+        db.session.commit()
+        return jsonify(new_commentary.serialize()), 201
+    except Exception as e:
+        db.session.rollback()
+        return str(e), 500
+# ____________________________________
+# @api.route('/commentarylist/<int:project_id>', methods=['GET'])
+# def handle_commentary_list(project_id):
+    
+#     commentaries_list = Posts.query.filter_by(project_id=project_id).order_by(Posts.dataTime.asc())
+
+#     results = list(map(lambda item: item.serialize(),commentaries_list))
+
+#     return jsonify(results), 200
+
+#     @api.route('/projectlist', methods=['GET'])
+# def handle_project_list():
+    
+#     project_list = Projects.query.order_by(Projects.dataTime.desc())
+
+#     results = list(map(lambda item: item.serialize(),project_list))
+
+#     return jsonify(results), 200
+
+# ____________________________________
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
     app.run(host='0.0.0.0', port=PORT, debug=False)
