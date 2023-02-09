@@ -1,10 +1,8 @@
-// import React, { useState, useEffect, useContext } from "react";
-// import PropTypes from "prop-types";
-// import { Link, useParams } from "react-router-dom";
-// import { Context } from "../store/appContext";
+
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,9 +20,7 @@ export const Login = () => {
   }
   return (
     <>
-      {store.auth === true ? (
-        <Navigate to="/demo" />
-      ) : (
+    {store.auth === true ? <Navigate to="/demo"/>:
         <form className="w-50 mx-auto" onSubmit={enviarDatos}>
           <div className="mb-3 container">
             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -54,7 +50,7 @@ export const Login = () => {
             Submit
           </button>
         </form>
-      )}
+}
     </>
   );
 };

@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, json
-from api.models import db, User, Projects
+from api.models import db, User, Projects, Posts
 from api.utils import generate_sitemap, APIException
 from flask_sqlalchemy import SQLAlchemy
 
@@ -41,11 +41,14 @@ def login():
     user= User.query.filter_by(email=email).first()
 
 
+
     if email != user.email or password != user.password:
         return jsonify({"msg": "Bad email or password"}), 401
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+
 
     @app.route("/logout", methods=["POST"])
     def logout():
@@ -70,8 +73,11 @@ def add_new_user():
         return jsonify({"msg": "El usuario se creó "}),200
     return jsonify({"msg": "El usuario ya existe "}),400
 
-
-    
+    @api.route("/profile", methods = ["GET"])
+    @jwt_required()
+    def get_profile(): current_user = get_jwt_identity()
+    return jsonify(logged_in_as = current_user),
+    200
 
     if __name__ == "__main__":
         app.run()
@@ -92,7 +98,50 @@ def add_project():
         db.session.rollback()
         return str(e), 500
 # ____________________________________
+@api.route('/viewproject/<int:id>', methods=['GET'])
+def handle_project(id):
+    
+    el_proyecto = Projects.query.filter_by(id=id).first()
 
+    return jsonify(el_proyecto.serialize()), 200
+
+# ____________________________________
+@api.route('/projectlist', methods=['GET'])
+def handle_project_list():
+    
+    project_list = Projects.query.order_by(Projects.dataTime.desc())
+
+    results = list(map(lambda item: item.serialize(),project_list))
+
+    return jsonify(results), 200
+
+# ____________________________________
+@api.route('/newcommentary/<int:user_id>/<int:project_id>', methods=['POST'])
+def add_commentary():
+    text = request.json.get('text')
+    user_id = request.json.get('user_id')
+    project_id = request.json.get('project_id')
+
+    new_commentary = Projects(text=text, user_id=user_id, project_id=project_id)
+
+    try:
+        db.session.add(new_commentary)
+        db.session.commit()
+        return jsonify(new_commentary.serialize()), 201
+    except Exception as e:
+        db.session.rollback()
+        return str(e), 500
+# ____________________________________
+@api.route('/commentarylist/<int:project_id>', methods=['GET'])
+def handle_commentary_list(project_id):
+    
+    commentaries_list = Posts.query.filter_by(project_id=project_id).order_by(Posts.dataTime.asc())
+
+    results = list(map(lambda item: item.serialize(),commentaries_list))
+
+    return jsonify(results), 200
+
+# ____________________________________
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
     app.run(host='0.0.0.0', port=PORT, debug=False)

@@ -32,7 +32,7 @@ const getState = ({
 
             login: (userEmail, userPassword) => {
                 fetch(
-                        "https://3001-l183r-atica-laj9vv8v91m.ws-us85.gitpod.io/api/login", {
+                        "https://3001-l183r-atica-2vf2jorxvkh.ws-us86.gitpod.io/api/login", {
                             method: "POST",
                             // mode: "no-cors",
                             // credentials: "include",
@@ -97,6 +97,18 @@ const getState = ({
                         localStorage.setItem("token", data.access_token)
                     })
                     .catch((err) => console.log(err))
+            },
+
+            logout: () => {
+                localStorage.removeItem('token');
+                setStore({
+                    auth: false
+                })
+            },            logout: () => {
+                localStorage.removeItem('token');
+                setStore({
+                    auth: false
+                })
             },
 
             getMessage: async () => {
