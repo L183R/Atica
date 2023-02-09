@@ -8,6 +8,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
+import { ProjectsGral } from "./component/projectsGral.jsx";
 import { Footer } from "./component/footer";
 import { Logview } from "./pages/logview";
 import { Login } from "./component/login.js";
@@ -40,12 +41,17 @@ const Layout = () => {
               path="/comentariosProyecto"
             />
             <Route element={<Demo />} path="/demo" />
+            <Route element={<ProjectsGral />} path="/projectsGral" />
             <Route element={<Login />} path="/login" />
             <Route element={<Registro />} path="/registro" />
             <Route element={<NuevoPosteo />} path="/newpost" />
             <Route element={<Logview />} path="/logview" />
+            <Route
+              element={<ProjectDetailsView />}
+              path="/projectDetailsView"
+            />
 
-						<Route element={<ViewRegistro />} path="/signup" />
+            <Route element={<ViewRegistro />} path="/signup" />
             <Route element={<NuevoPosteoView />} path="/nuevoposteoview" />
 
             <Route path="/signup" element={<ViewRegistro />} />
