@@ -22,10 +22,10 @@ export const Navbar = () => {
         </Link>
           <div className="mx-1">
           <Link to="/login">
-            <button className="btn btn-primary">Iniciar Sesión</button>
+          {store.auth === false? <button className="btn btn-primary">Iniciar Sesión</button> : null}
           </Link>
           <Link to="/signup">
-            <button className="btn btn-primary">Registrarse</button>
+          {store.auth === false? <button className="btn btn-primary">Registrarse</button> : null}
           </Link>
         </div>
         <div className="ml-auto">

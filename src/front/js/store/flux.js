@@ -17,9 +17,13 @@ const getState = ({
                     initial: "white",
                 },
             ],
-            auth: false
-        },
+            auth: false,
 
+            usuario: "",
+            correo: "",
+            contraseña1: "",
+            contraseña2: ""
+        },
         actions: {
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
@@ -28,7 +32,7 @@ const getState = ({
 
             login: (userEmail, userPassword) => {
                 fetch(
-                        "https://3001-l183r-atica-d803jhyz4zm.ws-us86.gitpod.io/api/login", {
+                        "https://3001-l183r-atica-2vf2jorxvkh.ws-us86.gitpod.io/api/login", {
                             method: "POST",
                             // mode: "no-cors",
                             // credentials: "include",
@@ -61,9 +65,8 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
-
-            signup: (userEmail, userPassword, userName) => {
-                fetch("https://3001-l183r-atica-d803jhyz4zm.ws-us86.gitpod.io/api/signup", {
+            signup: (userName, userPassword, userEmail) => {
+                fetch("https://3001-l183r-atica-2vf2jorxvkh.ws-us86.gitpod.io/api/signup", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
@@ -96,37 +99,17 @@ const getState = ({
                     .catch((err) => console.log(err))
             },
 
-
-            // enviarForm: (postCategoria, postContacto, postDescripcion, postProject, postTitulo, postUser) => {
-            //     fetch("https://3001-l183r-atica-d803jhyz4zm.ws-us86.gitpod.io/api/newproject", {
-            //             method: 'POST',
-            //             // mode: "no-cors",
-            //             // credentials: "include",
-            //             headers: {
-            //                 'Content-Type': 'application/json'
-            //                 // 'Content-Type': 'application/x-www-form-urlencoded',
-            //             },
-            //             body: JSON.stringify({
-            //                 "category": postCategoria,
-            //                 "title": postTitulo,
-            //                 "text": postDescripcion,
-            //                 "contact": postContacto,
-            //                 "user_id": postUser,
-            //                 "project_id": postProject
-            //             }) // body data type must match "Content-Type" header
-            //         })
-            //         .then((response) => {
-            //             console.log(response.status);
-            //             return response.json()
-            //         })
-            //         .then((data) => {
-            //             console.log(data)
-            //         })
-            //         .catch((err) => console.log(err))
-            // },
-
-
-
+            logout: () => {
+                localStorage.removeItem('token');
+                setStore({
+                    auth: false
+                })
+            },            logout: () => {
+                localStorage.removeItem('token');
+                setStore({
+                    auth: false
+                })
+            },
 
             getMessage: async () => {
                 try {
@@ -141,13 +124,6 @@ const getState = ({
                 } catch (error) {
                     console.log("Error loading message from backend", error);
                 }
-            },
-
-            logout: () => {
-                localStorage.removeItem('token');
-                setStore({
-                    auth: false
-                })
             },
             changeColor: (index, color) => {
                 //get the store
