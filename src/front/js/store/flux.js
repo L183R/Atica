@@ -18,7 +18,7 @@ const getState = ({
                 },
             ],
             auth: false,
-
+            user_id: "",
             usuario: "",
             correo: "",
             contraseña1: "",
@@ -32,21 +32,19 @@ const getState = ({
             },
 
             login: (userEmail, userPassword) => {
-                fetch(
-                        "https://3001-l183r-atica-8f0zpiwp6rh.ws-us86.gitpod.io/api/login", {
-                            method: "POST",
-                            // mode: "no-cors",
-                            // credentials: "include",
-                            headers: {
-                                "Content-Type": "application/json",
-                                // 'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: JSON.stringify({
-                                email: userEmail,
-                                password: userPassword,
-                            }), // body data type must match "Content-Type" header
-                        }
-                    )
+                fetch("https://3001-l183r-atica-hqaa7og2195.ws-us86.gitpod.io/api/login", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            email: userEmail,
+                            password: userPassword,
+                        }), // body data type must match "Content-Type" header
+                    })
                     .then((response) => {
                         console.log(response.status);
                         if (response.status === 200) {
@@ -58,8 +56,13 @@ const getState = ({
                     })
                     .then((data) => {
                         console.log(data);
+
                         if (data.msg === "Bad email or password") {
                             alert(data.msg);
+                        } else {
+                            setStore({
+                                user_id: data.user.id,
+                            });
                         }
                         localStorage.setItem("token", data.access_token);
                     })
@@ -98,6 +101,7 @@ const getState = ({
                         localStorage.setItem("token", data.access_token)
                     })
                     .catch((err) => console.log(err))
+
             },
 
             registrarProyecto: (postCategoria, postTitulo, postDescripción, postContacto) => {
@@ -135,24 +139,7 @@ const getState = ({
                     auth: false
                 })
             },
-            logout: () => {
-                localStorage.removeItem('token');
-                setStore({
-                    auth: false
-                })
-            },
 
-            obtenerId: (id) => {
-                fetch("https://3001-l183r-atica-8f0zpiwp6rh.ws-us86.gitpod.io/viewproject/" + id)
-                
-                    .then((res) => res.json())
-                    .then((data) =>
-                        setStore({
-                            unproyecto: data,
-                        })
-                    )
-                    .catch((err) => console.error(err));
-            },
 
             getMessage: async () => {
                 try {
