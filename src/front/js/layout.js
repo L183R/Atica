@@ -18,6 +18,8 @@ import { Registro } from "./component/formregistro.jsx";
 import { ViewRegistro } from "./pages/viewregistro.jsx";
 import { NuevoPosteoView } from "./pages/nuevoposteoview.jsx";
 import { NuevoPosteo } from "./component/newpost.jsx";
+import { RecuperarContraview } from "./pages/recuperarcontraview.jsx";
+import { RecuperarContra } from "./component/recuperarcontra.jsx";
 
 //create your first component
 const Layout = () => {
@@ -46,11 +48,15 @@ const Layout = () => {
             <Route element={<Registro />} path="/registro" />
             <Route element={<NuevoPosteo />} path="/newpost" />
             <Route element={<Logview />} path="/logview" />
+            <Route element={<RecuperarContra />} path="/recuperarcontra" />
+            <Route
+              element={<RecuperarContraview />}
+              path="/recuperarcontraview"
+            />
             <Route
               element={<ProjectDetailsView />}
               path="/projectDetailsView"
             />
-
             <Route element={<ViewRegistro />} path="/signup" />
             <Route element={<NuevoPosteoView />} path="/nuevoposteoview" />
 
