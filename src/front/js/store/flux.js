@@ -18,11 +18,12 @@ const getState = ({
                 },
             ],
             auth: false,
-
+            user_id: "",
             usuario: "",
             correo: "",
             contraseña1: "",
-            contraseña2: ""
+            contraseña2: "",
+            unproyecto: {}
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -31,21 +32,19 @@ const getState = ({
             },
 
             login: (userEmail, userPassword) => {
-                fetch(
-                        "https://3001-l183r-atica-2vf2jorxvkh.ws-us86.gitpod.io/api/login", {
-                            method: "POST",
-                            // mode: "no-cors",
-                            // credentials: "include",
-                            headers: {
-                                "Content-Type": "application/json",
-                                // 'Content-Type': 'application/x-www-form-urlencoded',
-                            },
-                            body: JSON.stringify({
-                                email: userEmail,
-                                password: userPassword,
-                            }), // body data type must match "Content-Type" header
-                        }
-                    )
+                fetch("https://3001-l183r-atica-hqaa7og2195.ws-us86.gitpod.io/api/login", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            email: userEmail,
+                            password: userPassword,
+                        }), // body data type must match "Content-Type" header
+                    })
                     .then((response) => {
                         console.log(response.status);
                         if (response.status === 200) {
@@ -57,8 +56,13 @@ const getState = ({
                     })
                     .then((data) => {
                         console.log(data);
+
                         if (data.msg === "Bad email or password") {
                             alert(data.msg);
+                        } else {
+                            setStore({
+                                user_id: data.user.id,
+                            });
                         }
                         localStorage.setItem("token", data.access_token);
                     })
@@ -66,7 +70,7 @@ const getState = ({
             },
 
             signup: (userName, userPassword, userEmail) => {
-                fetch("https://3001-l183r-atica-2vf2jorxvkh.ws-us86.gitpod.io/api/signup", {
+                fetch("https://3001-l183r-atica-8f0zpiwp6rh.ws-us86.gitpod.io/api/signup", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
@@ -97,6 +101,36 @@ const getState = ({
                         localStorage.setItem("token", data.access_token)
                     })
                     .catch((err) => console.log(err))
+
+            },
+
+            registrarProyecto: (postCategoria, postTitulo, postDescripción, postContacto) => {
+                fetch("https://3001-l183r-atica-8f0zpiwp6rh.ws-us86.gitpod.io/api/newproject", {
+                        method: 'POST',
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            'Content-Type': 'application/json'
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            "category": postCategoria,
+                            "title": postTitulo,
+                            "text": postDescripción,
+                            "contact": postContacto,
+                            // "project_id": postProject
+
+                        }) // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        return response.json()
+                    })
+                    .then((data) => {
+                        console.log(data)
+                        localStorage.setItem("token", data.access_token)
+                    })
+                    .catch((err) => console.log(err))
             },
 
             logout: () => {
@@ -104,12 +138,8 @@ const getState = ({
                 setStore({
                     auth: false
                 })
-            },            logout: () => {
-                localStorage.removeItem('token');
-                setStore({
-                    auth: false
-                })
             },
+
 
             getMessage: async () => {
                 try {
