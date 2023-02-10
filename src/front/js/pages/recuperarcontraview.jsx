@@ -2,17 +2,12 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { DetailsProject } from "../component/detailsProject.js";
 import { ComentariosProyecto } from "../component/comentariosProyecto";
-import { useNavigate } from "react-router-dom";
+import { ProjectsGral } from "../component/projectsGral.jsx";
 
-export const ProjectDetailsView = () => {
-  const { store, actions } = useContext(Context);
-
-  const navigate = useNavigate();
-
+export const RecuperarContraview = () => {
   return (
-    <>
-      <DetailsProject />
-      <ComentariosProyecto />
-    </>
+    <div>
+      <h1>soy la view de recuperar contraseña</h1>
+    </div>
   );
 };

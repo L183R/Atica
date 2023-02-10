@@ -8,6 +8,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
+import { ProjectsGral } from "./component/projectsGral.jsx";
 import { Footer } from "./component/footer";
 import { Logview } from "./pages/logview";
 import { Login } from "./component/login.js";
@@ -17,6 +18,8 @@ import { Registro } from "./component/formregistro.jsx";
 import { ViewRegistro } from "./pages/viewregistro.jsx";
 import { NuevoPosteoView } from "./pages/nuevoposteoview.jsx";
 import { NuevoPosteo } from "./component/newpost.jsx";
+import { RecuperarContraview } from "./pages/recuperarcontraview.jsx";
+import { RecuperarContra } from "./component/recuperarcontra.jsx";
 
 //create your first component
 const Layout = () => {
@@ -40,12 +43,21 @@ const Layout = () => {
               path="/comentariosProyecto"
             />
             <Route element={<Demo />} path="/demo" />
+            <Route element={<ProjectsGral />} path="/projectsGral" />
             <Route element={<Login />} path="/login" />
             <Route element={<Registro />} path="/registro" />
             <Route element={<NuevoPosteo />} path="/newpost" />
             <Route element={<Logview />} path="/logview" />
-
-						<Route element={<ViewRegistro />} path="/signup" />
+            <Route element={<RecuperarContra />} path="/recuperarcontra" />
+            <Route
+              element={<RecuperarContraview />}
+              path="/recuperarcontraview"
+            />
+            <Route
+              element={<ProjectDetailsView />}
+              path="/projectDetailsView"
+            />
+            <Route element={<ViewRegistro />} path="/signup" />
             <Route element={<NuevoPosteoView />} path="/nuevoposteoview" />
 
             <Route path="/signup" element={<ViewRegistro />} />
