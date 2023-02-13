@@ -3,7 +3,6 @@ import { Context } from "../store/appContext.js";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "..//..//styles/detailsProject.css";
-import { ProjectsGral } from "./projectsGral.jsx";
 
 export const DetailsProject = () => {
   const { store, actions } = useContext(Context);
