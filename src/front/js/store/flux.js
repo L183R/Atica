@@ -17,7 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       login: (userEmail, userPassword) => {
-        fetch(process.env.BACKEND_URL + "/api/login", {
+        fetch("https://3001-l183r-atica-q019kkvrxdh.ws-us86.gitpod.io/api/login", {
           method: "POST",
           // mode: "no-cors",
           // credentials: "include",
@@ -55,7 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       signup: (userName, userPassword, userEmail) => {
-        fetch(process.env.BACKEND_URL + "/api/signup", {
+        fetch("https://3001-l183r-atica-q019kkvrxdh.ws-us86.gitpod.io/api/signup", {
           method: "POST",
           // mode: "no-cors",
           // credentials: "include",
@@ -95,7 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         postContacto
       ) => {
         const store = getStore();
-        fetch(process.env.BACKEND_URL + "/api/newproject",
+        fetch("https://3001-l183r-atica-q019kkvrxdh.ws-us86.gitpod.io/api/newproject",
           {
             method: "POST",
             // mode: "no-cors",

@@ -21,31 +21,24 @@ export const Login = () => {
   return (
     <>
     {store.auth === true ? <Navigate to="/demo"/>:
-        <form className="w-50 mx-auto" onSubmit={enviarDatos}>
-          <div className="mb-3 container">
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label" />
-            Password
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+        <form className="was-validated w-50 mx-auto" onSubmit={enviarDatos}>
+            <div className="mb-3 container">
+            <label htmlFor="exampleInputEmail1" className="form-label">Correo Electrónico</label>
+    <input  type="email" className="form-control" id="exampleInputEmail1" placeholder="Required example textarea" aria-describedby="emailHelp" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+    <div className="invalid-feedback">
+      
+      Ingresa un correo válido.
+    </div>
+  </div>
+
+
+  <div className="mb-3 container">
+            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+    <input  type="password" className="form-control" id="exampleInputPassword1" placeholder="Required example password" aria-describedby="emailHelp" required value={password} onChange={(e) => setPassword(e.target.value)}/>
+    <div className="invalid-feedback">
+      Please enter a message in the textarea.
+    </div>
+  </div>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
