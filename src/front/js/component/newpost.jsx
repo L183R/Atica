@@ -21,7 +21,8 @@ export const NuevoPosteo = () => {
     // actions.registrarProyecto(postCategoria, postTitulo, postDescripción, postContacto)
     // }
 
-    function confirmaLaCosa() {
+    function confirmaLaCosa(e) {
+      e.preventDefault();
       if (category === "") {
         setMalaCategory(1);
       } else {setMalaCategory(0);}
@@ -53,7 +54,7 @@ export const NuevoPosteo = () => {
         {store.auth === false ? (
           <Navigate to="/demo" />
         ) : (
-          <form>
+          <form onSubmit={confirmaLaCosa}>
             <div className="row">
               <div className="form-holder">
                 <div className="form-content">
@@ -140,7 +141,6 @@ export const NuevoPosteo = () => {
                         id="submit"
                         type="submit"
                         className="btn btn-primary mt-3"
-                        onClick={confirmaLaCosa}
                       >
                         OK GO
                       </button>
