@@ -8,7 +8,8 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { ProjectsGral } from "./component/projectsGral.jsx";
+import { LandingPage } from "./component/landingPage.jsx";
+
 import { Footer } from "./component/footer";
 import { Logview } from "./pages/logview";
 import { Login } from "./component/login.js";
@@ -16,6 +17,8 @@ import { ProjectDetailsView } from "./pages/projectDetailsView";
 import { ComentariosProyecto } from "./component/comentariosProyecto";
 import { Registro } from "./component/formregistro.jsx";
 import { ViewRegistro } from "./pages/viewregistro.jsx";
+import { SocialGral } from "./component/socialGral.jsx";
+import { LucroGral } from "./component/lucroGral.jsx";
 import { NuevoPosteoView } from "./pages/nuevoposteoview.jsx";
 import { NuevoPosteo } from "./component/newpost.jsx";
 import { RecuperarContraview } from "./pages/recuperarcontraview.jsx";
@@ -43,7 +46,10 @@ const Layout = () => {
               path="/comentariosProyecto"
             />
             <Route element={<Demo />} path="/demo" />
-            <Route element={<ProjectsGral />} path="/projectsGral" />
+            <Route element={<LucroGral />} path="/lucroGral" />
+            <Route element={<SocialGral />} path="/socialGral" />
+
+            <Route element={<LandingPage />} path="/landingPage" />
             <Route element={<Login />} path="/login" />
             <Route element={<Registro />} path="/registro" />
             <Route element={<NuevoPosteo />} path="/newpost" />
