@@ -2,18 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       message: null,
-      demo: [
-        {
-          title: "FIRST",
-          background: "white",
-          initial: "white",
-        },
-        {
-          title: "SECOND",
-          background: "white",
-          initial: "white",
-        },
-      ],
       auth: false,
       user_id: "",
       usuario: "",
@@ -106,23 +94,27 @@ const getState = ({ getStore, getActions, setStore }) => {
         postDescripción,
         postContacto
       ) => {
-        fetch(store.url + "api/newproject", {
-          method: "POST",
-          // mode: "no-cors",
-          // credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: JSON.stringify({
-            category: postCategoria,
-            title: postTitulo,
-            text: postDescripción,
-            contact: postContacto,
-            user_id: store.user_id,
-            // "project_id": postProject
-          }), // body data type must match "Content-Type" header
-        })
+        const store = getStore();
+        fetch(
+          "https://3001-l183r-atica-hm0michl5jh.ws-us86.gitpod.io/api/newproject",
+          {
+            method: "POST",
+            // mode: "no-cors",
+            // credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+              // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify({
+              category: postCategoria,
+              title: postTitulo,
+              text: postDescripción,
+              contact: postContacto,
+              user_id: store.user_id,
+              // "project_id": postProject
+            }), // body data type must match "Content-Type" header
+          }
+        )
           .then((response) => {
             console.log(response.status);
             return response.json();
