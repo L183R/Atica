@@ -91,8 +91,8 @@ def add_project():
     contact = request.json.get('contact')
     user_id = request.json.get('user_id')
 
-    new_project = Projects(text=text, contact=contact)
-
+    new_project = Projects(category=category, title=title, text=text, contact=contact, user_id=user_id)
+    print(new_project)
     try:
         db.session.add(new_project)
         db.session.commit()
