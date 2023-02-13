@@ -22,7 +22,7 @@ function confirmaProyecto(){
 
 return (
 <div className="form-body container">
-{store.auth === true ? (
+{store.auth === false ? (
         <Navigate to="/demo" />
       ) : (
     <form>
