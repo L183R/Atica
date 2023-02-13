@@ -54,7 +54,7 @@ export const NuevoPosteo = () => {
         {store.auth === false ? (
           <Navigate to="/demo" />
         ) : (
-          <form onSubmit={confirmaLaCosa}>
+          <form className="was-validated">
             <div className="row">
               <div className="form-holder">
                 <div className="form-content">
@@ -69,35 +69,29 @@ export const NuevoPosteo = () => {
                     <input className="form-control my-2" accept="image/*" type="file" name="image" placeholder="Image" required/>
                     </div> */}
 
-                    <div className="col-md-12">
-                      <input
-                        className="form-control"
-                        type="text"
-                        name="title"
-                        placeholder="Titulo"
-                        required
-                        onChange={(e) => (title = e.target.value)}
-                      />
+<div className="mb-3">
+    <label htmlFor="validacionTitulo" className="form-label">Titulo</label>
+    <input className="form-control" id="validacionTitulo" placeholder="-----" required  onChange={(e) => (title = e.target.value)}/>
+    <div className="invalid-feedback">
+     Este campo no puede estar vacío
+    </div>
+  </div>
                       {/* <div className="valid-feedback">Titulo field is valid!</div>
                     <div className="invalid-feedback">Username field cannot be blank!</div> */}
                     </div>
 
-                    <div className="col-md-12">
-                      <div className="input-group mb-3">
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="categoria"
-                          placeholder="categoria"
-                          required
-                          onChange={(e) => (category = e.target.value)}
-                        />
-                      </div>
-                      {/* <div className="valid-feedback">You selected a position!</div>
-                        <div className="invalid-feedback">Please select a position!</div> */}
-                    </div>
+                    <div className="mb-3">
+                    <label  className="form-label">Categoría</label>
+    <select className="form-select" required aria-label="select example" onChange={(e) => (category = e.target.value)}>
+      <option value="">Selecciona la categoría de tu proyecto</option>
+      <option value="Sin fines de lucro">Sin fines de lucro</option>
+      <option value="Con fines de lucro">Con fines de lucro</option>
+    </select>
+    <div className="invalid-feedback">Selecciona una de las opciones</div>
+  </div>
 
                     <div className="col-md-12 my-2">
+                    <label  className="form-label">Descripción</label>
                       <input
                         className="form-control"
                         type="text"
@@ -106,11 +100,13 @@ export const NuevoPosteo = () => {
                         required
                         onChange={(e) => (text = e.target.value)}
                       />
-                      {/* <div className="valid-feedback">Email field is valid!</div>
-                        <div className="invalid-feedback">Email field cannot be blank!</div> */}
+    <div className="invalid-feedback">
+      Please enter a message in the textarea.
+    </div>
                     </div>
 
                     <div className="col-md-12">
+                    <label  className="form-label">C</label>
                       <input
                         className="form-control"
                         type="text"
@@ -119,8 +115,9 @@ export const NuevoPosteo = () => {
                         required
                         onChange={(e) => (contact = e.target.value)}
                       />
-                      {/* <div className="valid-feedback">Password field is valid!</div>
-                    <div className="invalid-feedback">Password field cannot be blank!</div> */}
+    <div className="invalid-feedback">
+      Please enter a message in the textarea.
+    </div>
                     </div>
 
                     <div className="form-check mt-1">
@@ -134,22 +131,24 @@ export const NuevoPosteo = () => {
                       <label className="form-check-label">
                         I confirm that all data are correct
                       </label>
-                      {/* <div className="invalid-feedback">Please confirm that the entered data are all correct!</div> */}
                     </div>
                     <div className="form-button">
                       <button
                         id="submit"
                         type="submit"
                         className="btn btn-primary mt-3"
+                        onClick={confirmaLaCosa}
                       >
                         OK GO
                       </button>
                     </div>
                   </div>
                 </div>
+
               </div>
-            </div>
-          </form>
+              </form>
+
+
         )}
       </div>
     );
