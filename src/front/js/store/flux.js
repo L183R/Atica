@@ -105,7 +105,7 @@ const getState = ({
             },
 
             registrarProyecto: (postCategoria, postTitulo, postDescripción, postContacto) => {
-                fetch("https://3001-l183r-atica-2ork8gmy6xf.ws-us86.gitpod.io/api/newproject", {
+                fetch("https://3001-l183r-atica-um1i8mhga09.ws-us86.gitpod.io/api/newproject", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
