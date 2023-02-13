@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 export const LandingPage = () => {
   return (
     <>
-      <div id="carouselExampleCaptions" class="carousel slide">
-        <div class="carousel-indicators">
+      <div id="carouselExampleCaptions" className="carousel slide">
+        <div className="carousel-indicators">
           <button
             type="button"
             data-bs-target="#carouselExampleCaptions"
             data-bs-slide-to="0"
-            class="active"
+            className="active"
             aria-current="true"
             aria-label="Slide 1"
           ></button>
@@ -29,14 +29,14 @@ export const LandingPage = () => {
             aria-label="Slide 3"
           ></button>
         </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
             <img
               src="https://www.tecnoredes.net.co/wp-content/resources/2017/10/conexiones-a-Internet-tecnoredes-colombia-1200x600.jpg"
-              class="d-block w-100"
+              className="d-block w-100"
               alt="..."
             />
-            <div class="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-md-block">
               <h1>ATICA explicacion</h1>
               {/* <Link to="/projectsGral">
                 <button>VER PROYECTOS</button>
@@ -52,13 +52,13 @@ export const LandingPage = () => {
               </p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div className="carousel-item">
             <img
               src="https://s28461.pcdn.co/wp-content/uploads/2013/04/El-22-de-abril-es-el-di%CC%81a-de-la-Tierra.jpg"
-              class="d-block w-100"
+              className="d-block w-100"
               alt="..."
             />
-            <div class="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-md-block">
               <h1>proyectos sociales</h1>
               <p>
                 Some representative placeholder content for the second slide.
@@ -68,13 +68,13 @@ export const LandingPage = () => {
               </Link>
             </div>
           </div>
-          <div class="carousel-item">
+          <div className="carousel-item">
             <img
               src="https://uploadgerencie.com/imagenes/emprendimiento.png"
-              class="d-block w-100"
+              className="d-block w-100"
               alt="..."
             />
-            <div class="carousel-caption d-none d-md-block">
+            <div className="carousel-caption d-none d-md-block">
               <h1>proyectos con fines de lucro</h1>
               <p>
                 Some representative placeholder content for the third slide.
@@ -86,22 +86,28 @@ export const LandingPage = () => {
           </div>
         </div>
         <button
-          class="carousel-control-prev"
+          className="carousel-control-prev"
           type="button"
           data-bs-target="#carouselExampleCaptions"
           data-bs-slide="prev"
         >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span>
         </button>
         <button
-          class="carousel-control-next"
+          className="carousel-control-next"
           type="button"
           data-bs-target="#carouselExampleCaptions"
           data-bs-slide="next"
         >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span>
         </button>
       </div>
     </>

@@ -7,11 +7,9 @@ import { LandingPage } from "../component/landingPage.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-
   return (
     <>
       <LandingPage />
-
       <Link to="/demo">
         <button className="btn btn-primary">Provicional</button>
       </Link>

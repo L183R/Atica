@@ -39,14 +39,13 @@ def login():
     password = request.json.get("password", None)
 
     user= User.query.filter_by(email=email).first()
-    print(user)
-
+    print(user.serialize())
 
     if email != user.email or password != user.password:
         return jsonify({"msg": "Bad email or password"}), 401
 
     access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    return jsonify({"access_token":access_token, "user":user.serialize()})
 
 
 
@@ -81,15 +80,19 @@ def add_new_user():
 
     if __name__ == "__main__":
         app.run()
-# ____________________________________
+
+#______________________________________
 
 @api.route('/newproject', methods=['POST'])
 def add_project():
+    category = request.json.get('category')
+    title = request.json.get('title')
     text = request.json.get('text')
     contact = request.json.get('contact')
+    user_id = request.json.get('user_id')
 
-    new_project = Projects(text=text, contact=contact)
-
+    new_project = Projects(category=category, title=title, text=text, contact=contact, user_id=user_id)
+    print(new_project)
     try:
         db.session.add(new_project)
         db.session.commit()
