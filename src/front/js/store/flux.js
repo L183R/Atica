@@ -32,7 +32,7 @@ const getState = ({
             },
 
             login: (userEmail, userPassword) => {
-                fetch("https://3001-l183r-atica-hm0michl5jh.ws-us86.gitpod.io/api/login", {
+                fetch("https://3001-l183r-atica-2ork8gmy6xf.ws-us86.gitpod.io/api/login", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -70,7 +70,7 @@ const getState = ({
             },
 
             signup: (userName, userPassword, userEmail) => {
-                fetch("https://3001-l183r-atica-hm0michl5jh.ws-us86.gitpod.io/api/signup", {
+                fetch("https://3001-l183r-atica-2ork8gmy6xf.ws-us86.gitpod.io/api/signup", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
@@ -105,7 +105,7 @@ const getState = ({
             },
 
             registrarProyecto: (postCategoria, postTitulo, postDescripción, postContacto) => {
-                fetch("https://3001-l183r-atica-hm0michl5jh.ws-us86.gitpod.io/api/newproject", {
+                fetch("https://3001-l183r-atica-um1i8mhga09.ws-us86.gitpod.io/api/newproject", {
                         method: 'POST',
                         // mode: "no-cors",
                         // credentials: "include",
