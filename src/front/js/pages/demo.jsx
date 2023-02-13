@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
-
+	const navigate = useNavigate();
 	function handleNewPost() {
-		actions.logout(); // Reciclo la función de actions de logout
+		
 		navigate("/"); //usamos navigate para redireccionar
 	  }
 
