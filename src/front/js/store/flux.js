@@ -95,8 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         postContacto
       ) => {
         const store = getStore();
-        fetch(
-          "https://3001-l183r-atica-hm0michl5jh.ws-us86.gitpod.io/api/newproject",
+        fetch(process.env.BACKEND_URL + "/api/newproject",
           {
             method: "POST",
             // mode: "no-cors",
