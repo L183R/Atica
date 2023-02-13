@@ -85,8 +85,11 @@ def add_new_user():
 
 @api.route('/newproject', methods=['POST'])
 def add_project():
+    category = request.json.get('category')
+    title = request.json.get('title')
     text = request.json.get('text')
     contact = request.json.get('contact')
+    user_id = request.json.get('user_id')
 
     new_project = Projects(text=text, contact=contact)
 

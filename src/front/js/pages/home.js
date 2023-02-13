@@ -10,7 +10,8 @@ export const Home = () => {
 	return (
 	
 	<div className = "text-center mt-5">
-		<h1 > Hello Rigo!! </h1> 
+		<h1 > ¿Quién cambió el Rigo Baby? </h1>
+		<h4>Re marcón igual con la forma de escribir.</h4> 
 		<p>
 		<img src = {rigoImageUrl}/> </p> 
 		<div className = "alert alert-info" > {
