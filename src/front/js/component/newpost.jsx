@@ -45,7 +45,8 @@ export const NuevoPosteo = () => {
         malText === 0 &&
         malContact === 0
       ) {
-        actions.registrarProyecto(category, title, text, contact)
+        actions.registrarProyecto(category, title, text, contact);
+        console.log("OK")
       }
     }
 
