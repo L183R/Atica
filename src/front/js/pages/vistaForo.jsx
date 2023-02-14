@@ -16,26 +16,60 @@ export const VistaDeProyectos = () => {
   }
 
   return (
-    <>
-    
-			<div className="ml-auto">
-			<Link to="/nuevoposteoview">
-    {" "}
-        {store.auth === true ? (
-            <button className="btn btn-primary" onClick={handleNewPost}>
-        {" "}
-            NewPost{" "}
-            </button>
-        ) : null}{" "}
-		</Link>
-			</div>
+    <div>
+      <div className="container">
+        <div className="container testimonial-group">
+          <div className="row text-center">
+            {store.personajes.map((lobicho, index) => {
+              return (
+                <Cardper
+                  nombres={lobicho.name}
+                  ids={lobicho.uid}
+                  tipo="personaje"
+                  key={index}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <div className="row"></div>
 
-        <Link to="/vistaForo">
-        <button className="btn btn-primary">Ver Proyectos</button>
-      </Link>
+      <div className="container">
+        Planetas
+        <div className="container testimonial-group">
+          <div className="row text-center">
+            {store.planetas.map((loplaneta, index) => {
+              return (
+                <Cardpla
+                  nombres={loplaneta.name}
+                  ids={loplaneta.uid}
+                  tipo="planeta"
+                  key={index}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        Naves
+        <div className="container testimonial-group">
+          <div className="row text-center">
+            {store.naves.map((lanave, index) => {
+              return (
+                <Cardnav
+                  nombres={lanave.name}
+                  ids={lanave.uid}
+                  tipo="nave"
+                  key={index}
+                />
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
-    <SocialGral />
-    <LucroGral />
-    </>
+    </div>
   );
 };
