@@ -13,7 +13,7 @@ export const Navbar = () => {
   }
 
   function prueba_la_cosa () {
-    alert(store.user_id)
+    alert(store.projects)
   }
 
   return (

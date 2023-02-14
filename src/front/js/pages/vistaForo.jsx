@@ -1,15 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { SocialGral } from "../component/socialGral.jsx";
 import { LucroGral } from "../component/lucroGral.jsx";
 import { useNavigate } from "react-router-dom";
+import { Prolist } from "../component/vistaproyectos.jsx";
 
 export const VistaDeProyectos = () => {
   const { store, actions } = useContext(Context);
 
   const navigate = useNavigate();
-
+  useEffect(() => {
+    actions.mostrarProjects();
+  }, []);
   function handleNewPost() {
 		
     navigate("/"); //usamos navigate para redireccionar
@@ -20,56 +23,19 @@ export const VistaDeProyectos = () => {
       <div className="container">
         <div className="container testimonial-group">
           <div className="row text-center">
-            {store.personajes.map((lobicho, index) => {
+            {store.projects.map((project, index) => {
               return (
-                <Cardper
-                  nombres={lobicho.name}
-                  ids={lobicho.uid}
-                  tipo="personaje"
+                <Prolist
+                  category={project.category}
+                  dataTime={project.dataTime}
+                  text={project.text}
+                  title={project.title}
                   key={index}
                 />
               );
             })}
           </div>
         </div>
-      </div>
-      <div className="row"></div>
-
-      <div className="container">
-        Planetas
-        <div className="container testimonial-group">
-          <div className="row text-center">
-            {store.planetas.map((loplaneta, index) => {
-              return (
-                <Cardpla
-                  nombres={loplaneta.name}
-                  ids={loplaneta.uid}
-                  tipo="planeta"
-                  key={index}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        Naves
-        <div className="container testimonial-group">
-          <div className="row text-center">
-            {store.naves.map((lanave, index) => {
-              return (
-                <Cardnav
-                  nombres={lanave.name}
-                  ids={lanave.uid}
-                  tipo="nave"
-                  key={index}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-    </div>
+        </div></div>
   );
 };
