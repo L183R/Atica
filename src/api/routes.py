@@ -48,22 +48,17 @@ def login():
     return jsonify({"access_token":access_token, "user":user.serialize()})
 
 
-
-    @app.route("/logout", methods=["POST"])
-    def logout():
-        response = jsonify({"msg": "logout successful"})
-    unset_jwt_cookies(response)
-    return response
-
     #________________________
 
     # Protect a route with jwt_required, which will kick out requests
 # without a valid JWT present.
-    @api.route("/validtoken", methods=["GET"])
-    @jwt_required()
-    def valid_token():
-    # Access the identity of the current user with get_jwt_identity
-        current_user = get_jwt_identity()
+@api.route("/validtoken", methods=["GET"])
+@jwt_required()
+def valid_token():
+# Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    if current_user is None:
+        return jsonify({"User not logged in"}), 422
     return jsonify(logged_in_as=current_user), 200
 
 
