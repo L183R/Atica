@@ -10,11 +10,8 @@ export const LucroGral = () => {
   const navigate = useNavigate();
   return (
     <>
-      <img
-        src="https://cdn.upsocl.com/wp-content/uploads/2017/01/angry-cat-photography-02-5874a28aee900__700-2.jpg"
-        className="card-img-top"
-        alt="..."
-      />
+    <div>
+        <div className="container my-3"></div>
       <div className="card-body">
         <h5 className="card-title">Titulo del Projecto</h5>
         <p className="card-text">
@@ -31,6 +28,7 @@ export const LucroGral = () => {
           </button>
         </Link>
         <button className="btn btn-light border-warning">💛</button>
+      </div>
       </div>
     </>
   );

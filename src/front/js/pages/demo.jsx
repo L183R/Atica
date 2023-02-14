@@ -21,17 +21,6 @@ export const Demo = () => {
 				<button className="btn btn-primary">New Post</button>
 			</Link> */}
 
-			<div className="ml-auto">
-			<Link to="/nuevoposteoview">
-    {" "}
-        {store.auth === true ? (
-            <button className="btn btn-primary" onClick={handleNewPost}>
-        {" "}
-            NewPost{" "}
-            </button>
-        ) : null}{" "}
-		</Link>
-			</div>
 
 			<Link to="/">
 				<button className="btn btn-primary">Back home</button>

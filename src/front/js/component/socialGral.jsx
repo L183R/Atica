@@ -10,11 +10,8 @@ export const SocialGral = () => {
   const navigate = useNavigate();
   return (
     <>
-      <img
-        src="http://images7.memedroid.com/images/UPLOADED716/622c677ad5fa4.jpeg"
-        className="card-img-top"
-        alt="..."
-      />
+    <div>
+        <div className="container my-3"></div>
       <div className="card-body">
         <h5 className="card-title">Titulo del Projecto</h5>
         <p className="card-text">
@@ -31,6 +28,7 @@ export const SocialGral = () => {
           </button>
         </Link>
         <button className="btn btn-light border-warning">💛</button>
+      </div>
       </div>
     </>
   );
