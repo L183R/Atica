@@ -22,6 +22,19 @@ export const VistaDeProyectos = () => {
     <div>
       <div className="container">
         <div className="container testimonial-group">
+
+        <div className="ml-auto">
+			<Link to="/nuevoposteoview">
+    {" "}
+        {store.auth === true ? (
+            <button className="btn btn-primary" onClick={handleNewPost}>
+        {" "}
+            NewPost{" "}
+            </button>
+        ) : null}{" "}
+		</Link>
+			</div>
+      
           <div className="row text-center">
             {store.projects.map((project, index) => {
               return (

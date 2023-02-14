@@ -13,7 +13,9 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
+
             projects: []
+
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -22,7 +24,8 @@ const getState = ({
             },
 
             login: (userEmail, userPassword) => {
-                fetch("https://3001-l183r-atica-gq9oyms5fqh.ws-us86.gitpod.io/api/login", {
+                fetch(process.env.BACKEND_URL + "/api/login", {
+
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -60,6 +63,7 @@ const getState = ({
             },
 
             signup: (userName, userPassword, userEmail) => {
+
                 fetch(process.env.BACKEND_URL + "/api/signup", {
                         method: "POST",
                         // mode: "no-cors",
@@ -145,6 +149,7 @@ const getState = ({
                     console.log("Error loading message from backend", error);
                 }
             },
+
             mostrarProjects: () => {
                 let store = getStore();
                 fetch("https://3001-l183r-atica-gq9oyms5fqh.ws-us86.gitpod.io/api/projectlist")
@@ -153,6 +158,35 @@ const getState = ({
                         projects: data
                     }))
             },
+
+            validToken: () => {
+              var tokenDeAcceso = localStorage.getItem('token'); 
+              fetch(process.env.BACKEND_URL + "/api/validtoken", {
+                method: "GET",
+                // mode: "no-cors",
+                // credentials: "include",
+                headers: {
+                  Authorization: "Bearer " + tokenDeAcceso,
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then((response) => {
+              console.log(response.status);
+              if (response.status === 200) {
+                  setStore({
+                      auth: true,
+                  });
+              }
+              return response.json();
+          })
+          .then((data) => {
+              console.log(data);
+            })
+            .catch((err) => console.log(err));
+          },
+
+          
+
             changeColor: (index, color) => {
                 //get the store
                 const store = getStore();
