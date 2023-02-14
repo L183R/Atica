@@ -55,6 +55,19 @@ def login():
     unset_jwt_cookies(response)
     return response
 
+    #________________________
+
+    # Protect a route with jwt_required, which will kick out requests
+# without a valid JWT present.
+    @api.route("/validtoken", methods=["GET"])
+    @jwt_required()
+    def valid_token():
+    # Access the identity of the current user with get_jwt_identity
+        current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
+
+
+    
 
 @api.route('/signup', methods=['POST'])
 def add_new_user():
