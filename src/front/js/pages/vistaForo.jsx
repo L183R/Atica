@@ -34,7 +34,6 @@ export const VistaDeProyectos = () => {
         ) : null}{" "}
 		</Link>
 			</div>
-      
           <div className="row text-center">
             {store.projects.map((project, index) => {
               return (

@@ -18,14 +18,7 @@ export const Login = () => {
     setEmail("");
     setPassword("");
   }
-
-  useEffect(()=>{
-
-    fetch("https://3000-l183r-atica-ue1ozlkkm9r.ws-us86.gitpod.io/user/gianpaul")
-    .then((response)=>response.json())
-    .then((data)=>console.log(data))
-    
-    },[])    
+  
 
   return (
     <>

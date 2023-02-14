@@ -24,8 +24,7 @@ const getState = ({
             },
 
             login: (userEmail, userPassword) => {
-                fetch(process.env.BACKEND_URL + "/api/login", {
-
+                fetch("https://3001-l183r-atica-ue1ozlkkm9r.ws-us86.gitpod.io/api/login", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -64,7 +63,7 @@ const getState = ({
 
             signup: (userName, userPassword, userEmail) => {
 
-                fetch(process.env.BACKEND_URL + "/api/signup", {
+                fetch("https://3001-l183r-atica-ue1ozlkkm9r.ws-us86.gitpod.io/api/signup", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -104,7 +103,7 @@ const getState = ({
                 postContacto
             ) => {
                 const store = getStore();
-                fetch(process.env.BACKEND_URL + "/api/newproject", {
+                fetch("https://3001-l183r-atica-ue1ozlkkm9r.ws-us86.gitpod.io/api/newproject", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -152,7 +151,7 @@ const getState = ({
 
             mostrarProjects: () => {
                 let store = getStore();
-                fetch("https://3001-l183r-atica-gq9oyms5fqh.ws-us86.gitpod.io/api/projectlist")
+                fetch("https://3001-l183r-atica-ue1ozlkkm9r.ws-us86.gitpod.io/api/projectlist")
                     .then((response) => response.json())
                     .then((data) => setStore({
                         projects: data
@@ -161,7 +160,7 @@ const getState = ({
 
             validToken: () => {
               var tokenDeAcceso = localStorage.getItem('token'); 
-              fetch(process.env.BACKEND_URL + "/api/validtoken", {
+              fetch("https://3001-l183r-atica-ue1ozlkkm9r.ws-us86.gitpod.io/api/validtoken", {
                 method: "GET",
                 // mode: "no-cors",
                 // credentials: "include",
