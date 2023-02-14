@@ -158,6 +158,35 @@ const getState = ({
                         projects: data
                     }))
             },
+
+            validToken: () => {
+              var tokenDeAcceso = localStorage.getItem('token'); 
+              fetch(process.env.BACKEND_URL + "/api/validtoken", {
+                method: "GET",
+                // mode: "no-cors",
+                // credentials: "include",
+                headers: {
+                  Authorization: "Bearer " + tokenDeAcceso,
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then((response) => {
+              console.log(response.status);
+              if (response.status === 200) {
+                  setStore({
+                      auth: true,
+                  });
+              }
+              return response.json();
+          })
+          .then((data) => {
+              console.log(data);
+            })
+            .catch((err) => console.log(err));
+          },
+
+          
+
             changeColor: (index, color) => {
                 //get the store
                 const store = getStore();
