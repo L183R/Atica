@@ -19,6 +19,7 @@ import { Registro } from "./component/formregistro.jsx";
 import { ViewRegistro } from "./pages/viewregistro.jsx";
 import { SocialGral } from "./component/socialGral.jsx";
 import { LucroGral } from "./component/lucroGral.jsx";
+import { VistaDeProyectos } from "./pages/vistaForo.jsx";
 import { NuevoPosteoView } from "./pages/nuevoposteoview.jsx";
 import { NuevoPosteo } from "./component/newpost.jsx";
 import { RecuperarContraview } from "./pages/recuperarcontraview.jsx";
@@ -48,7 +49,7 @@ const Layout = () => {
             <Route element={<Demo />} path="/demo" />
             <Route element={<LucroGral />} path="/lucroGral" />
             <Route element={<SocialGral />} path="/socialGral" />
-
+            <Route element={<VistaDeProyectos />} path="/vistaForo" />
             <Route element={<LandingPage />} path="/landingPage" />
             <Route element={<Login />} path="/login" />
             <Route element={<Registro />} path="/registro" />

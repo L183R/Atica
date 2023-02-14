@@ -13,6 +13,10 @@ export const Home = () => {
       <Link to="/demo">
         <button className="btn btn-primary">Provicional</button>
       </Link>
+
+            <Link to="/vistaForo">
+        <button className="btn btn-primary">Ver Proyectos</button>
+      </Link>
     </>
   );
 };
