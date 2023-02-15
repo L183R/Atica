@@ -131,6 +131,33 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
+            nuevoComentario: (
+                text,
+                project_id
+            ) => {
+                const store = getStore();
+                fetch(store.url + "/api/newproject/", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            text: text,
+                            user_id: store.user_id,
+                            project_id: project_id
+                            // "project_id": postProject
+                        }), // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        return response.json();
+                    })
+                    .catch((err) => console.log(err));
+            },
+
             logout: () => {
                 localStorage.removeItem("token");
                 setStore({

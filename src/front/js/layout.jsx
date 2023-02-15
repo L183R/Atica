@@ -14,7 +14,7 @@ import { Footer } from "./component/footer";
 import { Logview } from "./pages/logview.jsx";
 import { Login } from "./component/login.jsx";
 import { ProjectDetailsView } from "./pages/projectDetailsView.jsx";
-import { ComentariosProyecto } from "./component/comentariosProyecto";
+import { ComentariosProyecto } from "./component/comentariosProyecto.jsx";
 import { Registro } from "./component/formregistro.jsx";
 import { ViewRegistro } from "./pages/viewregistro.jsx";
 import { SocialGral } from "./component/socialGral.jsx";
