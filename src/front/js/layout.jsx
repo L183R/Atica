@@ -2,19 +2,19 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./pages/home";
+import { Home } from "./pages/home.jsx";
 import { Demo } from "./pages/demo.jsx";
-import { Single } from "./pages/single";
-import injectContext from "./store/appContext";
+import { Single } from "./pages/single.jsx";
+import injectContext from "./store/appContext.jsx";
 
-import { Navbar } from "./component/navbar";
+import { Navbar } from "./component/navbar.jsx";
 import { LandingPage } from "./component/landingPage.jsx";
 
 import { Footer } from "./component/footer";
-import { Logview } from "./pages/logview";
-import { Login } from "./component/login.js";
-import { ProjectDetailsView } from "./pages/projectDetailsView";
-import { ComentariosProyecto } from "./component/comentariosProyecto";
+import { Logview } from "./pages/logview.jsx";
+import { Login } from "./component/login.jsx";
+import { ProjectDetailsView } from "./pages/projectDetailsView.jsx";
+import { ComentariosProyecto } from "./component/comentariosProyecto.jsx";
 import { Registro } from "./component/formregistro.jsx";
 import { ViewRegistro } from "./pages/viewregistro.jsx";
 import { SocialGral } from "./component/socialGral.jsx";
@@ -60,10 +60,7 @@ const Layout = () => {
               element={<RecuperarContraview />}
               path="/recuperarcontraview"
             />
-            <Route
-              element={<ProjectDetailsView />}
-              path="/projectDetailsView"
-            />
+            <Route element={<ProjectDetailsView />} path="/projectDetailsView/:theid" />
             <Route element={<ViewRegistro />} path="/signup" />
             <Route element={<NuevoPosteoView />} path="/nuevoposteoview" />
 

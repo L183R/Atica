@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import { Context } from "../store/appContext.js";
+import { Context } from "../store/appContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { DetailsProject } from "./detailsProject.js";
-import { ProjectDetailsView } from "../pages/projectDetailsView.js";
+import { DetailsProject } from "./detailsProject.jsx";
+import { ProjectDetailsView } from "../pages/projectDetailsView.jsx";
 
 export const SocialGral = () => {
   const { store, actions } = useContext(Context);

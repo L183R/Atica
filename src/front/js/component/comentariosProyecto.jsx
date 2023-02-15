@@ -7,16 +7,16 @@ export const ComentariosProyecto = () => {
   const [coment, setComent] = useState("");
   const [list, setList] = useState([]);
 
-  const DeleteItems = (indexItem) => {
-    setList((prevState) =>
-      prevState.filter((listItems, index) => index !== indexItem)
-    );
-  };
+  // const DeleteItems = (indexItem) => {
+  //   setList((prevState) =>
+  //     prevState.filter((listItems, index) => index !== indexItem)
+  //   );
+  // };
 
   function enviarDatos(e) {
     e.preventDefault();
-    setList([...list, coment]);
-    setComent("");
+    // setList([...list, coment]);
+    // setComent("");
   }
   console.log(list);
 
@@ -64,7 +64,7 @@ export const ComentariosProyecto = () => {
                   </div>
                 ))}
               </div>
-              <div className="bg-white">
+              {/* <div className="bg-white">
                 <div className="d-flex flex-row fs-12">
                   <div className="like p-2 cursor">
                     <i className="fa fa-thumbs-o-up"></i>
@@ -79,7 +79,7 @@ export const ComentariosProyecto = () => {
                     <span className="ml-1">Share</span>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="bg-light p-2">
                 <div className="d-flex flex-row align-items-start">
                   <img
