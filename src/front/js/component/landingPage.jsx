@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Context } from "../store/appContext.js";
+import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -37,32 +37,29 @@ export const LandingPage = () => {
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block">
-              <h1>ATICA explicacion</h1>
+              <h1>ATICA</h1>
               {/* <Link to="/projectsGral">
                 <button>VER PROYECTOS</button>
               </Link> */}
-              <h2>conoce nuestros proyectos</h2>
               <p>
-                ESTO VAS MAS ARRIBA DESPUES LO CAMBIARIA Si tu viejo es zapatero
-                Zarpale la lata, se se Zarpale la lata! Y las manitos ahi, ahi,
-                ahi, ahi y ahi. Supermerk2, Supermerk2 Y ahora. suena el
-                "rototo" Suena el "rototo" !!! Salto la ficha en el barrio,
-                Todos los pibes me andan buscando. Ya se enteraron que anoche me
-                rastree. De la casa del zapatero, Una lata de p.v.c
+              Ática es un foro para presentar proyectos y ponerse en contacto con colaboradores que estén interesados en ayudar para llevarlos a cabo. Busca favorecer el desarrollo social, cultural y económico, autogestionado e independiente de cualquier otro poder que no sea la democracia.
+              </p>
+              <p>"El que no considera lo que tiene como la riqueza más grande, es desdichado, aunque sea dueño del mundo". — Epicuro
               </p>
             </div>
           </div>
           <div className="carousel-item">
             <img
-              src="https://s28461.pcdn.co/wp-content/uploads/2013/04/El-22-de-abril-es-el-di%CC%81a-de-la-Tierra.jpg"
+              src="https://proyectolabor.es/wp-content/uploads/2019/02/trabaja-en-proyecto-labor.png"
               className="d-block w-100"
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block">
-              <h1>proyectos sociales</h1>
+              <h2>PROYECTOS SOCIALES</h2>
               <p>
-                Some representative placeholder content for the second slide.
+                Un espacio diseñado para fomentar proyectos que satisfagan las necesidades desatendidas de la sociedad. Nadie conoce mejor las necesidades del pueblo que él mismo, así que el pueblo propone y el pueblo dispone.
               </p>
+              <p>"Recibir sin orgullo, desprenderse sin apego" - Marco Aurelio</p>
               <Link to="/SocialGral">
                 <button className="btn btn-warning">IR</button>
               </Link>

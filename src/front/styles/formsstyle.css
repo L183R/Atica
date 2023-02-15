@@ -25,24 +25,24 @@
 
 /* blue button */
 .btn {
-    background-color: #49c5b6;
+    background-color: #cfe4e1;
     border-color: rgba(252, 246, 246, 0.3);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
     color: #fff;
 }
 
 .btn {
-    background-color: #49c5b6;
-    border-color: rgba(248, 242, 242, 0.87);
+    background-color: #102724;
+    border-color: rgba(7, 6, 6, 0.87);
 }
 
 .btn {
-    background-color: #49c5b6;
-    border-color: rgba(245, 238, 238, 0.986);
+    background-color: #102724;
+    border-color: rgba(17, 15, 15, 0.986);
 }
 
 button {
-    background-color: #49c5b6;
+    background-color: #102724;
     border-color: rgba(252, 246, 246, 0.3);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
     color: #fff;
@@ -50,15 +50,11 @@ button {
 }
 
 button {
-    background-color: #49c5b6;
-    border-color: rgba(248, 242, 242, 0.87);
+    background-color: #102724;
+    border-color: rgba(22, 21, 21, 0.87);
 }
 
 button {
-    background-color: #49c5b6;
-    border-color: rgba(245, 238, 238, 0.986);
-}
-
-div {
-    background-color: rgb(37, 37, 66);
+    background-color: #102724;
+    border-color: rgba(26, 23, 23, 0.986);
 }

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { Context } from "../store/appContext";
-import { DetailsProject } from "../component/detailsProject.js";
-import { ComentariosProyecto } from "../component/comentariosProyecto";
+import { Context } from "../store/appContext.jsx";
+import { DetailsProject } from "../component/detailsProject.jsx";
+import { ComentariosProyecto } from "../component/comentariosProyecto.jsx";
 
 export const RecuperarContraview = () => {
   return (
