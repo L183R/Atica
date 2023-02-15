@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext.js";
+import { Context } from "../store/appContext.jsx";
 import { useNavigate } from "react-router-dom"; // importamos el hook useNavigate para redireccionar desde una funcion
 
 export const Navbar = () => {
@@ -13,7 +13,7 @@ export const Navbar = () => {
   }
 
   function prueba_la_cosa () {
-    alert(store.projects)
+    alert(store.project.id)
   }
 
   return (

@@ -127,6 +127,26 @@ def handle_project_list():
     return jsonify(results), 200
 
 # ____________________________________
+@api.route('/projectlist1', methods=['GET'])
+def handle_project_list1():
+    
+    project_list = Projects.query.order_by(Projects.dataTime.desc()).filter_by(category= "Con fines de lucro")
+
+    results = list(map(lambda item: item.serialize(),project_list))
+
+    return jsonify(results), 200
+
+# ____________________________________
+@api.route('/projectlist2', methods=['GET'])
+def handle_project_list2():
+    
+    project_list = Projects.query.order_by(Projects.dataTime.desc()).filter_by(category= "Sin fines de lucro")
+
+    results = list(map(lambda item: item.serialize(),project_list))
+
+    return jsonify(results), 200
+
+# ____________________________________
 @api.route('/newcommentary/<int:user_id>/<int:project_id>', methods=['POST'])
 def add_commentary():
     text = request.json.get('text')
