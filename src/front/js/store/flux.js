@@ -13,8 +13,10 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-
-            projects: []
+            url: "https://3001-l183r-atica-8s38xrzrzmn.ws-us87.gitpod.io",
+            url2: "", //url.replace("3001", "3000"),
+            projects: [],
+            project: {}
 
         },
         actions: {
@@ -24,8 +26,8 @@ const getState = ({
             },
 
             login: (userEmail, userPassword) => {
-                fetch(process.env.BACKEND_URL + "/api/login", {
-
+                let store = getStore();
+                fetch(store.url + "/api/login", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -64,7 +66,8 @@ const getState = ({
 
             signup: (userName, userPassword, userEmail) => {
 
-                fetch(process.env.BACKEND_URL + "/api/signup", {
+                let store = getStore();
+                fetch(store.url + "/api/signup", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -104,7 +107,7 @@ const getState = ({
                 postContacto
             ) => {
                 const store = getStore();
-                fetch(process.env.BACKEND_URL + "/api/newproject", {
+                fetch(store.url + "/api/newproject", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -118,6 +121,33 @@ const getState = ({
                             text: postDescripción,
                             contact: postContacto,
                             user_id: store.user_id,
+                            // "project_id": postProject
+                        }), // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        return response.json();
+                    })
+                    .catch((err) => console.log(err));
+            },
+
+            nuevoComentario: (
+                text,
+                project_id
+            ) => {
+                const store = getStore();
+                fetch(store.url + "/api/newproject/", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            text: text,
+                            user_id: store.user_id,
+                            project_id: project_id
                             // "project_id": postProject
                         }), // body data type must match "Content-Type" header
                     })
@@ -152,40 +182,68 @@ const getState = ({
 
             mostrarProjects: () => {
                 let store = getStore();
-                fetch("https://3001-l183r-atica-gq9oyms5fqh.ws-us86.gitpod.io/api/projectlist")
+                fetch(store.url + "/api/projectlist")
                     .then((response) => response.json())
                     .then((data) => setStore({
                         projects: data
                     }))
             },
 
-            validToken: () => {
-              var tokenDeAcceso = localStorage.getItem('token'); 
-              fetch(process.env.BACKEND_URL + "/api/validtoken", {
-                method: "GET",
-                // mode: "no-cors",
-                // credentials: "include",
-                headers: {
-                  Authorization: "Bearer " + tokenDeAcceso,
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                },
-            })
-            .then((response) => {
-              console.log(response.status);
-              if (response.status === 200) {
-                  setStore({
-                      auth: true,
-                  });
-              }
-              return response.json();
-          })
-          .then((data) => {
-              console.log(data);
-            })
-            .catch((err) => console.log(err));
-          },
+            mostrarProjects1: () => {
+                let store = getStore();
+                fetch(store.url + "/api/projectlist1")
+                    .then((response) => response.json())
+                    .then((data) => setStore({
+                        projects: data
+                    }))
+            },
 
-          
+            mostrarProjects2: () => {
+                let store = getStore();
+                fetch(store.url + "/api/projectlist2")
+                    .then((response) => response.json())
+                    .then((data) => setStore({
+                        projects: data
+                    }))
+            },
+
+            traerProyecto: (id) => {
+                let store = getStore();
+                fetch(store.url + "/api/viewproject/" + id)
+                    .then((response) => response.json())
+                    .then((data) => setStore({
+                        project: data
+                    }))
+            },
+
+            validToken: () => {
+                var tokenDeAcceso = localStorage.getItem('token');
+                let store = getStore();
+                fetch(store.url + "/api/validtoken", {
+                        method: "GET",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            Authorization: "Bearer " + tokenDeAcceso,
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        if (response.status === 200) {
+                            setStore({
+                                auth: true,
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        console.log(data);
+                    })
+                    .catch((err) => console.log(err));
+            },
+
+
 
             changeColor: (index, color) => {
                 //get the store

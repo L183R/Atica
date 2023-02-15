@@ -1,6 +1,6 @@
 
 import React, { useState, useContext, useEffect } from "react";
-import { Context } from "../store/appContext.js";
+import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -18,14 +18,7 @@ export const Login = () => {
     setEmail("");
     setPassword("");
   }
-
-  useEffect(()=>{
-
-    fetch("https://3000-l183r-atica-ue1ozlkkm9r.ws-us86.gitpod.io/user/gianpaul")
-    .then((response)=>response.json())
-    .then((data)=>console.log(data))
-    
-    },[])    
+  
 
   return (
     <>
