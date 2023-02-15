@@ -27,7 +27,8 @@ class User(db.Model):
 
 class Projects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    category = db.Column(db.String(64), unique=False, nullable=False)
+    category = db.Column(db.String(64), unique=False, nullable=True)
+    image = db.Column(db.String(500), unique=False, nullable=False)
     title = db.Column(db.String(64), unique=False, nullable=False)
     text = db.Column(db.String(2048), unique=False, nullable=False)
     dataTime = db.Column(db.Date, default=datetime.now(), nullable=False)
@@ -42,14 +43,16 @@ class Projects(db.Model):
         return {
             "id": self.id,
             "category": self.category,
+            "image":self.image,
             "title": self.title,
             "text": self.text,
             "dataTime": self.dataTime,
             "contact": self.contact,
-            "user_id": self.user_id,
+            "user_id": self.user_id
         }
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    # image = db.Column(db.String(1), unique=True, nullable=False)
     text = db.Column(db.String(1024), unique=True, nullable=False)
     dataTime = db.Column(db.Date, default=datetime.now(), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -61,6 +64,7 @@ class Posts(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            # "image":self.image,
             "text": self.text,
             "dataTime": self.dataTime,
             "user_id": self.user_id,
