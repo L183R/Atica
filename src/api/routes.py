@@ -178,7 +178,7 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=PORT, debug=False)
 
 
-# --------------------------------------------------RECUPERACION DE CONTRASEÑA-------------------------------------------------------
+# -----------------------------------RECUPERACION DE CONTRASEÑA-------------------------------------------------------
 
 from flask import Flask, request, jsonify, url_for, Blueprint, current_app #importamos current_app
 from api.models import db, User
