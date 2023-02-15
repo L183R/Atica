@@ -32,7 +32,7 @@ export const LandingPage = () => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://www.tecnoredes.net.co/wp-content/resources/2017/10/conexiones-a-Internet-tecnoredes-colombia-1200x600.jpg"
+              src="https://studio.uxpincdn.com/studio/wp-content/uploads/2021/07/9-Design-Thinking-Tools.png"
               className="d-block w-100"
               alt="..."
             />

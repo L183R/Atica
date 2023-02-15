@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import "..//../styles/formsstyle.css";
 
 export const Registro = () => {
   const [email, setEmail] = useState("");
@@ -26,22 +26,20 @@ export const Registro = () => {
   //   setNombre("");
   // }
 
-
   function confirmaLaCosa() {
     if (usuario.length < 5) {
       // setMalUsuario(() => 1);
-      setMalUsuario(1)
-      console.log(malUsuario)
+      setMalUsuario(1);
+      console.log(malUsuario);
     } else if (usuario.length > 20) {
       setMalUsuario(2);
-      console.log(malUsuario)
+      console.log(malUsuario);
     } else {
       setMalUsuario(0);
-      console.log(malUsuario)
+      console.log(malUsuario);
     }
     if (contraseña1.length < 8) {
       setMalaContraseña1(1);
-      
     } else if (contraseña1.length > 20) {
       setMalaContraseña1(2);
     } else {
@@ -49,152 +47,173 @@ export const Registro = () => {
     }
     if (contraseña1 !== contraseña2) {
       setMalaContraseña2(1);
-    }else {
+    } else {
       setMalaContraseña2(0);
     }
-confirmaLaCosa2()
+    confirmaLaCosa2();
   }
 
-function confirmaLaCosa2(){
-  if (malUsuario===0 && malCorreo===0 && malaContraseña1===0 && malaContraseña2===0){console.log(malUsuario);
-    actions.signup(usuario, contraseña1, correo)
+  function confirmaLaCosa2() {
+    if (
+      malUsuario === 0 &&
+      malCorreo === 0 &&
+      malaContraseña1 === 0 &&
+      malaContraseña2 === 0
+    ) {
+      console.log(malUsuario);
+      actions.signup(usuario, contraseña1, correo);
+    }
   }
-}
 
   return (
-<>
-{store.auth === true ? (
+    <>
+      {store.auth === true ? (
         <Navigate to="/demo" />
       ) : (
-      <form>
-        <div className="row text-center">
-          <div className="col-4">
-            <div className="mb-3">
-              <label htmlFor="exampleFormControlInput1" className="form-label">
-                Nombre de usuario
-              </label>
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Nombre de usuario"
-                onChange={(e) => (usuario = e.target.value)}
-                aria-label="default input example"
-              />
-              {malUsuario == 1 ? (
-                <label className="Male sal">
-                  El nombre de usuario debe tener al menos 5 caracteres
-                </label>
-              ) : (
-                ""
-              )}
-              {malUsuario == 2 ? (
-                <label className="Male sal">
-                  El nombre de usuario debe tener menos de 20 caracteres
-                </label>
-              ) : (
-                ""
-              )}
+        <>
+          <form>
+            <div className="row text-center">
+              <h1>REGISTRO</h1>
+              <div className="col-4">
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
+                    Nombre de usuario
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    placeholder="Nombre de usuario"
+                    onChange={(e) => (usuario = e.target.value)}
+                    aria-label="default input example"
+                  />
+                  {malUsuario == 1 ? (
+                    <label className="Male sal">
+                      El nombre de usuario debe tener al menos 5 caracteres
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                  {malUsuario == 2 ? (
+                    <label className="Male sal">
+                      El nombre de usuario debe tener menos de 20 caracteres
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
+                    Correo electrónico
+                  </label>
+                  <input
+                    type="email"
+                    onChange={(e) => (correo = e.target.value)}
+                    className="form-control"
+                    id="inputEmail"
+                    placeholder="name@example.com"
+                  ></input>
+                  {malCorreo == 1 ? (
+                    <label className="Male sal">
+                      La dirección de correo deberá ser válida
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
+                    Contraseña
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    onChange={(e) => (contraseña1 = e.target.value)}
+                    id="inputPassword1"
+                  ></input>
+                  {malaContraseña1 == 1 ? (
+                    <label className="Male sal">
+                      La contraseña debe tener al menos 8 caracteres
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                  {malaContraseña1 == 2 ? (
+                    <label className="Male sal">
+                      La contraseña debe tener menos de 20 caracteres
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                  {malaContraseña1 == 3 ? (
+                    <label className="Male sal">
+                      La contraseña debe tener al menos una letra minúscula
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                  {malaContraseña1 == 4 ? (
+                    <label className="Male sal">
+                      La contraseña debe tener al menos una letra mayúscula
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                  {malaContraseña1 == 5 ? (
+                    <label className="Male sal">
+                      La contraseña debe tener al menos un número
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                  {malaContraseña1 == 6 ? (
+                    <label className="Male sal">
+                      La contraseña debe tener al menos un caracter especial
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleFormControlInput1"
+                    className="form-label"
+                  >
+                    Confirmar contraseña
+                  </label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    onChange={(e) => (contraseña2 = e.target.value)}
+                    id="inputPassword2"
+                  ></input>
+                  {malaContraseña2 == 1 ? (
+                    <label className="Male sal">
+                      Las contraseñas deben coincidir
+                    </label>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={confirmaLaCosa}
+                >
+                  Enviar
+                </button>
+              </div>
             </div>
-            <div className="mb-3">
-              <label htmlFor="exampleFormControlInput1" className="form-label">
-                Correo electrónico
-              </label>
-              <input
-                type="email"
-                onChange={(e) => (correo = e.target.value)}
-                className="form-control"
-                id="inputEmail"
-                placeholder="name@example.com"
-              ></input>
-              {malCorreo == 1 ? (
-                <label className="Male sal">
-                  La dirección de correo deberá ser válida
-                </label>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleFormControlInput1" className="form-label">
-                Contraseña
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                onChange={(e) => (contraseña1 = e.target.value)}
-                id="inputPassword1"
-              ></input>
-              {malaContraseña1 == 1 ? (
-                <label className="Male sal">
-                  La contraseña debe tener al menos 8 caracteres
-                </label>
-              ) : (
-                ""
-              )}
-              {malaContraseña1 == 2 ? (
-                <label className="Male sal">
-                  La contraseña debe tener menos de 20 caracteres
-                </label>
-              ) : (
-                ""
-              )}
-              {malaContraseña1 == 3 ? (
-                <label className="Male sal">
-                  La contraseña debe tener al menos una letra minúscula
-                </label>
-              ) : (
-                ""
-              )}
-              {malaContraseña1 == 4 ? (
-                <label className="Male sal">
-                  La contraseña debe tener al menos una letra mayúscula
-                </label>
-              ) : (
-                ""
-              )}
-              {malaContraseña1 == 5 ? (
-                <label className="Male sal">
-                  La contraseña debe tener al menos un número
-                </label>
-              ) : (
-                ""
-              )}
-              {malaContraseña1 == 6 ? (
-                <label className="Male sal">
-                  La contraseña debe tener al menos un caracter especial
-                </label>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="mb-3">
-              <label htmlFor="exampleFormControlInput1" className="form-label">
-                Confirmar contraseña
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                onChange={(e) => (contraseña2 = e.target.value)}
-                id="inputPassword2"
-              ></input>
-              {malaContraseña2 == 1 ? (
-                <label className="Male sal">
-                  Las contraseñas deben coincidir
-                </label>
-              ) : (
-                ""
-              )}
-            </div>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={confirmaLaCosa}
-            >
-              Enviar
-            </button>
-          </div>
-        </div>
-      </form>
+          </form>
+        </>
       )}
     </>
   );

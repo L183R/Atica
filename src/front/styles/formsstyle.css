@@ -1,0 +1,64 @@
+.row {
+    margin-left: 25rem;
+    width: 20rem;
+    text-align: start;
+    background-color: rgb(255, 255, 255);
+    margin-right: 15rem;
+    margin-top: 3rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.was-validated {
+    margin-left: 25rem;
+    width: 20rem;
+    text-align: start;
+    background-color: rgb(255, 255, 255);
+    margin-right: 15rem;
+    margin-top: 3rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.col-4 {
+    text-align: start;
+    width: 25rem;
+}
+
+/* blue button */
+.btn {
+    background-color: #49c5b6;
+    border-color: rgba(252, 246, 246, 0.3);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.btn {
+    background-color: #49c5b6;
+    border-color: rgba(248, 242, 242, 0.87);
+}
+
+.btn {
+    background-color: #49c5b6;
+    border-color: rgba(245, 238, 238, 0.986);
+}
+
+button {
+    background-color: #49c5b6;
+    border-color: rgba(252, 246, 246, 0.3);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    color: #fff;
+    margin: 1rem;
+}
+
+button {
+    background-color: #49c5b6;
+    border-color: rgba(248, 242, 242, 0.87);
+}
+
+button {
+    background-color: #49c5b6;
+    border-color: rgba(245, 238, 238, 0.986);
+}
+
+div {
+    background-color: rgb(37, 37, 66);
+}
