@@ -14,9 +14,9 @@ export const Home = () => {
         <button className="btn btn-primary">Provicional</button>
       </Link>
 
-            <Link to="/vistaForo">
+      {/* <Link to="/vistaForo">
         <button className="btn btn-primary">Ver Proyectos</button>
-      </Link>
+      </Link> */}
     </>
   );
 };

@@ -42,9 +42,15 @@ export const LandingPage = () => {
                 <button>VER PROYECTOS</button>
               </Link> */}
               <p>
-              Ática es un foro para presentar proyectos y ponerse en contacto con colaboradores que estén interesados en ayudar para llevarlos a cabo. Busca favorecer el desarrollo social, cultural y económico, autogestionado e independiente de cualquier otro poder que no sea la democracia.
+                Ática es un foro para presentar proyectos y ponerse en contacto
+                con colaboradores que estén interesados en ayudar para llevarlos
+                a cabo. Busca favorecer el desarrollo social, cultural y
+                económico, autogestionado e independiente de cualquier otro
+                poder que no sea la democracia.
               </p>
-              <p>"El que no considera lo que tiene como la riqueza más grande, es desdichado, aunque sea dueño del mundo". — Epicuro
+              <p>
+                "El que no considera lo que tiene como la riqueza más grande, es
+                desdichado, aunque sea dueño del mundo". — Epicuro
               </p>
             </div>
           </div>
@@ -57,11 +63,16 @@ export const LandingPage = () => {
             <div className="carousel-caption d-none d-md-block">
               <h2>PROYECTOS SOCIALES</h2>
               <p>
-                Un espacio diseñado para fomentar proyectos que satisfagan las necesidades desatendidas de la sociedad. Nadie conoce mejor las necesidades del pueblo que él mismo, así que el pueblo propone y el pueblo dispone.
+                Un espacio diseñado para fomentar proyectos que satisfagan las
+                necesidades desatendidas de la sociedad. Nadie conoce mejor las
+                necesidades del pueblo que él mismo, así que el pueblo propone y
+                el pueblo dispone.
               </p>
-              <p>"Recibir sin orgullo, desprenderse sin apego" - Marco Aurelio</p>
-              <Link to="/SocialGral">
-                <button className="btn btn-warning">IR</button>
+              <p>
+                "Recibir sin orgullo, desprenderse sin apego" - Marco Aurelio
+              </p>
+              <Link to="/vistaForo">
+                <button className="btn btn-primary">Ver Proyectos</button>
               </Link>
             </div>
           </div>
@@ -76,8 +87,8 @@ export const LandingPage = () => {
               <p>
                 Some representative placeholder content for the third slide.
               </p>
-              <Link to="/LucroGral">
-                <button className="btn btn-warning">IR</button>
+              <Link to="/vistaForo">
+                <button className="btn btn-primary">Ver Proyectos</button>
               </Link>
             </div>
           </div>

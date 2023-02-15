@@ -19,19 +19,24 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <button onClick={prueba_la_cosa}>Prueba cosas</button>
+      <button btn-sm onClick={prueba_la_cosa}>
+        Prueba cosas
+      </button>
       <div className="container">
         <Link to="/">
           <span className="navbar-brand mb-0 h1"> ÁTICA c: </span>
         </Link>{" "}
         <Link to="/recuperarcontra">
-          <button> Recuperar Contraseña </button>{" "}
+          <button type="submit" className="btn btn-sm btn-primary">
+            {" "}
+            Recuperar Contraseña{" "}
+          </button>{" "}
         </Link>{" "}
         <div className="mx-1">
           <Link to="/login">
             {" "}
             {store.auth === false ? (
-              <button className="btn" style={{ color: "white" }}>
+              <button className="btn btn-sm" style={{ color: "white" }}>
                 {" "}
                 Iniciar Sesión{" "}
               </button>
@@ -40,7 +45,7 @@ export const Navbar = () => {
           <Link to="/signup">
             {" "}
             {store.auth === false ? (
-              <button className="btn" style={{ color: "white" }}>
+              <button className="btn btn-sm" style={{ color: "white" }}>
                 {" "}
                 Registrarse{" "}
               </button>
@@ -51,7 +56,7 @@ export const Navbar = () => {
           {" "}
           {store.auth === true ? (
             <button
-              className="btn"
+              className="btn btn-sm"
               style={{ color: "white" }}
               onClick={handleLogout}
             >

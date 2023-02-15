@@ -25,6 +25,7 @@ export const Login = () => {
         <Navigate to="/demo" />
       ) : (
         <form className="was-validated w-50 mx-auto" onSubmit={enviarDatos}>
+          <h1>INICIO DE SESION</h1>
           <div className="mb-3 container">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Correo Electrónico
@@ -41,7 +42,6 @@ export const Login = () => {
             />
             <div className="invalid-feedback">Ingresa un correo válido.</div>
           </div>
-
           <div className="mb-3 container">
             <label htmlFor="exampleInputPassword1" className="form-label">
               Password
@@ -61,8 +61,14 @@ export const Login = () => {
             </div>
           </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            Iniciar sesion
           </button>
+          <Link to="/recuperarcontra">
+            <button type="submit" className="btn btn-primary">
+              {" "}
+              Recuperar Contraseña{" "}
+            </button>{" "}
+          </Link>{" "}
         </form>
       )}
     </>
