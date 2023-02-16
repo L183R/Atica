@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "..//../styles/formsstyle.css";
+import "..//../styles/formsstyle.css"
+import "..//../styles/navbar.css"
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,54 +23,53 @@ export const Login = () => {
   return (
     <>
       {store.auth === true ? (
-        <Navigate to="/demo" />
+        <Navigate to="/vistaForo" />
       ) : (
-        <form className="was-validated w-50 mx-auto" onSubmit={enviarDatos}>
-          <h1>INICIO DE SESION</h1>
-          <div className="mb-3 container">
-            <label htmlFor="exampleInputEmail1" className="form-label">
+        // <div className="rounded bg-dark opacity-25">
+        <form className="was-validated w-50 mx-auto rounded bg-dark p-2 text-dark bg-opacity-50" onSubmit={enviarDatos}>
+          <h1 className="text-light display-6 mt-2 text-center">Inicio de sesión</h1>
+          <div className="mb-3 container ">
+            <label htmlFor="exampleInputEmail1" className="form-label text-light">
               Correo Electrónico
             </label>
             <input
               type="email"
-              className="form-control"
+              className="form-control bg-dark p-2 text-light bg-opacity-75"
               id="exampleInputEmail1"
-              placeholder="Required example textarea"
+              placeholder="Ingresa un correo electrónico válido"
               aria-describedby="emailHelp"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <div className="invalid-feedback">Ingresa un correo válido.</div>
           </div>
           <div className="mb-3 container">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
+            <label htmlFor="exampleInputPassword1" className="form-label text-light">
+              Contraseña
             </label>
             <input
               type="password"
-              className="form-control"
+              className="form-control bg-dark p-2 text-light bg-opacity-75"
               id="exampleInputPassword1"
-              placeholder="Required example password"
+              placeholder="Ingresa tu contraseña"
               aria-describedby="emailHelp"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="invalid-feedback">
-              Please enter a message in the textarea.
+            <div className="text-center mt-2">
+        <Link to="/recuperarcontra">
+          <span className="navbar-brand mb-0"> ¿Olvidaste tu contraseña? </span>
+        </Link>{" "}
             </div>
           </div>
+          <div>
           <button type="submit" className="btn btn-primary">
             Iniciar sesion
           </button>
-          <Link to="/recuperarcontra">
-            <button type="submit" className="btn btn-primary">
-              {" "}
-              Recuperar Contraseña{" "}
-            </button>{" "}
-          </Link>{" "}
+          </div>
         </form>
+        // </div>
       )}
     </>
   );

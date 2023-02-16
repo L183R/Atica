@@ -7,7 +7,7 @@ export const Prolist = (props) => {
   return (
     <div className="card m-1 col-11">
       <div className="card-body">
-        <Link to={"/projectDetailsView/"+props.id}><h5 className="card-title">{props.title}</h5></Link>
+        <Link to={"/projectDetailsView/"+props.id}><h5 className="card-title text-dark">{props.title}</h5></Link>
         <p className="card-text">
           {props.category} Fecha:{props.dataTime}
         </p>
