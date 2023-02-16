@@ -27,8 +27,8 @@ export const DetailsProject = () => {
           alt="cuatro manos sostienen una pieza de puzzle cada una"
         />
         <div className="card-body ">
-          <h5 className="card-title">{store.project.title}</h5>
-          <p className="card-text">{store.project.text}
+          <h5 className="card-title text-dark">{store.project.title}</h5>
+          <p className="card-text text-dark">{store.project.text}
           </p>
           <h6 className="text-primary">Categoria: {store.project.category}</h6>
           <button type="button" className="btn btn-info lm-10" onClick={cartel1}>
