@@ -2,8 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "..//../styles/formsstyle.css"
-import "..//../styles/navbar.css"
+import "..//../styles/formsstyle.css";
+import "..//../styles/navbar.css";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,10 +26,18 @@ export const Login = () => {
         <Navigate to="/vistaForo" />
       ) : (
         // <div className="rounded bg-dark opacity-25">
-        <form className="was-validated w-50 mx-auto rounded bg-dark p-2 text-dark bg-opacity-50" onSubmit={enviarDatos}>
-          <h1 className="text-light display-6 mt-2 text-center">Inicio de sesión</h1>
+        <form
+          className="was-validated w-50 mx-auto rounded p-2 text-dark"
+          onSubmit={enviarDatos}
+        >
+          <h1 className="text-light display-6 mt-2 text-center">
+            Inicio de sesión
+          </h1>
           <div className="mb-3 container ">
-            <label htmlFor="exampleInputEmail1" className="form-label text-light">
+            <label
+              htmlFor="exampleInputEmail1"
+              className="form-label text-light"
+            >
               Correo Electrónico
             </label>
             <input
@@ -44,7 +52,10 @@ export const Login = () => {
             />
           </div>
           <div className="mb-3 container">
-            <label htmlFor="exampleInputPassword1" className="form-label text-light">
+            <label
+              htmlFor="exampleInputPassword1"
+              className="form-label text-light"
+            >
               Contraseña
             </label>
             <input
@@ -58,15 +69,18 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             <div className="text-center mt-2">
-        <Link to="/recuperarcontra">
-          <span className="navbar-brand mb-0"> ¿Olvidaste tu contraseña? </span>
-        </Link>{" "}
+              <Link to="/recuperarcontra">
+                <span className="navbar-brand mb-0">
+                  {" "}
+                  ¿Olvidaste tu contraseña?{" "}
+                </span>
+              </Link>{" "}
             </div>
           </div>
           <div>
-          <button type="submit" className="btn btn-primary">
-            Iniciar sesion
-          </button>
+            <button type="submit" className="btn btn-primary">
+              Iniciar sesion
+            </button>
           </div>
         </form>
         // </div>

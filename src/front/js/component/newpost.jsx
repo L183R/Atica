@@ -16,14 +16,12 @@ export const NuevoPosteo = () => {
   const [image, setImage] = useState("");
   const [postImage, setPostImage] = useState("");
   const [loading, setLoading] = useState(false);
-  
 
   // const [malaContraseña2, setMalaContraseña2] = useState(0);
   let category = "aa";
   let title = "aa";
   let text = "aa";
   let contact = "aa";
-
 
   function confirmaLaCosa(e) {
     e.preventDefault();
@@ -51,21 +49,23 @@ export const NuevoPosteo = () => {
     confirmaLaCosa2();
   }
 
-  const submitImage=async(e)=>{
+  const submitImage = async (e) => {
     const files = e.target.files;
-    const data = new FormData()
-    data.append("file",files[0])
-    data.append("upload_preset","subirimagen")
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "subirimagen");
     // data.append("cloud_name","ds6dug9me")
-    const res = await fetch("https://api.cloudinary.com/v1_1/ds6dug9me/image/upload",{
-      method:"POST",
-      body: data
-    });
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/ds6dug9me/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
     const file = await res.json();
     setImage(file.secure_url);
     setLoading(false);
-
-  }
+  };
 
   console.log(image);
   //   function todos(){
@@ -103,9 +103,15 @@ export const NuevoPosteo = () => {
                     formulario:
                   </p>
 
-                  <div className="card" style={{width: "18rem"}}>
-                    <input className="form-control my-2" type="file" name="image" placeholder="Image" onChange={submitImage}/>
-                    </div>
+                  <div className="card" style={{ width: "18rem" }}>
+                    <input
+                      className="form-control my-2"
+                      type="file"
+                      name="image"
+                      placeholder="Image"
+                      onChange={submitImage}
+                    />
+                  </div>
 
                   <div className="mb-3">
                     <label htmlFor="validacionTitulo" className="form-label">
