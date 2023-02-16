@@ -1,3 +1,20 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+/* body {
+    background-image: url("") !important;
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+/* background-position: center; */
+/* background-attachment: fixed;
+    background-size: 100%;  */
+/* */
+
+body {
+    background-image: url("https://images.unsplash.com/photo-1552083940-86877723de7a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGJsYWNrJTIwYW5kJTIwYmx1ZSUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80") !important;
+    background-color: #cccccc !important;
+    /* height: 500px; */
+    background-position: center center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    /* position: relative !important; */
+    color: white;
+}

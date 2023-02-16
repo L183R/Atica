@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+import "../../front/styles/index.css";
 
 import { Home } from "./pages/home.jsx";
 import { Demo } from "./pages/demo.jsx";
@@ -32,7 +33,7 @@ const Layout = () => {
   const basename = process.env.BASENAME || "";
 
   return (
-    <div>
+    <div className="todo">
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Navbar />
@@ -60,7 +61,10 @@ const Layout = () => {
               element={<RecuperarContraview />}
               path="/recuperarcontraview"
             />
-            <Route element={<ProjectDetailsView />} path="/projectDetailsView/:theid" />
+            <Route
+              element={<ProjectDetailsView />}
+              path="/projectDetailsView/:theid"
+            />
             <Route element={<ViewRegistro />} path="/signup" />
             <Route element={<NuevoPosteoView />} path="/nuevoposteoview" />
 
