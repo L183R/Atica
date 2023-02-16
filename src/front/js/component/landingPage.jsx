@@ -32,7 +32,7 @@ export const LandingPage = () => {
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://studio.uxpincdn.com/studio/wp-content/uploads/2021/07/9-Design-Thinking-Tools.png"
+              src="https://blog.trello.com/hs-fs/Foster_Productivity_And_Collaboration_With_A_Strong_Team_Structure.png"
               className="d-block w-100"
               alt="..."
             />
