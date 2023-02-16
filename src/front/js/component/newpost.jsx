@@ -14,6 +14,7 @@ export const NuevoPosteo = () => {
   const [malText, setMalText] = useState(0);
   const [malContact, setMalContact] = useState(0);
   const [image, setImage] = useState("");
+  const [postImage, setPostImage] = useState("");
   const [loading, setLoading] = useState(false);
   
 
@@ -46,7 +47,7 @@ export const NuevoPosteo = () => {
     } else {
       setMalContact(1);
     }
-    submitImage();
+    // submitImage();
     confirmaLaCosa2();
   }
 
@@ -80,7 +81,7 @@ export const NuevoPosteo = () => {
       malText === 0 &&
       malContact === 0
     ) {
-      actions.registrarProyecto(category, title, text, contact);
+      actions.registrarProyecto(category, image, title, text, contact);
       // console.log("OK");
       // navigate("/vistaForo");
     }
