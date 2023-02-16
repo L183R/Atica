@@ -13,11 +13,10 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-1d1m94kt08c.ws-us87.gitpod.io",
+            url: "GET /?vscodeBrowserReqId=1676581942641 HTTP/1.1",
             url2: "", //url.replace("3001", "3000"),
             projects: [],
-            project: {}
-
+            project: {},
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -65,7 +64,6 @@ const getState = ({
             },
 
             signup: (userName, userPassword, userEmail) => {
-
                 let store = getStore();
                 fetch(store.url + "/api/signup", {
                         method: "POST",
@@ -133,10 +131,7 @@ const getState = ({
                     .catch((err) => console.log(err));
             },
 
-            nuevoComentario: (
-                text,
-                project_id
-            ) => {
+            nuevoComentario: (text, project_id) => {
                 const store = getStore();
                 fetch(store.url + "/api/newproject/", {
                         method: "POST",
@@ -149,7 +144,7 @@ const getState = ({
                         body: JSON.stringify({
                             text: text,
                             user_id: store.user_id,
-                            project_id: project_id
+                            project_id: project_id,
                             // "project_id": postProject
                         }), // body data type must match "Content-Type" header
                     })
@@ -186,40 +181,48 @@ const getState = ({
                 let store = getStore();
                 fetch(store.url + "/api/projectlist")
                     .then((response) => response.json())
-                    .then((data) => setStore({
-                        projects: data
-                    }))
+                    .then((data) =>
+                        setStore({
+                            projects: data,
+                        })
+                    );
             },
 
             mostrarProjects1: () => {
                 let store = getStore();
                 fetch(store.url + "/api/projectlist1")
                     .then((response) => response.json())
-                    .then((data) => setStore({
-                        projects: data
-                    }))
+                    .then((data) =>
+                        setStore({
+                            projects: data,
+                        })
+                    );
             },
 
             mostrarProjects2: () => {
                 let store = getStore();
                 fetch(store.url + "/api/projectlist2")
                     .then((response) => response.json())
-                    .then((data) => setStore({
-                        projects: data
-                    }))
+                    .then((data) =>
+                        setStore({
+                            projects: data,
+                        })
+                    );
             },
 
             traerProyecto: (id) => {
                 let store = getStore();
                 fetch(store.url + "/api/viewproject/" + id)
                     .then((response) => response.json())
-                    .then((data) => setStore({
-                        project: data
-                    }))
+                    .then((data) =>
+                        setStore({
+                            project: data,
+                        })
+                    );
             },
 
             validToken: () => {
-                var tokenDeAcceso = localStorage.getItem('token');
+                var tokenDeAcceso = localStorage.getItem("token");
                 let store = getStore();
                 fetch(store.url + "/api/validtoken", {
                         method: "GET",
@@ -244,8 +247,6 @@ const getState = ({
                     })
                     .catch((err) => console.log(err));
             },
-
-
 
             changeColor: (index, color) => {
                 //get the store
