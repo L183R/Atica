@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -13,11 +13,17 @@ export const NuevoPosteo = () => {
   const [malTitle, setMalTitle] = useState(0);
   const [malText, setMalText] = useState(0);
   const [malContact, setMalContact] = useState(0);
+  const [image, setImage] = useState("");
+  const [postImage, setPostImage] = useState("");
+  const [loading, setLoading] = useState(false);
+  
+
   // const [malaContraseña2, setMalaContraseña2] = useState(0);
   let category = "aa";
   let title = "aa";
   let text = "aa";
   let contact = "aa";
+
 
   function confirmaLaCosa(e) {
     e.preventDefault();
@@ -41,8 +47,32 @@ export const NuevoPosteo = () => {
     } else {
       setMalContact(1);
     }
+    // submitImage();
     confirmaLaCosa2();
   }
+
+  const submitImage=async(e)=>{
+    const files = e.target.files;
+    const data = new FormData()
+    data.append("file",files[0])
+    data.append("upload_preset","subirimagen")
+    // data.append("cloud_name","ds6dug9me")
+    const res = await fetch("https://api.cloudinary.com/v1_1/ds6dug9me/image/upload",{
+      method:"POST",
+      body: data
+    });
+    const file = await res.json();
+    setImage(file.secure_url);
+    setLoading(false);
+
+  }
+
+  console.log(image);
+  //   function todos(){
+  //     confirmaLaCosa();
+  //     submitImage();
+
+  // }
 
   function confirmaLaCosa2() {
     if (
@@ -51,7 +81,7 @@ export const NuevoPosteo = () => {
       malText === 0 &&
       malContact === 0
     ) {
-      actions.registrarProyecto(category, title, text, contact);
+      actions.registrarProyecto(category, image, title, text, contact);
       // console.log("OK");
       // navigate("/vistaForo");
     }
@@ -62,7 +92,7 @@ export const NuevoPosteo = () => {
       {store.auth === false ? (
         <Navigate to="/demo" />
       ) : (
-        <form className="was-validated">
+        <form className="was-validated" onSubmit={confirmaLaCosa}>
           <div className="row">
             <div className="form-holder">
               <div className="form-content">
@@ -73,9 +103,9 @@ export const NuevoPosteo = () => {
                     formulario:
                   </p>
 
-                  {/* <div className="card" style={{width: "18rem"}}>
-                    <input className="form-control my-2" accept="image/*" type="file" name="image" placeholder="Image" required/>
-                    </div> */}
+                  <div className="card" style={{width: "18rem"}}>
+                    <input className="form-control my-2" type="file" name="image" placeholder="Image" onChange={submitImage}/>
+                    </div>
 
                   <div className="mb-3">
                     <label htmlFor="validacionTitulo" className="form-label">
@@ -166,7 +196,6 @@ export const NuevoPosteo = () => {
                     id="submit"
                     type="submit"
                     className="btn btn-primary mt-3"
-                    onClick={confirmaLaCosa}
                   >
                     OK GO
                   </button>

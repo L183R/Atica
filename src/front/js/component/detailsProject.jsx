@@ -22,7 +22,7 @@ export const DetailsProject = () => {
     <>
       <div className="card d-flex justify-content-center col-10 mx-auto">
         <img
-          src="https://img.freepik.com/fotos-premium/equipo-diverso-resolviendo-problema-juntos-debido-al-apoyo-trabajo-equipo-ayudandose-mutuamente-oficina-grupo-empresarios-armando-rompecabezas-colaborando-unidad_590464-78136.jpg?w=2000"
+          src={store.project.image}
           className="card-img-top"
           alt="cuatro manos sostienen una pieza de puzzle cada una"
         />
