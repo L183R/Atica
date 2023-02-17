@@ -10,9 +10,9 @@ export const Home = () => {
   return (
     <>
       <LandingPage />
-      <Link to="/demo">
+      {/* <Link to="/demo">
         <button className="btn btn-primary">Provicional</button>
-      </Link>
+      </Link> */}
 
       {/* <Link to="/vistaForo">
         <button className="btn btn-primary">Ver Proyectos</button>
