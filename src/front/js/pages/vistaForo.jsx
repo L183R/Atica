@@ -18,10 +18,10 @@ export const VistaDeProyectos = () => {
   }
 
   return (
-    <div>
-      <div className="container">
+    <div className="mx-auto">
+      <div className="container mx-auto">
         <div className="container testimonial-group">
-          <div className="ml-auto">
+          <div className="d-flex justify-content-center">
             {store.auth === true ? (
               <Link to="/nuevoposteoview">
                 {" "}
@@ -56,7 +56,7 @@ export const VistaDeProyectos = () => {
               Con fines de lucro{" "}
             </button>
           </div>
-          <div className="cartalistaproyect row text-center">
+          <div className="cartalistaproyect row text-center mt-3 " >
             {store.projects.map((project, index) => {
               return (
                 <Prolist

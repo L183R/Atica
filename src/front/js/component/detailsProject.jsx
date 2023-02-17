@@ -20,20 +20,17 @@ export const DetailsProject = () => {
   }, []);
   return (
     <>
-      <div className="card d-flex justify-content-center col-10 mx-auto">
+      <div className="cardindividual card d-flex justify-content-center col-10 mx-auto ">
         <img
           src={store.project.image}
           className="card-img-top"
           alt="cuatro manos sostienen una pieza de puzzle cada una"
         />
         <div className="card-body ">
-          <h5 className="card-title text-dark">{store.project.title}</h5>
-          <p className="card-text text-dark">{store.project.text}
-          </p>
-          <h6 className="text-primary">Categoria: {store.project.category}</h6>
-          <button type="button" className="btn btn-info lm-10" onClick={cartel1}>
-            contacto
-          </button>
+          <h1 className="card-title text-light">{store.project.title}</h1> <h6 className="text-light">{store.project.category}</h6>
+          <h3 className="card-text text-light">{store.project.text}
+          </h3>
+          <h5 className="text-light text-end">Contacto: {store.project.contact}</h5>
           <Link to="/vistaForo">
             <button>
               <i className="fa fa-angle-double-left" aria-hidden="true"></i>
