@@ -14,7 +14,6 @@ export const VistaDeProyectos = () => {
     actions.mostrarProjects();
   }, []);
   function handleNewPost() {
-		
     navigate("/"); //usamos navigate para redireccionar
   }
 
@@ -22,28 +21,42 @@ export const VistaDeProyectos = () => {
     <div>
       <div className="container">
         <div className="container testimonial-group">
-        <div className="ml-auto">
-        {store.auth === true ? (
-          <Link to="/nuevoposteoview">
-          {" "}
-            <button className="btn btn-primary" onClick={handleNewPost}>
-        {" "}
-            NewPost{" "}
-            </button></Link>
-        ) : null}{" "}
-		<button className="btn btn-primary m-2" onClick={actions.mostrarProjects}>
-        {" "}
-            Todos{" "}
-            </button><button className="btn btn-primary m-2" onClick={actions.mostrarProjects2}>
-        {" "}
-            Sin fines de lucro{" "}
+          <div className="ml-auto">
+            {store.auth === true ? (
+              <Link to="/nuevoposteoview">
+                {" "}
+                <button
+                  className="btnewpost btn btn-primary"
+                  onClick={handleNewPost}
+                >
+                  {" "}
+                  NewPost{" "}
+                </button>
+              </Link>
+            ) : null}{" "}
+            <button
+              className="btnewpost btn btn-primary m-2"
+              onClick={actions.mostrarProjects}
+            >
+              {" "}
+              Todos{" "}
             </button>
-            <button className="btn btn-primary m-2" onClick={actions.mostrarProjects1}>
-        {" "}
-            Con fines de lucro{" "}
+            <button
+              className="btnewpost btn btn-primary m-2"
+              onClick={actions.mostrarProjects2}
+            >
+              {" "}
+              Sin fines de lucro{" "}
             </button>
-			</div>
-          <div className="row text-center">
+            <button
+              className="btnewpost btn btn-primary m-2"
+              onClick={actions.mostrarProjects1}
+            >
+              {" "}
+              Con fines de lucro{" "}
+            </button>
+          </div>
+          <div className="cartalistaproyect row text-center">
             {store.projects.map((project, index) => {
               return (
                 <Prolist
@@ -58,6 +71,7 @@ export const VistaDeProyectos = () => {
             })}
           </div>
         </div>
-        </div></div>
+      </div>
+    </div>
   );
 };

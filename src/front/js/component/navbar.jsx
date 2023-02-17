@@ -42,7 +42,7 @@ export const Navbar = () => {
               {" "}
               {store.auth === false ? (
                 <button
-                  className="btn btn-sm"
+                  className="botonnavlog btn btn-sm"
                   id="login"
                   style={{ color: "white" }}
                 >
@@ -55,7 +55,7 @@ export const Navbar = () => {
               {" "}
               {store.auth === false ? (
                 <button
-                  className="btn btn-sm"
+                  className="botonnavlog btn btn-sm"
                   id="registrar"
                   style={{ color: "white" }}
                 >
