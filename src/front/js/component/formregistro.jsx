@@ -72,9 +72,9 @@ export const Registro = () => {
       ) : (
         <>
           <form>
-            <div className="row text-center">
+            <div className="registro row text-center">
               <h1>REGISTRO</h1>
-              <div className="col-4">
+              <div className="registro2 col-4">
                 <div className="mb-3">
                   <label
                     htmlFor="exampleFormControlInput1"
@@ -205,7 +205,7 @@ export const Registro = () => {
                 </div>
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="botonlogenviar btn btn-primary"
                   onClick={confirmaLaCosa}
                 >
                   Enviar
