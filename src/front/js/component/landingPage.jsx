@@ -31,10 +31,10 @@ export const LandingPage = () => {
           ></button>
         </div>
         <div className="carousel-inner">
-          <div className="carousel-item active">
+          <div className="imagenlanding carousel-item active">
             <img
               src="https://blog.trello.com/hs-fs/Foster_Productivity_And_Collaboration_With_A_Strong_Team_Structure.png"
-              className="d-block w-100"
+              className=" d-block w-100"
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block">

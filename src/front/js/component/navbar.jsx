@@ -18,7 +18,7 @@ export const Navbar = () => {
   }
 
   return (
-    <nav className="navbar mb-4">
+    <nav className="navbar">
       {/* <button btn-sm onClick={prueba_la_cosa}>
         Prueba cosas
       </button> */}
