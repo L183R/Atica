@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       contraseña1: "",
       contraseña2: "",
       unproyecto: {},
-      url: "https://3001-l183r-atica-oxlq65rcl6r.ws-us87.gitpod.io",
+      url: "https://3001-l183r-atica-g6lixxiyh0u.ws-us87.gitpod.io",
       url2: "", //url.replace("3001", "3000"),
       projects: [],
       project: {},
