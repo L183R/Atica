@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint, json
 from api.models import db, User, Projects, Posts
 from api.utils import generate_sitemap, APIException
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime as DateTime
 
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -148,13 +149,16 @@ def handle_project_list2():
     return jsonify(results), 200
 
 # ____________________________________
-@api.route('/newcommentary/<int:user_id>/<int:project_id>', methods=['POST'])
+@api.route('/newcommentary', methods=['POST'])
 def add_commentary():
     text = request.json.get('text')
     user_id = request.json.get('user_id')
     project_id = request.json.get('project_id')
 
-    new_commentary = Projects(text=text, user_id=user_id, project_id=project_id)
+    dataTime = DateTime.now()
+    print(dataTime)
+    new_commentary = Posts(text=text, dataTime=dataTime, user_id=user_id, project_id=project_id)
+    
 
     try:
         db.session.add(new_commentary)
@@ -172,6 +176,35 @@ def handle_commentary_list(project_id):
     results = list(map(lambda item: item.serialize(),commentaries_list))
 
     return jsonify(results), 200
+# ____________________________________
+@api.route('/editpost/<int:id>', methods=['PUT'])
+def update_post(id):
+    post = Posts.query.get(id)
+    if not post:
+        return jsonify({'msg': 'Post not found'}), 404
+
+    text = request.json.get('text')
+    if not text:
+        return jsonify({'msg': 'Missing required parameter: text'}), 400
+
+    post.text = text
+
+    try:
+        db.session.commit()
+        return jsonify(post.serialize()), 200
+    except Exception as e:
+        db.session.rollback()
+        return str(e), 500
+
+# ____________________________________
+@api.route('/posts/<int:id>', methods=['DELETE'])
+def eliminar_post(id):
+    post = Posts.query.filter_by(id=id).first()
+    if not post:
+        raise APIException('Publicación no encontrada', status_code=404)
+    db.session.delete(post)
+    db.session.commit()
+    return jsonify({'mensaje': 'Publicación eliminada correctamente'})
 
 # ____________________________________
 if __name__ == '__main__':

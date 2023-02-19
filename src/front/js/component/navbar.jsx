@@ -14,7 +14,7 @@ export const Navbar = () => {
   }
 
   function prueba_la_cosa() {
-    alert(store.project.id);
+    alert(store.user_username);
   }
 
   return (
