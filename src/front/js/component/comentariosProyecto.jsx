@@ -1,24 +1,40 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Context } from "../store/appContext.jsx";
 import "..//..//styles/coments.css";
 
 export const ComentariosProyecto = () => {
   const [coment, setComent] = useState("");
   const [list, setList] = useState([]);
+  const { store, actions } = useContext(Context);
+  const [input, setInput] = useState("");
+  const [editando, setEditando] = useState("");
+  const [editedComment, setEditedComment] = useState("");
+  const params = useParams();
+  let project_id = params.theid;
+  let username = localStorage.getItem("user_username");
+  let userid =  localStorage.getItem("user_id");
+  console.log(store.comentarios);
 
-  // const DeleteItems = (indexItem) => {
-  //   setList((prevState) =>
-  //     prevState.filter((listItems, index) => index !== indexItem)
-  //   );
-  // };
-
-  function enviarDatos(e) {
-    e.preventDefault();
-    // setList([...list, coment]);
-    // setComent("");
+  function cargarInput(e) {
+    e.preventDefault(); // detenemos el comportamiento predeterminado para procesar nuestro codigo
+    if (editando) {
+      let text = "(editado)" + username + ": " + editedComment
+      let time = 
+      actions.editarPublicacion(text, editando);
+      setEditando("");
+      setEditedComment("");
+    } else {
+      let text = username + ": " + input;
+      setInput("");
+      actions.nuevoComentario(text, project_id);
+    }
   }
-  console.log(list);
+
+  useEffect(() => {
+    actions.traerComentarios(project_id);
+  }, [store.comentarios]);
 
   return (
     <>
@@ -27,90 +43,69 @@ export const ComentariosProyecto = () => {
           <div className="col-md-8">
             <div className="d-flex flex-column comment-section">
               <div className="bg-white p-2">
-                <div className="d-flex flex-row user-info">
-                  <img
-                    className="rounded-circle"
-                    src="https://i.imgur.com/RpzrMR2.jpg"
-                    width="40"
-                  />
-                  <div className="d-flex flex-column justify-content-start ml-2">
-                    <span className="d-block font-weight-bold name">
-                      Fulanito confucio
-                    </span>
-                    <span className="date text-black-50">
-                      Shared publicly - Jan 2020
-                    </span>
-                  </div>
-                </div>
-
-                {list.map((item, index) => (
-                  <div className="mt-2">
-                    <div className="card d-flex">
-                      <div class="card-body">
-                        <li id="lista">
-                          <div class="card-body" key={index}>
-                            {item}
-                            <button
-                              type="button"
-                              className="btn link-danger float-end"
-                              onClick={() => DeleteItems(index)}
-                            >
-                              eliminar
-                            </button>
-                          </div>
+                <div className="d-flex flex-row user-info"></div>
+                {/* ACÁ EMPIEZA EL FORMULARIO */}
+                <div id="inputList" className="form-text">
+                  <ul className="list-group">
+                    {store.comentarios.map((comentario, index) => (
+                      <div className="row" key={index}>
+                        <li className="list-group-item col-12">
+                          {editando === comentario.id ? (
+                            <form onSubmit={cargarInput}>
+                            <input
+                              type="text"
+                              className="form-control"
+                              value={editedComment}
+                              onChange={(e) => setEditedComment(e.target.value)}
+                            />
+                            </form>
+                          ) : ""}
+                            {comentario.text}
                         </li>
+                        <div className="row">
+                          <div className="col-8">
+                            <p>{comentario.dataTime}</p>
+                          </div>
+                          <div className="col-2">
+                            {comentario.user_id == userid ? (
+                              editando === comentario.id ? (
+                                <button onClick={() => setEditando("")}>Cancelar</button>
+                              ) : (
+                                <button onClick={() => setEditando(comentario.id)}>Editar</button>
+                              )
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                          <div className="col-2">
+                            {comentario.user_id == userid ? (
+                              <button onClick={() => actions.eliminarPublicacion(comentario.id)}>Borrar</button>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              {/* <div className="bg-white">
-                <div className="d-flex flex-row fs-12">
-                  <div className="like p-2 cursor">
-                    <i className="fa fa-thumbs-o-up"></i>
-                    <span className="ml-1">Like</span>
-                  </div>
-                  <div className="like p-2 cursor">
-                    <i className="fa fa-commenting-o"></i>
-                    <span className="ml-1">Comment</span>
-                  </div>
-                  <div className="like p-2 cursor">
-                    <i className="fa fa-share"></i>
-                    <span className="ml-1">Share</span>
-                  </div>
+                    ))}
+                  </ul>
                 </div>
-              </div> */}
-              <div className="bg-light p-2">
-                <div className="d-flex flex-row align-items-start">
-                  <img
-                    className="rounded-circle"
-                    src="https://i.imgur.com/RpzrMR2.jpg"
-                    width="40"
-                  />
-                  <textarea
-                    type="text"
-                    className="input m-1 w-75"
-                    value={coment}
-                    id="exampleInput"
-                    aria-describedby="inputHelp"
-                    onChange={(e) => {
-                      setComent(e.target.value);
-                    }}
-                    placeholder="No hay coments, añadir coments"
-                  ></textarea>
+                <div className="d-flex flex-column justify-content-start ml-2">
+                  <span className="d-block font-weight-bold name">{username}</span>
                 </div>
-                <div className="mt-2 text-right">
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-sm"
-                    onChange={(e) => {
-                      setList(e.target.value);
-                    }}
-                    onClick={enviarDatos}
-                  >
-                    Post comment
-                  </button>
-                </div>
+                <form className="container" onSubmit={cargarInput}>
+                  <div className="mb-3">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="elInput"
+                      aria-describedby="emailHelp"
+                      onChange={(e) => {
+                        setInput(e.target.value);
+                      }}
+                      value={input}
+                    ></input>
+                  </div>
+                </form>
               </div>
             </div>
           </div>

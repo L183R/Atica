@@ -19,9 +19,8 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            # "username": self.username,
+            "username": self.username,
             "email": self.email,
-            # "password": self.password,
             # do not serialize the password, its a security breach
         }
 
@@ -53,8 +52,8 @@ class Projects(db.Model):
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # image = db.Column(db.String(1), unique=True, nullable=False)
-    text = db.Column(db.String(1024), unique=True, nullable=False)
-    dataTime = db.Column(db.DateTime, default=datetime.now(), nullable=False)
+    text = db.Column(db.String(1024), unique=False, nullable=False)
+    dataTime = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'), nullable=False)
 
