@@ -8,20 +8,29 @@ const getState = ({
             message: null,
             auth: false,
             user_id: "",
+            user_username: "",
+            user_email: "",
             usuario: "",
             correo: "",
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-salmon-marmot-dygbdv38kru.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-9skmaenkt3t.ws-us87.gitpod.io",
             url2: "", //url.replace("3001", "3000"),
             projects: [],
             project: {},
+            comentarios: [],
         },
         actions: {
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
+            },
+            prueba: () => {
+                let store = getStore();
+                alert(store.user_id)
+                alert(store.user_username)
+                alert(store.user_email)
             },
             login: (userEmail, userPassword) => {
                 let store = getStore();
@@ -52,9 +61,11 @@ const getState = ({
                         if (data.msg === "Bad email or password") {
                             alert(data.msg);
                         } else {
-                            setStore({
-                                user_id: data.user.id,
-                            });
+                            localStorage.setItem("user_id", data.user.id);
+                            localStorage.setItem("user_username", data.user.username);
+                            localStorage.setItem("user_email", data.user.email);
+                            console.log(data.user.username);
+                            console.log(localStorage.getItem("user_username", data.user.username));
                         }
                         localStorage.setItem("token", data.access_token);
                     })
@@ -90,6 +101,9 @@ const getState = ({
                         if (data.msg === "Bad email or password") {
                             alert(data.msg);
                         }
+                        localStorage.setItem("user_id", data.user.id);
+                        localStorage.setItem("user_username", data.user.username);
+                        localStorage.setItem("user_email", data.user.email);
                         localStorage.setItem("token", data.access_token);
                     })
                     .catch((err) => console.log(err));
@@ -102,6 +116,7 @@ const getState = ({
                 postContacto
             ) => {
                 const store = getStore();
+                let userid = localStorage.getItem("user_id")
                 fetch(store.url + "/api/newproject", {
                         method: "POST",
                         // mode: "no-cors",
@@ -116,7 +131,7 @@ const getState = ({
                             title: postTitulo,
                             text: postDescripción,
                             contact: postContacto,
-                            user_id: store.user_id,
+                            user_id: userid,
                             // "project_id": postProject
                         }), // body data type must match "Content-Type" header
                     })
@@ -128,7 +143,8 @@ const getState = ({
             },
             nuevoComentario: (text, project_id) => {
                 const store = getStore();
-                fetch(store.url + "/api/newproject/", {
+                let user_id = localStorage.getItem("user_id")
+                fetch(store.url + "/api/newcommentary", {
                         method: "POST",
                         // mode: "no-cors",
                         // credentials: "include",
@@ -138,7 +154,7 @@ const getState = ({
                         },
                         body: JSON.stringify({
                             text: text,
-                            user_id: store.user_id,
+                            user_id: user_id,
                             project_id: project_id,
                             // "project_id": postProject
                         }), // body data type must match "Content-Type" header
@@ -151,6 +167,9 @@ const getState = ({
             },
             logout: () => {
                 localStorage.removeItem("token");
+                localStorage.removeItem("user_id");
+                localStorage.removeItem("user_username");
+                localStorage.removeItem("user_email");
                 setStore({
                     auth: false,
                 });
@@ -199,6 +218,54 @@ const getState = ({
                         })
                     );
             },
+            eliminarPublicacion: (id) => {
+                let store = getStore();
+                fetch(store.url + "/api/posts/" + id, {
+                        method: 'DELETE'
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            // aquí puedes hacer algo con la respuesta de error
+                            console.log('La respuesta de la red no fue satisfactoria');
+                        }
+                    })
+                    .then(data => {
+                        console.log(data);
+                        // aquí puedes hacer algo con la respuesta del servidor
+                    })
+                    .catch(error => {
+                        console.error('Hubo un problema con la operación fetch:', error);
+                    });
+            },
+            editarPublicacion: (text, id) => {
+                let store = getStore();
+                fetch(store.url + "/api/editpost/" + id, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            text: text
+                        })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            console.log('La respuesta de la red no fue satisfactoria');
+                            throw new Error('Error al actualizar la publicación');
+                        }
+                    })
+                    .then(data => {
+                        console.log(data);
+                        // aquí puedes hacer algo con la respuesta del servidor
+                    })
+                    .catch(error => {
+                        console.error('Hubo un problema con la operación fetch:', error);
+                    });
+            },
             traerProyecto: (id) => {
                 let store = getStore();
                 fetch(store.url + "/api/viewproject/" + id)
@@ -206,6 +273,26 @@ const getState = ({
                     .then((data) =>
                         setStore({
                             project: data,
+                        })
+                    );
+            },
+            mostrarProjects1: () => {
+                let store = getStore();
+                fetch(store.url + "/api/projectlist1")
+                    .then((response) => response.json())
+                    .then((data) =>
+                        setStore({
+                            projects: data,
+                        })
+                    );
+            },
+            traerComentarios: (project_id) => {
+                let store = getStore();
+                fetch(store.url + "/api/commentarylist/" + project_id)
+                    .then((response) => response.json())
+                    .then((data) =>
+                        setStore({
+                            comentarios: data,
                         })
                     );
             },
@@ -253,4 +340,4 @@ const getState = ({
     };
 };
 
-export default getState;
+export default getState
