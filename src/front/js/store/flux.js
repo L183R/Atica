@@ -17,7 +17,7 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-hipjv2ql46r.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-j7qed9t5fsf.ws-us87.gitpod.io",
 
             url2: "", //url.replace("3001", "3000"),
             projects: [],
@@ -334,6 +334,36 @@ const getState = ({
                     console.log(error);
                 }
             },
+
+            //-------------------Recuperacion de contraseña------------------------------- //
+            recuperarContra: (email) => {
+                let store = getStore();
+                fetch(store.url + "/api/resetPassword", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                        }), // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        return response.json();
+                    })
+                    .then((data) => {
+                        alert(data.msg);
+                    })
+                    .catch((err) => console.log(err));
+            },
+
+
+
+
+            //----------------Fin de recuperacion de constraseña-----------------------------//
 
             changeColor: (index, color) => {
                 //get the store

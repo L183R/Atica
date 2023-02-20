@@ -8,26 +8,34 @@ export const RecuperarContra = () => {
   const [password, setPassword] = useState("");
   const { store, actions } = useContext(Context);
 
+  function recoverpassword() {
+    actions.recuperarContra(email);
+    setEmail("");
+  }
+
   return (
     <div className="form-container">
-      <form method="post">
+      <div>
+        {/* <form> */}
         <h2 className="text-center">
           <strong>
             <u>RECUPERAR CONTRASEÑA</u>
           </strong>
           <br />
         </h2>
-
         <h4 className="text-center">
           Ingrese el correo con el que se ha registrado.
         </h4>
+
         {/* <!-- DIV CORREO ELECTRONICO --> */}
         <div className="form-group">
           <input
             className="form-control mb-3"
             type="email"
             name="email"
-            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Correo Electrónico"
           />
         </div>
 
@@ -35,14 +43,14 @@ export const RecuperarContra = () => {
         <div className="form-group">
           <button
             className="btn btn-recuperar btn-block mb-3 col-12"
-            type="submit"
+            /*    type="submit" */
+            onClick={() => recoverpassword()}
           >
             Recuperar contraseña
           </button>
         </div>
 
         {/* TESTING */}
-
         {/* <!-- Boton de registro con google --> */}
         <div className="form-group">
           <button
@@ -52,7 +60,6 @@ export const RecuperarContra = () => {
             Salir
           </button>
         </div>
-
         <Link to="/login">
           {store.auth === false ? (
             <button className="already">
@@ -60,7 +67,8 @@ export const RecuperarContra = () => {
             </button>
           ) : null}
         </Link>
-      </form>
+        {/* </form> */}
+      </div>
     </div>
   );
 };
