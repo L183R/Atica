@@ -15,11 +15,13 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-salmon-marmot-dygbdv38kru.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-bc56c2i6nzf.ws-us87.gitpod.io",
             url2: "", //url.replace("3001", "3000"),
             projects: [],
             project: {},
             comentarios: [],
+            mercadoPago: {},
+
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -86,15 +88,6 @@ const getState = ({
                             password: userPassword,
                             email: userEmail,
                         }), // body data type must match "Content-Type" header
-                    })
-                    .then((response) => {
-                        console.log(response.status);
-                        if (response.status === 200) {
-                            setStore({
-                                auth: true,
-                            });
-                        }
-                        return response.json();
                     })
                     .then((data) => {
                         console.log(data);
@@ -322,6 +315,21 @@ const getState = ({
                     })
                     .catch((err) => console.log(err));
             },
+
+            pagoMercadoPago: async (total) => {
+                try {
+                    const response = await axios.post(store.url + "/api/preference", {
+                        total: total, //acá está de nuevo la variable donde se guarda el total a pagar por el cliente
+                    });
+                    console.log(response.data);
+                    setStore({
+                        mercadoPago: response.data
+                    }); //guardamos la info en el objeto que creamos en store
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+
             changeColor: (index, color) => {
                 //get the store
                 const store = getStore();
