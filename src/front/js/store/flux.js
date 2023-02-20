@@ -15,7 +15,7 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-salmon-marmot-dygbdv38kru.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-hipjv2ql46r.ws-us87.gitpod.io",
             url2: "", //url.replace("3001", "3000"),
             projects: [],
             project: {},
@@ -28,9 +28,9 @@ const getState = ({
             },
             prueba: () => {
                 let store = getStore();
-                alert(store.user_id)
-                alert(store.user_username)
-                alert(store.user_email)
+                alert(store.user_id);
+                alert(store.user_username);
+                alert(store.user_email);
             },
             login: (userEmail, userPassword) => {
                 let store = getStore();
@@ -65,7 +65,9 @@ const getState = ({
                             localStorage.setItem("user_username", data.user.username);
                             localStorage.setItem("user_email", data.user.email);
                             console.log(data.user.username);
-                            console.log(localStorage.getItem("user_username", data.user.username));
+                            console.log(
+                                localStorage.getItem("user_username", data.user.username)
+                            );
                         }
                         localStorage.setItem("token", data.access_token);
                     })
@@ -116,7 +118,7 @@ const getState = ({
                 postContacto
             ) => {
                 const store = getStore();
-                let userid = localStorage.getItem("user_id")
+                let userid = localStorage.getItem("user_id");
                 fetch(store.url + "/api/newproject", {
                         method: "POST",
                         // mode: "no-cors",
@@ -143,7 +145,7 @@ const getState = ({
             },
             nuevoComentario: (text, project_id) => {
                 const store = getStore();
-                let user_id = localStorage.getItem("user_id")
+                let user_id = localStorage.getItem("user_id");
                 fetch(store.url + "/api/newcommentary", {
                         method: "POST",
                         // mode: "no-cors",
@@ -221,49 +223,49 @@ const getState = ({
             eliminarPublicacion: (id) => {
                 let store = getStore();
                 fetch(store.url + "/api/posts/" + id, {
-                        method: 'DELETE'
+                        method: "DELETE",
                     })
-                    .then(response => {
+                    .then((response) => {
                         if (response.ok) {
                             return response.json();
                         } else {
                             // aquí puedes hacer algo con la respuesta de error
-                            console.log('La respuesta de la red no fue satisfactoria');
+                            console.log("La respuesta de la red no fue satisfactoria");
                         }
                     })
-                    .then(data => {
+                    .then((data) => {
                         console.log(data);
                         // aquí puedes hacer algo con la respuesta del servidor
                     })
-                    .catch(error => {
-                        console.error('Hubo un problema con la operación fetch:', error);
+                    .catch((error) => {
+                        console.error("Hubo un problema con la operación fetch:", error);
                     });
             },
             editarPublicacion: (text, id) => {
                 let store = getStore();
                 fetch(store.url + "/api/editpost/" + id, {
-                        method: 'PUT',
+                        method: "PUT",
                         headers: {
-                            'Content-Type': 'application/json'
+                            "Content-Type": "application/json",
                         },
                         body: JSON.stringify({
-                            text: text
-                        })
+                            text: text,
+                        }),
                     })
-                    .then(response => {
+                    .then((response) => {
                         if (response.ok) {
                             return response.json();
                         } else {
-                            console.log('La respuesta de la red no fue satisfactoria');
-                            throw new Error('Error al actualizar la publicación');
+                            console.log("La respuesta de la red no fue satisfactoria");
+                            throw new Error("Error al actualizar la publicación");
                         }
                     })
-                    .then(data => {
+                    .then((data) => {
                         console.log(data);
                         // aquí puedes hacer algo con la respuesta del servidor
                     })
-                    .catch(error => {
-                        console.error('Hubo un problema con la operación fetch:', error);
+                    .catch((error) => {
+                        console.error("Hubo un problema con la operación fetch:", error);
                     });
             },
             traerProyecto: (id) => {
@@ -340,4 +342,4 @@ const getState = ({
     };
 };
 
-export default getState
+export default getState;

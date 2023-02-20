@@ -26,26 +26,24 @@ export const Login = () => {
         <Navigate to="/vistaForo" />
       ) : (
         // <div className="rounded bg-dark opacity-25">
-        <div className="login">
+        <div className="login mx-auto">
           <form
             className="was-validated w-50 mx-auto rounded p-2 text-dark"
             onSubmit={enviarDatos}
           >
-            <h1 className="text-light display-6 mt-2 text-center">
-              Inicio de sesión
-            </h1>
-            <div className="registro2 mb-3 container ">
+            <h1 className=" display-6 mt-2 mx-auto">Inicio de sesión</h1>
+            <div className="mb-3 container mx-auto text-center ">
               <label
                 htmlFor="exampleInputEmail1"
-                className="form-label text-light"
+                className="form-label  text-center"
               >
                 Correo Electrónico
               </label>
               <input
                 type="email"
-                className="form-control bg-dark p-2 text-light bg-opacity-75"
+                className="form-control"
                 id="exampleInputEmail1"
-                placeholder="Ingresa un correo electrónico válido"
+                placeholder="Ingresa un correo electrónico"
                 aria-describedby="emailHelp"
                 required
                 value={email}
@@ -53,15 +51,12 @@ export const Login = () => {
               />
             </div>
             <div className="mb-3 container">
-              <label
-                htmlFor="exampleInputPassword1"
-                className="form-label text-light"
-              >
+              <label htmlFor="exampleInputPassword1" className="form-label ">
                 Contraseña
               </label>
               <input
                 type="password"
-                className="form-control bg-dark p-2 text-light bg-opacity-75"
+                className="form-control bg-light bg-opacity-75"
                 id="exampleInputPassword1"
                 placeholder="Ingresa tu contraseña"
                 aria-describedby="emailHelp"
@@ -79,7 +74,10 @@ export const Login = () => {
               </div>
             </div>
             <div>
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="botonlogenviar btn btn-primary mt-1"
+              >
                 Iniciar sesion
               </button>
             </div>
