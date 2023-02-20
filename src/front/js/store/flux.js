@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const getState = ({
     getStore,
     getActions,
@@ -15,7 +17,7 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-bc56c2i6nzf.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-9z5k8cfopyx.ws-us87.gitpod.io",
             url2: "", //url.replace("3001", "3000"),
             projects: [],
             project: {},
@@ -317,11 +319,12 @@ const getState = ({
             },
 
             pagoMercadoPago: async (total) => {
+                let store=getStore();
                 try {
                     const response = await axios.post(store.url + "/api/preference", {
                         total: total, //acá está de nuevo la variable donde se guarda el total a pagar por el cliente
                     });
-                    console.log(response.data);
+                    console.log(response);
                     setStore({
                         mercadoPago: response.data
                     }); //guardamos la info en el objeto que creamos en store
