@@ -12,6 +12,10 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
+# SDK de Mercado Pago
+import mercadopago
+sdk = mercadopago.SDK("APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
+
 
 api = Blueprint('api', __name__)
 
@@ -206,7 +210,36 @@ def eliminar_post(id):
     db.session.commit()
     return jsonify({'mensaje': 'Publicación eliminada correctamente'})
 
-# ____________________________________
+#___________________________________
+
+@api.route("/preference", methods=["POST"])
+def preference():
+    body = json.loads(request.data) 
+    total = body["total"]
+    # Crea un ítem en la preferencia
+    preference_data = {
+    "items": [
+    {
+    "title": "ATICA", 
+    "quantity": 1,
+    "unit_price": total, 
+    }
+    ],
+    "payer":{
+    "email":"test_user_17805074@testuser.com" 
+    },
+    "back_urls": {
+    "success": "https://www.youtube.com/watch?v=C8l4vWHgJTw",
+    "failure": "https://www.youtube.com/watch?v=C8l4vWHgJTw",
+    "pending": "https://www.youtube.com/watch?v=C8l4vWHgJTw" 
+    },
+    "auto_return": "approved"
+    }
+    preference_response = sdk.preference().create(preference_data)
+    preference = preference_response["response"]
+    return preference, 200
+
+
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
     app.run(host='0.0.0.0', port=PORT, debug=False)
