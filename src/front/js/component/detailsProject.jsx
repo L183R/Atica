@@ -41,9 +41,15 @@ export const DetailsProject = () => {
           <h1 className="card-title text-light">{store.project.title}</h1>{" "}
           <h6 className="text-light">{store.project.category}</h6>
           <h3 className="card-text text-light">{store.project.text}</h3>
-          <h5 className="text-light text-end">
-            Contacto: {store.project.contact}
-          </h5>
+          <a
+            href={
+              "https://api.whatsapp.com/send?phone=598" + store.project.contact
+            }
+          >
+            <button type="button" class="btn btn-success">
+              Acá va el logo de whatsapp
+            </button>
+          </a>
           <Link to="/vistaForo">
             <button>
               <i className="fa fa-angle-double-left" aria-hidden="true"></i>

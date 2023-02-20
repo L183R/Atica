@@ -88,137 +88,120 @@ export const NuevoPosteo = () => {
   }
 
   return (
-    <div className="form-body container">
+    <>
       {store.auth === false ? (
         <Navigate to="/demo" />
       ) : (
-        <form className="was-validated" onSubmit={confirmaLaCosa}>
-          <div className="row">
-            <div className="form-holder">
-              <div className="form-content">
-                <div className="form-items mt-3">
-                  <h3 className="text-center">Crea tu nuevo proyecto</h3>
-                  <p className="text-center">
-                    Adjunta los datos indicados sobre el mismo en el siguiente
-                    formulario:
-                  </p>
+        <div className="nuevoposteo mx-auto">
+          <form
+            className="was-validated w-50 mx-auto rounded p-2 text-dark text-center"
+            onSubmit={confirmaLaCosa}
+          >
+            <h1 className="mt-5 mx-auto text-light">
+              <b>Crea tu nuevo proyecto</b>
+            </h1>
+            <p className="text-center">
+              Adjunta los datos indicados sobre el mismo en el siguiente
+              formulario:
+            </p>
 
-                  <div className="card" style={{ width: "18rem" }}>
-                    <input
-                      className="form-control my-2"
-                      type="file"
-                      name="image"
-                      placeholder="Image"
-                      onChange={submitImage}
-                    />
-                  </div>
+            <div className="card mx-auto" style={{ width: "18rem" }}>
+              <input
+                className="my-2"
+                type="file"
+                name="image"
+                placeholder="Image"
+                onChange={submitImage}
+              />
+            </div>
 
-                  <div className="mb-3">
-                    <label htmlFor="validacionTitulo" className="form-label">
-                      Titulo
-                    </label>
-                    <input
-                      className="form-control"
-                      id="validacionTitulo"
-                      placeholder="-----"
-                      required
-                      onChange={(e) => (title = e.target.value)}
-                    />
-                    <div className="invalid-feedback">
-                      Este campo no puede estar vacío
-                    </div>
-                  </div>
-                  {/* <div className="valid-feedback">Titulo field is valid!</div>
-                    <div className="invalid-feedback">Username field cannot be blank!</div> */}
-                </div>
+            <label htmlFor="validacionTitulo" className="form-label">
+              Titulo
+            </label>
+            <input
+              className="form-control"
+              id="validacionTitulo"
+              placeholder="-----"
+              required
+              onChange={(e) => (title = e.target.value)}
+            />
+            <div className="invalid-feedback">
+              Este campo no puede estar vacío
+            </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Categoría</label>
-                  <select
-                    className="form-select"
-                    required
-                    aria-label="select example"
-                    onChange={(e) => (category = e.target.value)}
-                  >
-                    <option value="">
-                      Selecciona la categoría de tu proyecto
-                    </option>
-                    <option value="Sin fines de lucro">
-                      Sin fines de lucro
-                    </option>
-                    <option value="Con fines de lucro">
-                      Con fines de lucro
-                    </option>
-                  </select>
-                  <div className="invalid-feedback">
-                    Selecciona una de las opciones
-                  </div>
-                </div>
-
-                <div className="col-md-12 my-2">
-                  <label className="form-label">Descripción</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="description"
-                    placeholder="Info sobre el proyecto"
-                    required
-                    onChange={(e) => (text = e.target.value)}
-                  />
-                  <div className="invalid-feedback">
-                    Please enter a message in the textarea.
-                  </div>
-                </div>
-
-                <div className="col-md-12">
-                  <label className="form-label">C</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="contact"
-                    placeholder="Contacto"
-                    required
-                    onChange={(e) => (contact = e.target.value)}
-                  />
-                  <div className="invalid-feedback">
-                    Please enter a message in the textarea.
-                  </div>
-                </div>
-
-                <div className="form-check mt-1">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="invalidCheck"
-                    required
-                  />
-                  <label className="form-check-label">
-                    I confirm that all data are correct
-                  </label>
-                </div>
-                <div className="form-button">
-                  <button
-                    id="submit"
-                    type="submit"
-                    className="btn btn-primary mt-3"
-                  >
-                    OK GO
-                  </button>
-                  <Link to="/vistaForo">
-                    <button>
-                      <i
-                        className="fa fa-angle-double-left"
-                        aria-hidden="true"
-                      ></i>
-                    </button>
-                  </Link>
-                </div>
+            <div className="mb-3">
+              <label className="form-label">Categoría</label>
+              <select
+                className="form-select"
+                required
+                aria-label="select example"
+                onChange={(e) => (category = e.target.value)}
+              >
+                <option value="">Selecciona la categoría de tu proyecto</option>
+                <option value="Sin fines de lucro">Sin fines de lucro</option>
+                <option value="Con fines de lucro">Con fines de lucro</option>
+              </select>
+              <div className="invalid-feedback">
+                Selecciona una de las opciones
               </div>
             </div>
-          </div>
-        </form>
+
+            <div className="col-md-12 my-2">
+              <label className="form-label">Descripción</label>
+              <input
+                className="form-control"
+                type="text"
+                name="description"
+                placeholder="Info sobre el proyecto"
+                required
+                onChange={(e) => (text = e.target.value)}
+              />
+              <div className="invalid-feedback">
+                Adjunta por favor información sobre tu proyecto.
+              </div>
+            </div>
+
+            <label className="form-label">Contacto</label>
+            <input
+              className="form-control"
+              type="text"
+              name="contact"
+              placeholder="Contacto"
+              required
+              onChange={(e) => (contact = e.target.value)}
+            />
+            <div className="invalid-feedback">
+              Adjunta por favor tu número de telefono
+            </div>
+            <input
+              className="form-check-input"
+              type="checkbox"
+              value=""
+              id="invalidCheck"
+              required
+            />
+            <label className="form-check-label">
+              Confirmo que la información es correcta
+            </label>
+
+            <div className="form-button">
+              <div>
+                <button
+                  type="submit"
+                  className="botonlogenviar btn btn-primary mt-1"
+                >
+                  Publicar proyecto
+                </button>
+              </div>
+              <Link to="/vistaForo">
+                <button>
+                  <i className="fa fa-angle-double-left" aria-hidden="true"></i>
+                </button>
+              </Link>
+            </div>
+          </form>
+        </div>
       )}
-    </div>
+    </>
   );
 };
