@@ -15,7 +15,7 @@ export const ComentariosProyecto = () => {
   let project_id = params.theid;
   let username = localStorage.getItem("user_username");
   let userid =  localStorage.getItem("user_id");
-  console.log(store.comentarios);
+  // console.log(store.comentarios);
 
   function cargarInput(e) {
     e.preventDefault(); // detenemos el comportamiento predeterminado para procesar nuestro codigo

@@ -9,10 +9,18 @@ export const DetailsProject = () => {
   const navigate = useNavigate();
   const params = useParams();
   let paramid = params.theid;
+  // let total = 10;
+  const [total, setTotal] = useState(0);
 
-  function cartel1() {
-    alert("Hay que decidir que mierda hace esto.");
-  }
+  const pagar = async () => {
+    console.log("funciona");
+    console.log(total);
+    await actions.pagoMercadoPago(parseInt(total));
+    console.log(store.mercadoPago);
+    let direccion = await store.mercadoPago.init_point; // direccion guarda la url que trae init_point
+    console.log(direccion);
+    window.location.replace(direccion); // window es para renderizar y mandar al cliente a la url de pagar
+  };
 
   useEffect(() => {
     actions.traerProyecto(paramid);
@@ -47,7 +55,43 @@ export const DetailsProject = () => {
               <i className="fa fa-angle-double-left" aria-hidden="true"></i>
             </button>
           </Link>
-          {/* <button className="btn btn-light border-warning">💛</button> */}
+          <div className="btn-group">
+            <button
+              type="button"
+              className="btn btn-danger dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Colaborar
+            </button>
+            <ul className="dropdown-menu">
+              <li>
+                <div className="input-group mb-3">
+                  <span className="input-group-text">$</span>
+                  <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Amount (to the nearest dollar)"
+                    value={total}
+                    onChange={(e) => setTotal(e.target.value)}
+                  ></input>
+                  <span className="input-group-text">.00</span>
+                </div>
+              </li>
+              <li>
+                <hr className="dropdown-divider"></hr>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="btn btn-danger mx-auto"
+                  onClick={pagar}
+                >
+                  Pagar
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>
