@@ -17,7 +17,7 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-j7qed9t5fsf.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-mxy8p0mnvw6.ws-us87.gitpod.io",
 
             url2: "", //url.replace("3001", "3000"),
             projects: [],
