@@ -17,9 +17,7 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-mxy8p0mnvw6.ws-us87.gitpod.io",
-
-            url2: "", //url.replace("3001", "3000"),
+            url: "https://3001-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io",
             projects: [],
             project: {},
             comentarios: [],
@@ -359,9 +357,6 @@ const getState = ({
                     })
                     .catch((err) => console.log(err));
             },
-
-
-
 
             //----------------Fin de recuperacion de constraseña-----------------------------//
 

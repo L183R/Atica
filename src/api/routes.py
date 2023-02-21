@@ -233,9 +233,9 @@ def preference():
     "email":"test_user_17805074@testuser.com" 
     },
     "back_urls": {
-    "success": "https://www.youtube.com/watch?v=C8l4vWHgJTw",
-    "failure": "https://www.youtube.com/watch?v=C8l4vWHgJTw",
-    "pending": "https://www.youtube.com/watch?v=C8l4vWHgJTw" 
+    "success": "https://3000-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io",
+    "failure": "https://3000-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io",
+    "pending": "https://3000-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io" 
     },
     "auto_return": "approved"
     }

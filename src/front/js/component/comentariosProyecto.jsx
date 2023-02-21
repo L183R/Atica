@@ -14,15 +14,14 @@ export const ComentariosProyecto = () => {
   const params = useParams();
   let project_id = params.theid;
   let username = localStorage.getItem("user_username");
-  let userid =  localStorage.getItem("user_id");
+  let userid = localStorage.getItem("user_id");
   // console.log(store.comentarios);
 
   function cargarInput(e) {
     e.preventDefault(); // detenemos el comportamiento predeterminado para procesar nuestro codigo
     if (editando) {
-      let text = "(editado)" + username + ": " + editedComment
-      let time = 
-      actions.editarPublicacion(text, editando);
+      let text = "(editado)" + username + ": " + editedComment;
+      let time = actions.editarPublicacion(text, editando);
       setEditando("");
       setEditedComment("");
     } else {
@@ -38,11 +37,11 @@ export const ComentariosProyecto = () => {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="cardindividual2 ">
         <div className="d-flex justify-content-center row">
           <div className="col-md-8">
-            <div className="d-flex flex-column comment-section">
-              <div className="bg-white p-2">
+            <div className=" d-flex flex-column comment-section">
+              <div className="p-2">
                 <div className="d-flex flex-row user-info"></div>
                 {/* ACÁ EMPIEZA EL FORMULARIO */}
                 <div id="inputList" className="form-text">
@@ -52,26 +51,36 @@ export const ComentariosProyecto = () => {
                         <li className="list-group-item col-12">
                           {editando === comentario.id ? (
                             <form onSubmit={cargarInput}>
-                            <input
-                              type="text"
-                              className="form-control"
-                              value={editedComment}
-                              onChange={(e) => setEditedComment(e.target.value)}
-                            />
+                              <input
+                                type="text"
+                                className="form-control"
+                                value={editedComment}
+                                onChange={(e) =>
+                                  setEditedComment(e.target.value)
+                                }
+                              />
                             </form>
-                          ) : ""}
-                            {comentario.text}
+                          ) : (
+                            ""
+                          )}
+                          {comentario.text}
                         </li>
                         <div className="row">
-                          <div className="col-8">
+                          <div className="col-8 text-dark">
                             <p>{comentario.dataTime}</p>
                           </div>
                           <div className="col-2">
                             {comentario.user_id == userid ? (
                               editando === comentario.id ? (
-                                <button onClick={() => setEditando("")}>Cancelar</button>
+                                <button onClick={() => setEditando("")}>
+                                  Cancelar
+                                </button>
                               ) : (
-                                <button onClick={() => setEditando(comentario.id)}>Editar</button>
+                                <button
+                                  onClick={() => setEditando(comentario.id)}
+                                >
+                                  Editar
+                                </button>
                               )
                             ) : (
                               ""
@@ -79,7 +88,13 @@ export const ComentariosProyecto = () => {
                           </div>
                           <div className="col-2">
                             {comentario.user_id == userid ? (
-                              <button onClick={() => actions.eliminarPublicacion(comentario.id)}>Borrar</button>
+                              <button
+                                onClick={() =>
+                                  actions.eliminarPublicacion(comentario.id)
+                                }
+                              >
+                                Borrar
+                              </button>
                             ) : (
                               ""
                             )}
@@ -90,7 +105,9 @@ export const ComentariosProyecto = () => {
                   </ul>
                 </div>
                 <div className="d-flex flex-column justify-content-start ml-2">
-                  <span className="d-block font-weight-bold name">{username}</span>
+                  <span className="d-block font-weight-bold name text-dark">
+                    {username}
+                  </span>
                 </div>
                 <form className="container" onSubmit={cargarInput}>
                   <div className="mb-3">
