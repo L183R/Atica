@@ -335,6 +335,33 @@ const getState = ({
                 }
             },
 
+            //-------------------Recuperacion de contraseña------------------------------- //
+            recuperarContra: (email) => {
+                let store = getStore();
+                fetch(store.url + "/api/resetPassword", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                        }), // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        return response.json();
+                    })
+                    .then((data) => {
+                        alert(data.msg);
+                    })
+                    .catch((err) => console.log(err));
+            },
+
+            //----------------Fin de recuperacion de constraseña-----------------------------//
+
             changeColor: (index, color) => {
                 //get the store
                 const store = getStore();
