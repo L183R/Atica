@@ -1,16 +1,20 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint, json
+from flask import Flask, request, jsonify, url_for, Blueprint, json, current_app
 from api.models import db, User, Projects, Posts
 from api.utils import generate_sitemap, APIException
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime as DateTime
 
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import get_jwt_identity, create_access_token, jwt_required, JWTManager
+from flask_cors import CORS
+from flask_mail import Message #importamos Message() de flask_mail
+import random #importamos ramdom y string para generar una clave aleatoria nueva
+import string
+
+
+api = Blueprint('api', __name__)
 
 # SDK de Mercado Pago
 import mercadopago
@@ -239,6 +243,34 @@ def preference():
     preference = preference_response["response"]
     return preference, 200
 
+#----------------------------------Recuperacion de contraseña----------------------------
+
+#RECUPERACION CONTRASEÑA OLVIDADA 
+@api.route("/resetPassword", methods=["POST"])
+def resetPassword():
+    recover_email = request.json['email']
+    recover_password = ''.join(random.choice(string.ascii_uppercase + string.digits) for x in range(8)) 
+#clave aleatoria nueva
+    if not recover_email:
+        return jsonify({"msg": "Debe ingresar el correo"}), 401
+#   #busco si el correo existe en mi base de datos
+    user = User.query.filter_by(email=recover_email).first()
+    if not user:
+# recover_email != user.email:
+        return jsonify({"msg": "El correo ingresado no existe en nuestros registros"}), 400
+# #si existe guardo la nueva contraseña aleatoria
+    user.password = recover_password
+    db.session.commit()
+#luego se la envio al usuario por correo para que pueda ingresar
+    
+    msg = Message("Hi", recipients=[recover_email])
+    msg.recipients=[recover_email]
+    msg.html = f"""<h1>Su nueva contraseña es: {recover_password}</h1>"""
+    current_app.mail.send(msg)
+    return jsonify({"msg": "Su nueva clave ha sido enviada al correo electrónico ingresado"}), 200
+
+
+#--------------------------------Recuperacion de contraseña fin------------------------------
 
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
