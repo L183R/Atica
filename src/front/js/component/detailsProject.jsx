@@ -26,9 +26,13 @@ export const DetailsProject = () => {
     actions.traerProyecto(paramid);
   }, []);
   return (
-    <>
+    <div className="cardindividual2">
+      <div className="text-center pt-3">
+        <h1 className="card-title text-dark ">{store.project.title}</h1>{" "}
+        <h6 className="text-dark">{store.project.category}</h6>
+      </div>
       <div className="cardgeneral d-flex ">
-        <div className="flex-shrink-0 align-middle">
+        <div className="flex-shrink-0 align-middle pt-3">
           {store.project.image != "" ? (
             <img
               src={store.project.image}
@@ -39,7 +43,7 @@ export const DetailsProject = () => {
           ) : (
             ""
           )}
-          <div className=" flex-column mb-3">
+          <div className=" flex-column mb-3 text-center">
             <a
               href={
                 "https://api.whatsapp.com/send?phone=598" +
@@ -48,59 +52,52 @@ export const DetailsProject = () => {
               className="p-2"
             >
               <button type="button" className="p-2 btn btn-success">
-                Acá va el logo de whatsapp
+                Contactar
               </button>
             </a>
+            <div className="btn-group">
+              <button
+                type="button"
+                className="btn btn-danger dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Colaborar
+              </button>
+              <ul className="dropdown-menu">
+                <li>
+                  <div className="input-group mb-3">
+                    <span className="input-group-text">$</span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      aria-label="Amount (to the nearest dollar)"
+                      value={total}
+                      onChange={(e) => setTotal(e.target.value)}
+                    ></input>
+                    <span className="input-group-text">.00</span>
+                  </div>
+                </li>
+                <li>
+                  <hr className="dropdown-divider"></hr>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    className="btn btn-danger mx-auto"
+                    onClick={pagar}
+                  >
+                    Pagar
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="flex-grow-1 ms-3 ">
-          <h1 className="card-title text-light">{store.project.title}</h1>{" "}
-          <h6 className="text-light">{store.project.category}</h6>
-          <h3 className="card-text text-light">{store.project.text}</h3>
-          <Link to="/vistaForo">
-            <button>
-              <i className="fa fa-angle-double-left" aria-hidden="true"></i>
-            </button>
-          </Link>
-          <div className="btn-group">
-            <button
-              type="button"
-              className="btn btn-danger dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Colaborar
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <div className="input-group mb-3">
-                  <span className="input-group-text">$</span>
-                  <input
-                    type="text"
-                    className="form-control"
-                    aria-label="Amount (to the nearest dollar)"
-                    value={total}
-                    onChange={(e) => setTotal(e.target.value)}
-                  ></input>
-                  <span className="input-group-text">.00</span>
-                </div>
-              </li>
-              <li>
-                <hr className="dropdown-divider"></hr>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="btn btn-danger mx-auto"
-                  onClick={pagar}
-                >
-                  Pagar
-                </button>
-              </li>
-            </ul>
-          </div>
+        <div className="flex-grow-1 my-3 mx-2">
+          <h3 className="card-text text-dark">{store.project.text}</h3>
         </div>
       </div>
-    </>
+    </div>
   );
 };
