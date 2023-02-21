@@ -27,29 +27,36 @@ export const DetailsProject = () => {
   }, []);
   return (
     <>
-      <div className="cardindividual card d-flex justify-content-center col-10 mx-auto ">
-        {store.project.image != "" ? (
-          <img
-            src={store.project.image}
-            className="card-img-top"
-            alt="cuatro manos sostienen una pieza de puzzle cada una"
-          />
-        ) : (
-          ""
-        )}
-        <div className="card-body ">
+      <div className="cardgeneral d-flex ">
+        <div className="flex-shrink-0 align-middle">
+          {store.project.image != "" ? (
+            <img
+              src={store.project.image}
+              className="p-2 "
+              style={{ width: "450px" }}
+              alt="cuatro manos sostienen una pieza de puzzle cada una"
+            />
+          ) : (
+            ""
+          )}
+          <div className=" flex-column mb-3">
+            <a
+              href={
+                "https://api.whatsapp.com/send?phone=598" +
+                store.project.contact
+              }
+              className="p-2"
+            >
+              <button type="button" className="p-2 btn btn-success">
+                Acá va el logo de whatsapp
+              </button>
+            </a>
+          </div>
+        </div>
+        <div className="flex-grow-1 ms-3 ">
           <h1 className="card-title text-light">{store.project.title}</h1>{" "}
           <h6 className="text-light">{store.project.category}</h6>
           <h3 className="card-text text-light">{store.project.text}</h3>
-          <a
-            href={
-              "https://api.whatsapp.com/send?phone=598" + store.project.contact
-            }
-          >
-            <button type="button" class="btn btn-success">
-              Acá va el logo de whatsapp
-            </button>
-          </a>
           <Link to="/vistaForo">
             <button>
               <i className="fa fa-angle-double-left" aria-hidden="true"></i>
