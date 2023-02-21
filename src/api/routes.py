@@ -157,6 +157,16 @@ def handle_project_list2():
     return jsonify(results), 200
 
 # ____________________________________
+@api.route('/projectfind/<string:find>', methods=['GET'])
+def handle_project_list3(find):
+    
+    project_list = Projects.query.filter((Projects.title.ilike(f"%{find}%")) | (Projects.text.ilike(f"%{find}%"))).order_by(Projects.dataTime.desc()).all()
+
+    results = list(map(lambda item: item.serialize(),project_list))
+
+    return jsonify(results), 200
+
+# ____________________________________
 @api.route('/newcommentary', methods=['POST'])
 def add_commentary():
     text = request.json.get('text')

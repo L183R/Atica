@@ -38,7 +38,7 @@ export const DetailsProject = () => {
               src={store.project.image}
               className="p-2 "
               style={{ width: "450px" }}
-              alt="cuatro manos sostienen una pieza de puzzle cada una"
+              alt=""
             />
           ) : (
             ""

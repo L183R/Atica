@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext.jsx";
 import { Link } from "react-router-dom";
 import { SocialGral } from "../component/socialGral.jsx";
@@ -8,6 +8,16 @@ import { Prolist } from "../component/vistaproyectos.jsx";
 
 export const VistaDeProyectos = () => {
   const { store, actions } = useContext(Context);
+
+  let buscar1 = "";
+
+  function preBuscar(){
+      store.buscar= buscar1,
+
+      console.log("Buscar: "+store.buscar)
+    actions.buscarProyectos()
+
+  };
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -55,8 +65,23 @@ export const VistaDeProyectos = () => {
               {" "}
               Con fines de lucro{" "}
             </button>
+            <div>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Buscar"
+                aria-label="default input example"
+                onChange={(e) => (buscar1 = e.target.value)}
+              ></input>
+              <button
+                className="btn btn-success"
+                onClick={preBuscar}
+              >
+                Buscar
+              </button>
+            </div>
           </div>
-          <div className="cartalistaproyect row text-center mt-3 " >
+          <div className="cartalistaproyect row text-center mt-3 ">
             {store.projects.map((project, index) => {
               return (
                 <Prolist
