@@ -17,11 +17,12 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-0008rmpvp3y.ws-us87.gitpod.io",
             projects: [],
             project: {},
             comentarios: [],
             mercadoPago: {},
+            buscar: ""
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -271,9 +272,10 @@ const getState = ({
                         })
                     );
             },
-            mostrarProjects1: () => {
+            buscarProyectos: () => {
                 let store = getStore();
-                fetch(store.url + "/api/projectlist1")
+                console.log("Buscar proyectos / store.buscar" + store.buscar)
+                fetch(store.url + "/api/projectfind/" + store.buscar)
                     .then((response) => response.json())
                     .then((data) =>
                         setStore({
