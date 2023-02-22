@@ -22,9 +22,13 @@ import { SocialGral } from "./component/socialGral.jsx";
 import { LucroGral } from "./component/lucroGral.jsx";
 import { VistaDeProyectos } from "./pages/vistaForo.jsx";
 import { NuevoPosteoView } from "./pages/nuevoposteoview.jsx";
+import { Perfil } from "./pages/perfil.jsx";
 import { NuevoPosteo } from "./component/newpost.jsx";
 import { RecuperarContraview } from "./pages/recuperarcontraview.jsx";
 import { RecuperarContra } from "./component/recuperarcontra.jsx";
+import { Perfilsup } from "./component/perfilsup.jsx";
+import { Perfilmed } from "./component/perfilmed.jsx";
+import { Perfilinf } from "./component/perfilinf.jsx";
 
 //create your first component
 const Layout = () => {
@@ -57,6 +61,7 @@ const Layout = () => {
             <Route element={<NuevoPosteo />} path="/newpost" />
             <Route element={<Logview />} path="/logview" />
             <Route element={<RecuperarContra />} path="/recuperarcontra" />
+            <Route element={<Perfil />} path="/perfil/:theid" />
             <Route
               element={<RecuperarContraview />}
               path="/recuperarcontraview"
