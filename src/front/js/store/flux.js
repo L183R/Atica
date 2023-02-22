@@ -17,7 +17,7 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-rzz572z80j7.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-08694ebpdrq.ws-us87.gitpod.io",
             projects: [],
             project: {},
             perfil: {},
@@ -178,7 +178,7 @@ const getState = ({
                             comentario: text,
                             puntaje: null,
                             user_id: user_id,
-                            creador_id: creador_id
+                            creador_id: creador_id,
                         }), // body data type must match "Content-Type" header
                     })
                     .then((response) => {
@@ -357,7 +357,7 @@ const getState = ({
             },
             buscarProyectos: () => {
                 let store = getStore();
-                console.log("Buscar proyectos / store.buscar" + store.buscar)
+                console.log("Buscar proyectos / store.buscar" + store.buscar);
                 fetch(store.url + "/api/projectfind/" + store.buscar)
                     .then((response) => response.json())
                     .then((data) =>

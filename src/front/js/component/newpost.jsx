@@ -83,7 +83,7 @@ export const NuevoPosteo = () => {
     ) {
       actions.registrarProyecto(category, image, title, text, contact);
       // console.log("OK");
-      // navigate("/vistaForo");
+      navigate("/vistaForo");
     }
   }
 

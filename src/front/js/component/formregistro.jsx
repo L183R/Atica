@@ -3,6 +3,7 @@ import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "..//../styles/formsstyle.css";
+import { useNavigate } from "react-router-dom";
 
 export const Registro = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ export const Registro = () => {
   const { store, actions } = useContext(Context);
   const [malUsuario, setMalUsuario] = useState(0);
   const [malCorreo, setMalCorreo] = useState(0);
+  const navigate = useNavigate();
   const [malaContraseña1, setMalaContraseña1] = useState(0);
   const [malaContraseña2, setMalaContraseña2] = useState(0);
   let usuario = "";
@@ -62,6 +64,7 @@ export const Registro = () => {
     ) {
       console.log(malUsuario);
       actions.signup(usuario, contraseña1, correo);
+      navigate("/login");
     }
   }
 
