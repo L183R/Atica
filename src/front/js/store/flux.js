@@ -17,7 +17,7 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-y5q3nnfm6xo.ws-us87.gitpod.io",
+            url: "https://3001-l183r-atica-xyhydkrhedp.ws-us87.gitpod.io",
             projects: [],
             project: {},
             perfil: {},
@@ -39,6 +39,23 @@ const getState = ({
             },
             login: (userEmail, userPassword) => {
                 let store = getStore();
+                const Swal = require("sweetalert2");
+
+                function alertaMal() {
+                    Swal.fire({
+                        title: "La contraseña o el correo electrónico son incorrectos.",
+                        width: 600,
+                        padding: "3em",
+                        color: "#716add",
+                        background: "#fff url(/images/trees.png)",
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("https://i.postimg.cc/nhjjM0md/cat-nyan-cat.gif")
+                        left top
+                        no-repeat
+                        `,
+                    });
+                }
                 fetch(store.url + "/api/login", {
                         method: "POST",
                         // mode: "no-cors",
@@ -64,7 +81,9 @@ const getState = ({
                     .then((data) => {
                         console.log(data);
                         if (data.msg === "Bad email or password") {
-                            alert(data.msg);
+                            {
+                                alertaMal();
+                            }
                         } else {
                             localStorage.setItem("user_id", data.user.id);
                             localStorage.setItem("user_username", data.user.username);
@@ -148,7 +167,6 @@ const getState = ({
                         // credentials: "include",
                         headers: {
                             "Content-Type": "application/json",
-                            // 'Content-Type': 'application/x-www-form-urlencoded',
                         },
                         body: JSON.stringify({
                             text: text,
@@ -431,6 +449,23 @@ const getState = ({
             //-------------------Recuperacion de contraseña------------------------------- //
             recuperarContra: (email) => {
                 let store = getStore();
+                const Swal = require("sweetalert2");
+
+                function contraseñaEnviada() {
+                    Swal.fire({
+                        title: "Tu nueva contraseña ha sido enviada a tu correo electrónico.",
+                        width: 600,
+                        padding: "3em",
+                        color: "#716add",
+                        background: "#fff url(/images/trees.png)",
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("https://i.postimg.cc/nhjjM0md/cat-nyan-cat.gif")
+                        left top
+                        no-repeat
+                        `,
+                    });
+                }
                 fetch(store.url + "/api/resetPassword", {
                         method: "POST",
                         // mode: "no-cors",
@@ -448,7 +483,9 @@ const getState = ({
                         return response.json();
                     })
                     .then((data) => {
-                        alert(data.msg);
+                        {
+                            contraseñaEnviada();
+                        }
                     })
                     .catch((err) => console.log(err));
             },

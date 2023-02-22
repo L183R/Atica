@@ -64,7 +64,7 @@ export const Registro = () => {
     ) {
       console.log(malUsuario);
       actions.signup(usuario, contraseña1, correo);
-      navigate("/login");
+      navigate("/logview");
     }
   }
 

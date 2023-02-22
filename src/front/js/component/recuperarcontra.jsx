@@ -1,12 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
-import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export const RecuperarContra = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { store, actions } = useContext(Context);
+  const { actions } = useContext(Context);
 
   function recoverpassword() {
     actions.recuperarContra(email);
@@ -14,23 +12,24 @@ export const RecuperarContra = () => {
   }
 
   return (
-    <div className="form-container">
+    <div className="recuperarcontraseña form-container mx-auto">
       <div>
         {/* <form> */}
-        <h2 className="text-center">
-          <strong>
-            <u>RECUPERAR CONTRASEÑA</u>
-          </strong>
-          <br />
-        </h2>
-        <h4 className="text-center">
-          Ingrese el correo con el que se ha registrado.
-        </h4>
+        <h3 className="text-center">
+          <b>
+            <h1 className="display-6 mt-2 text-center">
+              Recuperación de contraseña
+            </h1>
+          </b>
+        </h3>
+        <h5>
+          <b>Ingrese el correo con el que se ha registrado.</b>
+        </h5>
 
         {/* <!-- DIV CORREO ELECTRONICO --> */}
         <div className="form-group">
           <input
-            className="form-control mb-3"
+            className="form-control mb-3 mt-2"
             type="email"
             name="email"
             value={email}
@@ -40,9 +39,9 @@ export const RecuperarContra = () => {
         </div>
 
         {/* <!-- DIV DE BOTONES   --> */}
-        <div className="form-group">
+        <div className="form-group mx-5">
           <button
-            className="btn btn-recuperar btn-block mb-3 col-12"
+            className="botonnavlog btn btn-sm text-light"
             /*    type="submit" */
             onClick={() => recoverpassword()}
           >
@@ -50,23 +49,13 @@ export const RecuperarContra = () => {
           </button>
         </div>
 
-        {/* TESTING */}
-        {/* <!-- Boton de registro con google --> */}
-        <div className="form-group">
-          <button
-            className="btn btn-recuperar btn-block mb-3 col-12"
-            type="submit"
-          >
-            Salir
-          </button>
-        </div>
-        <Link to="/login">
-          {store.auth === false ? (
-            <button className="already">
-              Ya tienes cuenta? Inicia Sesion aqui.
+        <div className="form-group mt-2">
+          <Link to="/logview">
+            <button className="botonnavlog btn btn-sm text-light" type="submit">
+              Salir
             </button>
-          ) : null}
-        </Link>
+          </Link>
+        </div>
         {/* </form> */}
       </div>
     </div>
