@@ -1,7 +1,35 @@
 /*
     home.css: This website contains selectors only used in home.css
-
     All pages share the styles on index.css but you should create 
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+.botonhome {
+    color: coral !important;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0.5em 1.2em;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid;
+    border-color: coral;
+    transition: all 1s ease;
+    position: relative;
+}
+
+.botonhome:hover {
+    background: coral;
+    color: #fff !important;
+}
+
+.nobackground {
+    background-image: none !important;
+}
+
+.carousel-caption {
+    background-color: #101414;
+    max-height: fit-content;
+    max-width: fit-content;
+    opacity: 0.9;
+    float: center;
+}
