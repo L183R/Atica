@@ -39,9 +39,8 @@ export const LandingPage = () => {
               style={{ width: "100%" }}
             />
             <div className="carousel-caption d-none d-md-block">
-              <h1>ATICA</h1>
               <Link to="/vistaForo">
-                <button className="botonhome">Ver Proyectos</button>
+                <button className="botonhome my-2">Ver Proyectos</button>
               </Link>
               <p>
                 Ática es un foro para presentar proyectos y ponerse en contacto
@@ -58,7 +57,7 @@ export const LandingPage = () => {
           </div>
           <div className="carousel-item">
             <img
-              src="https://proyectolabor.es/wp-content/uploads/2019/02/trabaja-en-proyecto-labor.png"
+              src="https://i.postimg.cc/Ghx5600G/Logo-con-fondo-rosa.png"
               className="imaginacion d-block w-100"
               alt="cuatro personas sonrien y unen sus manos en senial de exito"
               style={{ width: "100%" }}
@@ -81,7 +80,7 @@ export const LandingPage = () => {
           </div>
           <div className="carousel-item">
             <img
-              src="https://uploadgerencie.com/imagenes/emprendimiento.png"
+              src="https://i.postimg.cc/vHsKPYKG/Logo-con-fondo-celeste.png"
               className="imaginaciond-block w-100"
               alt="figura de un hombre con traje sosteniendo una lampara que encierra un signo de pesos "
               style={{ width: "100%" }}
