@@ -20,9 +20,11 @@ const getState = ({
             url: "https://3001-l183r-atica-rzz572z80j7.ws-us87.gitpod.io",
             projects: [],
             project: {},
+            perfil: {},
             comentarios: [],
             mercadoPago: {},
-            buscar: ""
+            buscar: "",
+            comentariosPerfil: [],
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -161,6 +163,30 @@ const getState = ({
                     })
                     .catch((err) => console.log(err));
             },
+            nuevoComentarioPerfil: (text, creador_id) => {
+                const store = getStore();
+                let user_id = localStorage.getItem("user_id");
+                fetch(store.url + "/api/newcommentaryprofile", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            comentario: text,
+                            puntaje: null,
+                            user_id: user_id,
+                            creador_id: creador_id
+                        }), // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        return response.json();
+                    })
+                    .catch((err) => console.log(err));
+            },
             logout: () => {
                 localStorage.removeItem("token");
                 localStorage.removeItem("user_id");
@@ -204,6 +230,17 @@ const getState = ({
                         })
                     );
             },
+
+            mostrarPerfil: (user_id) => {
+                let store = getStore();
+                fetch(store.url + "/api/profiledata/" + user_id)
+                    .then((response) => response.json())
+                    .then((data) =>
+                        setStore({
+                            perfil: data,
+                        })
+                    );
+            },
             mostrarProjects2: () => {
                 let store = getStore();
                 fetch(store.url + "/api/projectlist2")
@@ -217,6 +254,27 @@ const getState = ({
             eliminarPublicacion: (id) => {
                 let store = getStore();
                 fetch(store.url + "/api/posts/" + id, {
+                        method: "DELETE",
+                    })
+                    .then((response) => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            // aquí puedes hacer algo con la respuesta de error
+                            console.log("La respuesta de la red no fue satisfactoria");
+                        }
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        // aquí puedes hacer algo con la respuesta del servidor
+                    })
+                    .catch((error) => {
+                        console.error("Hubo un problema con la operación fetch:", error);
+                    });
+            },
+            eliminarPublicacionPerfil: (id) => {
+                let store = getStore();
+                fetch(store.url + "/api/postsperfil/" + id, {
                         method: "DELETE",
                     })
                     .then((response) => {
@@ -256,7 +314,32 @@ const getState = ({
                     })
                     .then((data) => {
                         console.log(data);
-                        // aquí puedes hacer algo con la respuesta del servidor
+                    })
+                    .catch((error) => {
+                        console.error("Hubo un problema con la operación fetch:", error);
+                    });
+            },
+            editarPublicacionPerfil: (text, id) => {
+                let store = getStore();
+                fetch(store.url + "/api/editpostprofile/" + id, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            comentario: text,
+                        }),
+                    })
+                    .then((response) => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            console.log("La respuesta de la red no fue satisfactoria");
+                            throw new Error("Error al actualizar la publicación");
+                        }
+                    })
+                    .then((data) => {
+                        console.log(data);
                     })
                     .catch((error) => {
                         console.error("Hubo un problema con la operación fetch:", error);
@@ -280,6 +363,16 @@ const getState = ({
                     .then((data) =>
                         setStore({
                             projects: data,
+                        })
+                    );
+            },
+            traerComentariosPerfil: (creador_id) => {
+                let store = getStore();
+                fetch(store.url + "/api/commentaryprofilelist/" + creador_id)
+                    .then((response) => response.json())
+                    .then((data) =>
+                        setStore({
+                            comentariosPerfil: data,
                         })
                     );
             },

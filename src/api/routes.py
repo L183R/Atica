@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint, json, current_app
-from api.models import db, User, Projects, Posts
+from api.models import db, User, Projects, Posts, Creador, Perfil
 from api.utils import generate_sitemap, APIException
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime as DateTime
@@ -137,6 +137,7 @@ def handle_project_list():
     return jsonify(results), 200
 
 # ____________________________________
+
 @api.route('/projectlist1', methods=['GET'])
 def handle_project_list1():
     
@@ -155,6 +156,15 @@ def handle_project_list2():
     results = list(map(lambda item: item.serialize(),project_list))
 
     return jsonify(results), 200
+
+# ____________________________________
+@api.route('/profiledata/<int:user_id>', methods=['GET'])
+def handle_profile(user_id):
+    
+    user_data = User.query.filter(User.id==user_id).first()
+    profile_data = Creador.query.filter(user_id==user_id).first()
+
+    return jsonify(full_user.serialize()), 200
 
 # ____________________________________
 @api.route('/projectfind/<string:find>', methods=['GET'])
@@ -185,11 +195,40 @@ def add_commentary():
     except Exception as e:
         db.session.rollback()
         return str(e), 500
+        # ____________________________________
+@api.route('/newcommentaryprofile', methods=['POST'])
+def add_commentary_profile():
+
+    comentario = request.json.get('comentario')
+    puntaje = None
+    dataTime = DateTime.now()
+    user_id = request.json.get('user_id')
+    creador_id = request.json.get('creador_id')
+
+    new_commentary = Perfil(comentario=comentario, puntaje=puntaje, dataTime=dataTime, user_id=user_id, creador_id=creador_id)
+    
+    try:
+        db.session.add(new_commentary)
+        db.session.commit()
+        return jsonify(new_commentary.serialize()), 201
+    except Exception as e:
+        db.session.rollback()
+        return str(e), 500
+# ____________________________________
 # ____________________________________
 @api.route('/commentarylist/<int:project_id>', methods=['GET'])
 def handle_commentary_list(project_id):
     
     commentaries_list = Posts.query.filter_by(project_id=project_id).order_by(Posts.dataTime.asc())
+
+    results = list(map(lambda item: item.serialize(),commentaries_list))
+
+    return jsonify(results), 200
+# ____________________________________
+@api.route('/commentaryprofilelist/<int:creador_id>', methods=['GET'])
+def handle_commentary_profile_list(creador_id):
+    
+    commentaries_list = Perfil.query.filter_by(creador_id=creador_id).filter(Perfil.comentario != None).order_by(Perfil.dataTime.asc())
 
     results = list(map(lambda item: item.serialize(),commentaries_list))
 
@@ -215,6 +254,26 @@ def update_post(id):
         return str(e), 500
 
 # ____________________________________
+@api.route('/editpostprofile/<int:id>', methods=['PUT'])
+def update_post_perfil(id):
+    perfil = Perfil.query.get(id)
+    if not perfil:
+        return jsonify({'msg': 'Post not found'}), 404
+
+    comentario = request.json.get('comentario')
+    if not comentario:
+        return jsonify({'msg': 'Missing required parameter: comentario'}), 400
+
+    perfil.comentario = comentario
+
+    try:
+        db.session.commit()
+        return jsonify(perfil.serialize()), 200
+    except Exception as e:
+        db.session.rollback()
+        return str(e), 500
+
+# ____________________________________
 @api.route('/posts/<int:id>', methods=['DELETE'])
 def eliminar_post(id):
     post = Posts.query.filter_by(id=id).first()
@@ -225,7 +284,16 @@ def eliminar_post(id):
     return jsonify({'mensaje': 'Publicación eliminada correctamente'})
 
 #___________________________________
+@api.route('/postsperfil/<int:id>', methods=['DELETE'])
+def eliminar_post_perfil(id):
+    post = Perfil.query.filter_by(id=id).first()
+    if not post:
+        raise APIException('Publicación no encontrada', status_code=404)
+    db.session.delete(post)
+    db.session.commit()
+    return jsonify({'mensaje': 'Publicación eliminada correctamente'})
 
+#___________________________________
 @api.route("/preference", methods=["POST"])
 def preference():
     body = json.loads(request.data) 
