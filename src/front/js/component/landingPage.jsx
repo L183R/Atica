@@ -34,14 +34,15 @@ export const LandingPage = () => {
           <div className="imagenlanding carousel-item active">
             <img
               src="https://blog.trello.com/hs-fs/Foster_Productivity_And_Collaboration_With_A_Strong_Team_Structure.png"
-              className=" d-block w-100"
-              alt="..."
+              className=" imaginacion d-block w-100"
+              alt="dibujo fondo violeta con planetas robots y personas"
+              style={{ width: "100%" }}
             />
             <div className="carousel-caption d-none d-md-block">
               <h1>ATICA</h1>
-              {/* <Link to="/projectsGral">
-                <button>VER PROYECTOS</button>
-              </Link> */}
+              <Link to="/vistaForo">
+                <button className="botonhome">Ver Proyectos</button>
+              </Link>
               <p>
                 Ática es un foro para presentar proyectos y ponerse en contacto
                 con colaboradores que estén interesados en ayudar para llevarlos
@@ -58,8 +59,9 @@ export const LandingPage = () => {
           <div className="carousel-item">
             <img
               src="https://proyectolabor.es/wp-content/uploads/2019/02/trabaja-en-proyecto-labor.png"
-              className="d-block w-100"
-              alt="..."
+              className="imaginacion d-block w-100"
+              alt="cuatro personas sonrien y unen sus manos en senial de exito"
+              style={{ width: "100%" }}
             />
             <div className="carousel-caption d-none d-md-block">
               <h2>PROYECTOS SOCIALES</h2>
@@ -73,15 +75,16 @@ export const LandingPage = () => {
                 "Recibir sin orgullo, desprenderse sin apego" - Marco Aurelio
               </p>
               <Link to="/vistaForo">
-                <button className="btn btn-primary">Ver Proyectos</button>
+                <button className="botonhome">Ver Proyectos</button>
               </Link>
             </div>
           </div>
           <div className="carousel-item">
             <img
               src="https://uploadgerencie.com/imagenes/emprendimiento.png"
-              className="d-block w-100"
-              alt="..."
+              className="imaginaciond-block w-100"
+              alt="figura de un hombre con traje sosteniendo una lampara que encierra un signo de pesos "
+              style={{ width: "100%" }}
             />
             <div className="carousel-caption d-none d-md-block">
               <h1>proyectos con fines de lucro</h1>
@@ -89,7 +92,7 @@ export const LandingPage = () => {
                 Some representative placeholder content for the third slide.
               </p>
               <Link to="/vistaForo">
-                <button className="btn btn-primary">Ver Proyectos</button>
+                <button className="botonhome">Ver Proyectos</button>
               </Link>
             </div>
           </div>
