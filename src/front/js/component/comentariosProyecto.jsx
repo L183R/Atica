@@ -72,11 +72,11 @@ export const ComentariosProyecto = () => {
                           <div className="col-2">
                             {comentario.user_id == userid ? (
                               editando === comentario.id ? (
-                                <button onClick={() => setEditando("")}>
+                                <button className="botonpeque" onClick={() => setEditando("")}>
                                   Cancelar
                                 </button>
                               ) : (
-                                <button
+                                <button className="botonpeque"
                                   onClick={() => setEditando(comentario.id)}
                                 >
                                   Editar
@@ -88,7 +88,7 @@ export const ComentariosProyecto = () => {
                           </div>
                           <div className="col-2">
                             {comentario.user_id == userid ? (
-                              <button
+                              <button className="botonpeque"
                                 onClick={() =>
                                   actions.eliminarPublicacion(comentario.id)
                                 }

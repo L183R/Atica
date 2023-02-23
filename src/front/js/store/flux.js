@@ -17,7 +17,9 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
+
             url: "https://3001-l183r-atica-5198zyxgdnd.ws-us87.gitpod.io",
+
             projects: [],
             project: {},
             perfil: {},

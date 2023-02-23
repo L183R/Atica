@@ -58,13 +58,13 @@ export const DetailsProject = () => {
             <div className="btn-group">
               <button
                 type="button"
-                className="btn btn-danger dropdown-toggle"
+                className="btn btnewpost dropdown-toggle"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Colaborar
               </button>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu fondeau">
                 <li>
                   <div className="input-group mb-3">
                     <span className="input-group-text">$</span>
