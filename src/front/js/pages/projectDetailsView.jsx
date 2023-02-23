@@ -15,7 +15,7 @@ export const ProjectDetailsView = () => {
       <DetailsProject />
       <div>
       <Link to="/vistaForo">
-        <button type="button" className="btn btn-info">Volver al foro</button>
+        <button type="button" className="btn btnewpost">Volver al foro</button>
         </Link>
       </div>
       <ComentariosProyecto />

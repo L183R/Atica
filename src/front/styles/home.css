@@ -32,3 +32,27 @@
     opacity: 0.9;
     float: center;
 }
+
+.botonpeque {
+    color: coral !important;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 0.5em 1.2em;
+    background: rgba(0, 0, 0, 0);
+    border: 2px solid;
+    border-color: coral;
+    transition: all 1s ease;
+    position: relative;
+    border-radius: 5px;
+}
+
+.botonpeque:hover {
+    background: coral;
+    color: #fff !important;
+}
+
+.fondeau {
+    background-color: #96d1c7 !important;
+    align-items: right;
+    opacity: 0.7;
+}
