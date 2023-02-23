@@ -7,6 +7,66 @@ import "../../styles/landing.css";
 export const LandingPage = () => {
   return (
     <>
+      <div className="escondido">
+        <div class="card text-bg-dark">
+          <img
+            src="https://i.postimg.cc/d0XpZd6d/logo-con-fondo-verde.png"
+            class="card-img"
+            alt="..."
+          />
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <Link to="/vistaForo">
+              <button className=" btn-background-subtle">Ver Proyectos</button>
+            </Link>
+          </div>
+        </div>
+        {/* segunda */}
+        <div class="card text-bg-dark">
+          <img
+            src="https://i.postimg.cc/Ghx5600G/Logo-con-fondo-rosa.png"
+            class="card-img"
+            alt="..."
+          />
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <Link to="/vistaForo">
+              <button className="btn-background-subtle">Ver Proyectos</button>
+            </Link>
+          </div>
+        </div>
+        {/* tercer */}
+        <div class="card text-bg-dark">
+          <img
+            src="https://i.postimg.cc/vHsKPYKG/Logo-con-fondo-celeste.png"
+            class="card-img"
+            alt="..."
+          />
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <Link to="/vistaForo">
+              <button className=" btn-background-subtle">Ver Proyectos</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* termina */}
       <div id="carouselExampleCaptions" className="carousel slide">
         <div className="carousel-indicators">
           <button
@@ -33,7 +93,7 @@ export const LandingPage = () => {
         <div className="carousel-inner">
           <div className="imagenlanding carousel-item active">
             <img
-              src="https://blog.trello.com/hs-fs/Foster_Productivity_And_Collaboration_With_A_Strong_Team_Structure.png"
+              src="https://i.postimg.cc/d0XpZd6d/logo-con-fondo-verde.png"
               className=" imaginacion d-block w-100"
               alt="dibujo fondo violeta con planetas robots y personas"
               style={{ width: "100%" }}

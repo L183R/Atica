@@ -1,3 +1,16 @@
 carousel-item {
     margin-top: 4rem;
 }
+
+@media only screen and (min-width: 600px) {
+    .escondido {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card-text {
+        background-color: white;
+        opacity: 0.5;
+    }
+}
