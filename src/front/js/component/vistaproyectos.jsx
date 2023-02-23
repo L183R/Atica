@@ -1,22 +1,16 @@
-import React, { Component, useContext, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext.jsx";
 
 export const Prolist = (props) => {
-  const { store, actions } = useContext(Context);
   return (
     <div className="proyectoindividual card col-11 25 text-light mb-3">
       <div className="card-body  text-light">
-        <Link to={"/projectDetailsView/"+props.id}><h5 className="card-title ">{props.title}</h5></Link>
-        <p className="card-text">
-          {props.category} 
-          </p>
-          <p className="card-text"> {props.text.substr(0, 80)}</p>
-          <p className="card-text text-end">
-          Fecha:{props.dataTime}
-        </p>
-        {/* <Link to={"/personajes/"+ids} className="btn">A ver...</Link> */}
-        {/* <button className={`btn ${store.favoritos.find(obj => obj.nombre === nombres) === undefined ? store.estilo1 : store.estilo2} m-3 col-3`} onClick={() => actions.agregarItem(nombres, ids, tipo)}><i className="fa fa-heart"/></button> */}
+        <Link to={"/projectDetailsView/" + props.id}>
+          <h5 className="card-title ">{props.title}</h5>
+        </Link>
+        <p className="card-text">{props.category}</p>
+        <p className="card-text"> {props.text.substr(0, 80)}</p>
+        <p className="card-text text-end">Fecha:{props.dataTime}</p>
       </div>
     </div>
   );

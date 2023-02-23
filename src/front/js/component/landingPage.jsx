@@ -86,9 +86,15 @@ export const LandingPage = () => {
               style={{ width: "100%" }}
             />
             <div className="carousel-caption d-none d-md-block">
-              <h1>proyectos con fines de lucro</h1>
+              <h2>PROYECTOS EMPRENDEDORES</h2>
               <p>
-                Some representative placeholder content for the third slide.
+                Un espacio diseñado para fomentar proyectos que satisfagan las
+                necesidades desatendidas de la sociedad. Nadie conoce mejor las
+                necesidades del pueblo que él mismo, así que el pueblo propone y
+                el pueblo dispone.
+              </p>
+              <p>
+                "Recibir sin orgullo, desprenderse sin apego" - Marco Aurelio
               </p>
               <Link to="/vistaForo">
                 <button className="botonhome">Ver Proyectos</button>
