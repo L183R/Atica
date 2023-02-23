@@ -6,11 +6,15 @@
 }
 
 h1 {
-    color: #ff7f50;
+    color: #f57e7e;
 }
 
 text-light {
     color: #190204 !important;
+}
+
+.card-text {
+    color: black;
 }
 
 .login {
@@ -56,51 +60,64 @@ text-light {
 }
 
 .btnregenviar {
-    background-color: #ff7f50;
+    background-color: #f57e7e;
     border: none;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     margin-bottom: 10px;
+}
+
+.btnregenviar:hover {
+    background-color: #e7a7a7;
 }
 
 .cartalistaproyect {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    color: #ff7f50;
+    color: #f57e7e;
 }
 
 .form-holder {
-    color: #ff7f50;
+    color: #f57e7e;
 }
 
 .form-content {
-    color: #ff7f50;
+    color: #f57e7e;
+}
+
+.btnewpost:hover {
+    background-color: #e7a7a7;
 }
 
 .btnewpost {
-    background-color: #ff7f50;
+    background-color: #f57e7e;
     border: none;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.btnewpost:hover {
+    background-color: #e7a7a7;
 }
 
 .botonnavlog {
-    background-color: #ff7f50;
+    background-color: #f57e7e;
     border: none;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+.botonnavlog:hover {
+    background-color: #e7a7a7;
+}
+
 .botonlogenviar {
-    background-color: #ff7f50;
+    background-color: #f57e7e;
     border: none;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     margin-bottom: 10px;
+}
+
+.botonlogenviar:hover {
+    background-color: #e7a7a7;
 }
 
 h1 {
     color: #190204;
-}
-
-.btnnewpost {
-    background-color: #ff7f50;
-    border: none;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    margin-bottom: 10px;
 }
