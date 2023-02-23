@@ -32,7 +32,7 @@ export const VistaDeProyectos = () => {
             <div>
               <Link to="/">
                 <button
-                  className=" btnewpost btn btn-primary m-2"
+                  className=" btnewpost btn btn-danger m-2"
                   style={{ opacity: 1 }}
                 >
                   Volver al inicio
@@ -43,7 +43,7 @@ export const VistaDeProyectos = () => {
               <Link to="/nuevoposteoview">
                 {" "}
                 <button
-                  className="btnewpost btn btn-primary m-2"
+                  className="btnewpost btn btn-danger m-2"
                   onClick={handleNewPost}
                   style={{ opacity: 1 }}
                 >
@@ -54,7 +54,7 @@ export const VistaDeProyectos = () => {
             ) : null}{" "}
             <div>
               <button
-                className="btnewpost btn btn-primary m-2"
+                className="btnewpost btn btn-danger m-2"
                 onClick={actions.mostrarProjects}
               >
                 {" "}
@@ -63,14 +63,14 @@ export const VistaDeProyectos = () => {
             </div>
             <div>
               <button
-                className="btnewpost btn btn-primary m-2"
+                className="btnewpost btn btn-danger m-2"
                 onClick={actions.mostrarProjects2}
               >
                 {" "}
                 Sin fines de lucro{" "}
               </button>
               <button
-                className="btnewpost btn btn-primary m-2"
+                className="btnewpost btn btn-danger m-2"
                 style={{ opacity: 1 }}
                 onClick={actions.mostrarProjects1}
               >
@@ -87,7 +87,7 @@ export const VistaDeProyectos = () => {
                 onChange={(e) => (buscar1 = e.target.value)}
               ></input>
               <button
-                className="btnewpost col btn btn-success ms-2"
+                className="btnewpost col btn btn-danger ms-2"
                 style={{ opacity: 1 }}
                 onClick={preBuscar}
               >
