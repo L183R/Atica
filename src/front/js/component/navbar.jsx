@@ -28,7 +28,7 @@ export const Navbar = () => {
                 <button
                   className="botonnavlog btn btn-sm text-light"
                   id="login"
-                  style={{ color: "white" }}
+                  style={{ opacity: 1 }}
                 >
                   {" "}
                   Iniciar Sesión{" "}

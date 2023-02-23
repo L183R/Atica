@@ -31,7 +31,10 @@ export const VistaDeProyectos = () => {
           <div className="d-flex justify-content-center">
             <div>
               <Link to="/">
-                <button className="btnewpost btn btn-primary m-2">
+                <button
+                  className=" btnewpost btn btn-primary m-2"
+                  style={{ opacity: 1 }}
+                >
                   Volver al inicio
                 </button>
               </Link>
@@ -42,6 +45,7 @@ export const VistaDeProyectos = () => {
                 <button
                   className="btnewpost btn btn-primary m-2"
                   onClick={handleNewPost}
+                  style={{ opacity: 1 }}
                 >
                   {" "}
                   NewPost{" "}
@@ -67,6 +71,7 @@ export const VistaDeProyectos = () => {
               </button>
               <button
                 className="btnewpost btn btn-primary m-2"
+                style={{ opacity: 1 }}
                 onClick={actions.mostrarProjects1}
               >
                 {" "}
@@ -83,6 +88,7 @@ export const VistaDeProyectos = () => {
               ></input>
               <button
                 className="btnewpost col btn btn-success ms-2"
+                style={{ opacity: 1 }}
                 onClick={preBuscar}
               >
                 Buscar
