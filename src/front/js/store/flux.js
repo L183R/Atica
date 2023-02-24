@@ -17,12 +17,16 @@ const getState = ({
             contraseña1: "",
             contraseña2: "",
             unproyecto: {},
-            url: "https://3001-l183r-atica-0008rmpvp3y.ws-us87.gitpod.io",
+
+            url: "https://3001-l183r-atica-5198zyxgdnd.ws-us87.gitpod.io",
+
             projects: [],
             project: {},
+            perfil: {},
             comentarios: [],
             mercadoPago: {},
-            buscar: ""
+            buscar: "",
+            comentariosPerfil: [],
         },
         actions: {
             // Use getActions to call a function within a fuction
@@ -37,6 +41,23 @@ const getState = ({
             },
             login: (userEmail, userPassword) => {
                 let store = getStore();
+                const Swal = require("sweetalert2");
+
+                function alertaMal() {
+                    Swal.fire({
+                        title: "La contraseña o el correo electrónico son incorrectos.",
+                        width: 600,
+                        padding: "3em",
+                        color: "#716add",
+                        background: "#fff url(/images/trees.png)",
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("https://i.postimg.cc/nhjjM0md/cat-nyan-cat.gif")
+                        left top
+                        no-repeat
+                        `,
+                    });
+                }
                 fetch(store.url + "/api/login", {
                         method: "POST",
                         // mode: "no-cors",
@@ -62,7 +83,9 @@ const getState = ({
                     .then((data) => {
                         console.log(data);
                         if (data.msg === "Bad email or password") {
-                            alert(data.msg);
+                            {
+                                alertaMal();
+                            }
                         } else {
                             localStorage.setItem("user_id", data.user.id);
                             localStorage.setItem("user_username", data.user.username);
@@ -146,13 +169,36 @@ const getState = ({
                         // credentials: "include",
                         headers: {
                             "Content-Type": "application/json",
-                            // 'Content-Type': 'application/x-www-form-urlencoded',
                         },
                         body: JSON.stringify({
                             text: text,
                             user_id: user_id,
                             project_id: project_id,
                             // "project_id": postProject
+                        }), // body data type must match "Content-Type" header
+                    })
+                    .then((response) => {
+                        console.log(response.status);
+                        return response.json();
+                    })
+                    .catch((err) => console.log(err));
+            },
+            nuevoComentarioPerfil: (text, creador_id) => {
+                const store = getStore();
+                let user_id = localStorage.getItem("user_id");
+                fetch(store.url + "/api/newcommentaryprofile", {
+                        method: "POST",
+                        // mode: "no-cors",
+                        // credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: JSON.stringify({
+                            comentario: text,
+                            puntaje: null,
+                            user_id: user_id,
+                            creador_id: creador_id,
                         }), // body data type must match "Content-Type" header
                     })
                     .then((response) => {
@@ -204,6 +250,17 @@ const getState = ({
                         })
                     );
             },
+
+            mostrarPerfil: (user_id) => {
+                let store = getStore();
+                fetch(store.url + "/api/profiledata/" + user_id)
+                    .then((response) => response.json())
+                    .then((data) =>
+                        setStore({
+                            perfil: data,
+                        })
+                    );
+            },
             mostrarProjects2: () => {
                 let store = getStore();
                 fetch(store.url + "/api/projectlist2")
@@ -217,6 +274,27 @@ const getState = ({
             eliminarPublicacion: (id) => {
                 let store = getStore();
                 fetch(store.url + "/api/posts/" + id, {
+                        method: "DELETE",
+                    })
+                    .then((response) => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            // aquí puedes hacer algo con la respuesta de error
+                            console.log("La respuesta de la red no fue satisfactoria");
+                        }
+                    })
+                    .then((data) => {
+                        console.log(data);
+                        // aquí puedes hacer algo con la respuesta del servidor
+                    })
+                    .catch((error) => {
+                        console.error("Hubo un problema con la operación fetch:", error);
+                    });
+            },
+            eliminarPublicacionPerfil: (id) => {
+                let store = getStore();
+                fetch(store.url + "/api/postsperfil/" + id, {
                         method: "DELETE",
                     })
                     .then((response) => {
@@ -256,7 +334,32 @@ const getState = ({
                     })
                     .then((data) => {
                         console.log(data);
-                        // aquí puedes hacer algo con la respuesta del servidor
+                    })
+                    .catch((error) => {
+                        console.error("Hubo un problema con la operación fetch:", error);
+                    });
+            },
+            editarPublicacionPerfil: (text, id) => {
+                let store = getStore();
+                fetch(store.url + "/api/editpostprofile/" + id, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            comentario: text,
+                        }),
+                    })
+                    .then((response) => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            console.log("La respuesta de la red no fue satisfactoria");
+                            throw new Error("Error al actualizar la publicación");
+                        }
+                    })
+                    .then((data) => {
+                        console.log(data);
                     })
                     .catch((error) => {
                         console.error("Hubo un problema con la operación fetch:", error);
@@ -274,12 +377,22 @@ const getState = ({
             },
             buscarProyectos: () => {
                 let store = getStore();
-                console.log("Buscar proyectos / store.buscar" + store.buscar)
+                console.log("Buscar proyectos / store.buscar" + store.buscar);
                 fetch(store.url + "/api/projectfind/" + store.buscar)
                     .then((response) => response.json())
                     .then((data) =>
                         setStore({
                             projects: data,
+                        })
+                    );
+            },
+            traerComentariosPerfil: (creador_id) => {
+                let store = getStore();
+                fetch(store.url + "/api/commentaryprofilelist/" + creador_id)
+                    .then((response) => response.json())
+                    .then((data) =>
+                        setStore({
+                            comentariosPerfil: data,
                         })
                     );
             },
@@ -338,6 +451,23 @@ const getState = ({
             //-------------------Recuperacion de contraseña------------------------------- //
             recuperarContra: (email) => {
                 let store = getStore();
+                const Swal = require("sweetalert2");
+
+                function contraseñaEnviada() {
+                    Swal.fire({
+                        title: "Tu nueva contraseña ha sido enviada a tu correo electrónico.",
+                        width: 600,
+                        padding: "3em",
+                        color: "#716add",
+                        background: "#fff url(/images/trees.png)",
+                        backdrop: `
+                        rgba(0,0,123,0.4)
+                        url("https://i.postimg.cc/nhjjM0md/cat-nyan-cat.gif")
+                        left top
+                        no-repeat
+                        `,
+                    });
+                }
                 fetch(store.url + "/api/resetPassword", {
                         method: "POST",
                         // mode: "no-cors",
@@ -355,7 +485,9 @@ const getState = ({
                         return response.json();
                     })
                     .then((data) => {
-                        alert(data.msg);
+                        {
+                            contraseñaEnviada();
+                        }
                     })
                     .catch((err) => console.log(err));
             },

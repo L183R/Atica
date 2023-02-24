@@ -3,6 +3,7 @@ import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "../../styles/formsstyle.css";
 
 export const NuevoPosteo = () => {
   const [email, setEmail] = useState("");
@@ -75,6 +76,8 @@ export const NuevoPosteo = () => {
       malContact === 0
     ) {
       actions.registrarProyecto(category, image, title, text, contact);
+      // console.log("OK");
+      // navigate("/vistaForo");
     }
   }
 
@@ -185,9 +188,7 @@ export const NuevoPosteo = () => {
                 </button>
               </div>
               <Link to="/vistaForo">
-                <button>
-                  <i className="fa fa-angle-double-left" aria-hidden="true"></i>
-                </button>
+                <button className="btnnewpost">volver</button>
               </Link>
             </div>
           </form>

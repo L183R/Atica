@@ -4,30 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
 import "..//..//styles/detailsProject.css";
 
-export const DetailsProject = () => {
+export const Perfilsup = () => {
   const { store, actions } = useContext(Context);
   const navigate = useNavigate();
   const params = useParams();
   let paramid = params.theid;
-  // let total = 10;
-  const [total, setTotal] = useState(0);
-
-  const pagar = async () => {
-    await actions.pagoMercadoPago(parseInt(total));
-    let direccion = await store.mercadoPago.init_point; // direccion guarda la url que trae init_point
-    window.location.replace(direccion); // window es para renderizar y mandar al cliente a la url de pagar
-  };
-
-  useEffect(() => {
-    actions.traerProyecto(paramid);
-  }, []);
+  let username = localStorage.getItem("user_username");
   return (
     <div className="cardindividual2">
       <div className="text-center pt-3">
-        <h1 className="card-title text-dark ">{store.project.title}</h1>{" "}
-        <h6 className="text-dark">{store.project.category}</h6>
+        <h1 className="card-title text-dark ">{username}</h1>{" "}
       </div>
-      <div className="cardgeneral d-flex ">
+      {/* <div className="cardgeneral d-flex ">
         <div className="flex-shrink-0 align-middle pt-3">
           {store.project.image != "" ? (
             <img
@@ -54,13 +42,13 @@ export const DetailsProject = () => {
             <div className="btn-group">
               <button
                 type="button"
-                className="btn btnewpost dropdown-toggle"
+                className="btn btn-danger dropdown-toggle"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
                 Colaborar
               </button>
-              <ul className="dropdown-menu fondeau">
+              <ul className="dropdown-menu">
                 <li>
                   <div className="input-group mb-3">
                     <span className="input-group-text">$</span>
@@ -93,7 +81,8 @@ export const DetailsProject = () => {
         <div className="flex-grow-1 my-3 mx-2">
           <h3 className="card-text text-dark">{store.project.text}</h3>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
+

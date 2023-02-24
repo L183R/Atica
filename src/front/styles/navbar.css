@@ -1,9 +1,10 @@
 .navbar {
-  background-color: #96d1c7 !important;
-  align-items: right;
+    background-color: #96d1c7 !important;
+    align-items: right;
+    opacity: 1;
 }
 
 .container {
-  margin: 0px;
-  padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }

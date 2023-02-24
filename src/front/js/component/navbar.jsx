@@ -19,32 +19,16 @@ export const Navbar = () => {
 
   return (
     <nav className="navbar">
-      {/* <button btn-sm onClick={prueba_la_cosa}>
-        Prueba cosas
-      </button> */}
-      <div className="container container d-flex justify-content-between">
+      <div className="container d-flex justify-content-between">
         <div className="d-flex justify-content-start">
-          {/* <Link to="/">
-            <span className="navbar-brand mb-0 h1"> ÁTICA c: </span>
-          </Link>{" "} */}
-          {/* <Link to="/recuperarcontra">
-            <button
-              type="submit"
-              className="btn btn-sm btn-primary"
-              id="recucontra"
-            >
-              {" "}
-              Recuperar Contraseña{" "}
-            </button>{" "}
-          </Link>{" "} */}
           <div className="mx-1">
-            <Link to="/login">
+            <Link to="/logview">
               {" "}
               {store.auth === false ? (
                 <button
-                  className="botonnavlog btn btn-sm"
+                  className="botonnavlog btn btn-sm text-light"
                   id="login"
-                  style={{ color: "white" }}
+                  style={{ opacity: 1 }}
                 >
                   {" "}
                   Iniciar Sesión{" "}
@@ -55,7 +39,7 @@ export const Navbar = () => {
               {" "}
               {store.auth === false ? (
                 <button
-                  className="botonnavlog btn btn-sm"
+                  className="botonnavlog btn btn-sm text-light"
                   id="registrar"
                   style={{ color: "white" }}
                 >
@@ -70,7 +54,7 @@ export const Navbar = () => {
             {store.auth === true ? (
               <button
                 id="logout"
-                className="btn btn-sm"
+                className="botonnavlog btn btn-sm text-light"
                 style={{ color: "white" }}
                 onClick={handleLogout}
               >

@@ -1,10 +1,10 @@
-import React, { Component, useState, useContext, useEffect } from "react";
-import { Navigate } from "react-router-dom";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
-import "..//..//styles/coments.css";
+import { useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import "..//..//styles/detailsProject.css";
 
-export const ComentariosProyecto = () => {
+export const Perfilinf = () => {
   const [coment, setComent] = useState("");
   const [list, setList] = useState([]);
   const { store, actions } = useContext(Context);
@@ -12,27 +12,28 @@ export const ComentariosProyecto = () => {
   const [editando, setEditando] = useState("");
   const [editedComment, setEditedComment] = useState("");
   const params = useParams();
-  let project_id = params.theid;
+  let creador_id = params.theid;
   let username = localStorage.getItem("user_username");
   let userid = localStorage.getItem("user_id");
+  // console.log(store.comentarios);
 
   function cargarInput(e) {
     e.preventDefault(); // detenemos el comportamiento predeterminado para procesar nuestro codigo
     if (editando) {
       let text = "(editado)" + username + ": " + editedComment;
-      let time = actions.editarPublicacion(text, editando);
+      let time = actions.editarPublicacionPerfil(text, editando);
       setEditando("");
       setEditedComment("");
     } else {
       let text = username + ": " + input;
       setInput("");
-      actions.nuevoComentario(text, project_id);
+      actions.nuevoComentarioPerfil(text, creador_id);
     }
   }
 
   useEffect(() => {
-    actions.traerComentarios(project_id);
-  }, [store.comentarios]);
+    actions.traerComentariosPerfil(creador_id);
+  }, [store.comentariosPerfil]);
 
   return (
     <>
@@ -45,7 +46,7 @@ export const ComentariosProyecto = () => {
                 {/* ACÁ EMPIEZA EL FORMULARIO */}
                 <div id="inputList" className="form-text">
                   <ul className="list-group">
-                    {store.comentarios.map((comentario, index) => (
+                    {store.comentariosPerfil.map((comentario, index) => (
                       <div className="row" key={index}>
                         <li className="list-group-item col-12">
                           {editando === comentario.id ? (
@@ -62,7 +63,7 @@ export const ComentariosProyecto = () => {
                           ) : (
                             ""
                           )}
-                          {comentario.text}
+                          {comentario.comentario}
                         </li>
                         <div className="row">
                           <div className="col-8 text-dark">
@@ -71,11 +72,11 @@ export const ComentariosProyecto = () => {
                           <div className="col-2">
                             {comentario.user_id == userid ? (
                               editando === comentario.id ? (
-                                <button className="botonpeque" onClick={() => setEditando("")}>
+                                <button onClick={() => setEditando("")}>
                                   Cancelar
                                 </button>
                               ) : (
-                                <button className="botonpeque"
+                                <button
                                   onClick={() => setEditando(comentario.id)}
                                 >
                                   Editar
@@ -87,9 +88,9 @@ export const ComentariosProyecto = () => {
                           </div>
                           <div className="col-2">
                             {comentario.user_id == userid ? (
-                              <button className="botonpeque"
+                              <button
                                 onClick={() =>
-                                  actions.eliminarPublicacion(comentario.id)
+                                  actions.eliminarPublicacionPerfil(comentario.id)
                                 }
                               >
                                 Borrar
@@ -130,3 +131,5 @@ export const ComentariosProyecto = () => {
     </>
   );
 };
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.jsx";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -10,9 +10,6 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const { store, actions } = useContext(Context);
 
-  // useEffect(() => {
-  //     actions.detallesPersonaje(params.theid)
-  // }, [])
   function enviarDatos(e) {
     e.preventDefault();
     actions.login(email, password);
@@ -25,7 +22,6 @@ export const Login = () => {
       {store.auth === true ? (
         <Navigate to="/vistaForo" />
       ) : (
-        // <div className="rounded bg-dark opacity-25">
         <div className="login mx-auto">
           <form
             className="was-validated w-50 mx-auto rounded p-2 text-dark"
@@ -83,7 +79,6 @@ export const Login = () => {
             </div>
           </form>
         </div>
-        // </div>
       )}
     </>
   );

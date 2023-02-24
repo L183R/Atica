@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+// import { useParams } from "react-router";
+import "../../styles/home.css";
+import { Login } from "../component/login.jsx";
 
-import { Context } from "../store/appContext.jsx";
-
-export const Logview = () => {
-  return <h1>soy la view de login</h1>;
+export const inicioDeSesion = () => {
+  return <Login />;
 };

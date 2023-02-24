@@ -11,13 +11,10 @@ export const VistaDeProyectos = () => {
 
   let buscar1 = "";
 
-  function preBuscar(){
-      store.buscar= buscar1,
-
-      console.log("Buscar: "+store.buscar)
-    actions.buscarProyectos()
-
-  };
+  function preBuscar() {
+    (store.buscar = buscar1), console.log("Buscar: " + store.buscar);
+    actions.buscarProyectos();
+  }
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -32,49 +29,66 @@ export const VistaDeProyectos = () => {
       <div className="container mx-auto">
         <div className="container testimonial-group">
           <div className="d-flex justify-content-center">
+            <div>
+              <Link to="/">
+                <button
+                  className=" btnewpost btn btn-danger m-2"
+                  style={{ opacity: 1 }}
+                >
+                  Volver al inicio
+                </button>
+              </Link>
+            </div>
             {store.auth === true ? (
               <Link to="/nuevoposteoview">
                 {" "}
                 <button
-                  className="btnewpost btn btn-primary"
+                  className="btnewpost btn btn-danger m-2"
                   onClick={handleNewPost}
+                  style={{ opacity: 1 }}
                 >
                   {" "}
                   NewPost{" "}
                 </button>
               </Link>
             ) : null}{" "}
-            <button
-              className="btnewpost btn btn-primary m-2"
-              onClick={actions.mostrarProjects}
-            >
-              {" "}
-              Todos{" "}
-            </button>
-            <button
-              className="btnewpost btn btn-primary m-2"
-              onClick={actions.mostrarProjects2}
-            >
-              {" "}
-              Sin fines de lucro{" "}
-            </button>
-            <button
-              className="btnewpost btn btn-primary m-2"
-              onClick={actions.mostrarProjects1}
-            >
-              {" "}
-              Con fines de lucro{" "}
-            </button>
             <div>
+              <button
+                className="btnewpost btn btn-danger m-2"
+                onClick={actions.mostrarProjects}
+              >
+                {" "}
+                Todos{" "}
+              </button>
+            </div>
+            <div>
+              <button
+                className="btnewpost btn btn-danger m-2"
+                onClick={actions.mostrarProjects2}
+              >
+                {" "}
+                Sin fines de lucro{" "}
+              </button>
+              <button
+                className="btnewpost btn btn-danger m-2"
+                style={{ opacity: 1 }}
+                onClick={actions.mostrarProjects1}
+              >
+                {" "}
+                Con fines de lucro{" "}
+              </button>
+            </div>
+            <div className="row align-items-start m-2">
               <input
-                className="form-control"
+                className="col form-control"
                 type="text"
                 placeholder="Buscar"
                 aria-label="default input example"
                 onChange={(e) => (buscar1 = e.target.value)}
               ></input>
               <button
-                className="btn btn-success"
+                className="btnewpost col btn btn-danger ms-2"
+                style={{ opacity: 1 }}
                 onClick={preBuscar}
               >
                 Buscar
