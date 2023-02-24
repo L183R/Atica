@@ -311,9 +311,9 @@ def preference():
     "email":"test_user_17805074@testuser.com" 
     },
     "back_urls": {
-    "success": "https://3000-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io",
-    "failure": "https://3000-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io",
-    "pending": "https://3000-l183r-atica-hxsvqrcedlp.ws-us87.gitpod.io" 
+    "success": "https://3000-l183r-atica-61hsuj74l3v.ws-us88.gitpod.io",
+    "failure": "https://3000-l183r-atica-61hsuj74l3v.ws-us88.gitpod.io",
+    "pending": "https://3000-l183r-atica-61hsuj74l3v.ws-us88.gitpod.io" 
     },
     "auto_return": "approved"
     }
