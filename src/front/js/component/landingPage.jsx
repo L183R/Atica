@@ -8,18 +8,17 @@ export const LandingPage = () => {
   return (
     <>
       <div className="escondido">
-        <div class="card text-bg-dark">
+        <div className="card text-bg-dark">
           <img
             src="https://i.postimg.cc/d0XpZd6d/logo-con-fondo-verde.png"
-            class="card-img"
+            className="card-img"
             alt="..."
           />
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+          <div className="card-img-overlay">
+            <h5 className="card-title">Atica</h5>
+            <p className="card-text">
+              Atica es un foro para presentar proyectos y ponerse en contacto
+              con colaboradores que estén interesados en ayudar
             </p>
             <Link to="/vistaForo">
               <button className=" btn-background-subtle">Ver Proyectos</button>
@@ -27,18 +26,17 @@ export const LandingPage = () => {
           </div>
         </div>
         {/* segunda */}
-        <div class="card text-bg-dark">
+        <div className="card text-bg-dark">
           <img
-            src="https://i.postimg.cc/Ghx5600G/Logo-con-fondo-rosa.png"
-            class="card-img"
+            src="https://i.postimg.cc/vHsKPYKG/Logo-con-fondo-celeste.png"
+            className="card-img"
             alt="..."
           />
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+          <div className="card-img-overlay">
+            <h5 className="card-title">Proyectos Sociales</h5>
+            <p className="card-text">
+              Un espacio diseñado para fomentar proyectos que satisfagan las
+              necesidades desatendidas de la sociedad.
             </p>
             <Link to="/vistaForo">
               <button className="btn-background-subtle">Ver Proyectos</button>
@@ -46,18 +44,17 @@ export const LandingPage = () => {
           </div>
         </div>
         {/* tercer */}
-        <div class="card text-bg-dark">
+        <div className="card text-bg-dark">
           <img
             src="https://i.postimg.cc/vHsKPYKG/Logo-con-fondo-celeste.png"
-            class="card-img"
+            className="card-img"
             alt="..."
           />
-          <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+          <div className="card-img-overlay">
+            <h5 className="card-title">Proyectos Emprendedores</h5>
+            <p className="card-text">
+              Un espacio diseñado para fomentar la creación de proyectos
+              empresariales que generen riqueza y crecimiento económico.
             </p>
             <Link to="/vistaForo">
               <button className=" btn-background-subtle">Ver Proyectos</button>
@@ -93,7 +90,7 @@ export const LandingPage = () => {
         <div className="carousel-inner">
           <div className="imagenlanding carousel-item active">
             <img
-              src="https://i.postimg.cc/d0XpZd6d/logo-con-fondo-verde.png"
+              src="https://i.postimg.cc/vHsKPYKG/Logo-con-fondo-celeste.png"
               className=" imaginacion d-block w-100"
               alt="dibujo fondo violeta con planetas robots y personas"
               style={{ width: "100%" }}
@@ -148,7 +145,12 @@ export const LandingPage = () => {
             <div className="carousel-caption d-none d-md-block">
               <h1>proyectos con fines de lucro</h1>
               <p>
-                Some representative placeholder content for the third slide.
+                Un espacio diseñado para fomentar la creación de proyectos
+                empresariales que generen riqueza y crecimiento económico.
+                Sabemos que una idea de negocio puede surgir en cualquier
+                momento, y aquí brindamos la oportunidad de presentarla y
+                encontrar colaboradores interesados en invertir y apoyar su
+                desarrollo.
               </p>
               <Link to="/vistaForo">
                 <button className="botonhome">Ver Proyectos</button>
