@@ -142,7 +142,7 @@ export const LandingPage = () => {
               style={{ width: "100%" }}
             />
             <div className="carousel-caption d-none d-md-block">
-              <h1>proyectos con fines de lucro</h1>
+              <h2>PROYECTOS EMPRENDEDORES</h2>
               <p>
                 Un espacio diseñado para fomentar la creación de proyectos
                 empresariales que generen riqueza y crecimiento económico.
