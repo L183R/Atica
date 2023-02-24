@@ -30,13 +30,10 @@ export const Registro = () => {
     if (usuario.length < 5) {
       // setMalUsuario(() => 1);
       setMalUsuario(1);
-      console.log(malUsuario);
     } else if (usuario.length > 20) {
       setMalUsuario(2);
-      console.log(malUsuario);
     } else {
       setMalUsuario(0);
-      console.log(malUsuario);
     }
     if (contraseña1.length < 8) {
       setMalaContraseña1(1);
@@ -60,7 +57,6 @@ export const Registro = () => {
       malaContraseña1 === 0 &&
       malaContraseña2 === 0
     ) {
-      console.log(malUsuario);
       actions.signup(usuario, contraseña1, correo);
     }
   }

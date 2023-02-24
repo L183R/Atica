@@ -13,12 +13,8 @@ export const DetailsProject = () => {
   const [total, setTotal] = useState(0);
 
   const pagar = async () => {
-    console.log("funciona");
-    console.log(total);
     await actions.pagoMercadoPago(parseInt(total));
-    console.log(store.mercadoPago);
     let direccion = await store.mercadoPago.init_point; // direccion guarda la url que trae init_point
-    console.log(direccion);
     window.location.replace(direccion); // window es para renderizar y mandar al cliente a la url de pagar
   };
 
