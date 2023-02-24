@@ -18,7 +18,7 @@ export const LandingPage = () => {
             <h5 className="card-title">Atica</h5>
             <p className="card-text">
               Atica es un foro para presentar proyectos y ponerse en contacto
-              con colaboradores que estén interesados en ayudar
+              con posibles colaboradores.
             </p>
             <Link to="/vistaForo">
               <button className=" btn-background-subtle">Ver Proyectos</button>
@@ -36,7 +36,7 @@ export const LandingPage = () => {
             <h5 className="card-title">Proyectos Sociales</h5>
             <p className="card-text">
               Un espacio diseñado para fomentar proyectos que satisfagan las
-              necesidades desatendidas de la sociedad.
+              necesidades sociales.
             </p>
             <Link to="/vistaForo">
               <button className="btn-background-subtle">Ver Proyectos</button>
@@ -54,7 +54,7 @@ export const LandingPage = () => {
             <h5 className="card-title">Proyectos Emprendedores</h5>
             <p className="card-text">
               Un espacio diseñado para fomentar la creación de proyectos
-              empresariales que generen riqueza y crecimiento económico.
+              empresariales que generen un crecimiento económico.
             </p>
             <Link to="/vistaForo">
               <button className=" btn-background-subtle">Ver Proyectos</button>
@@ -101,10 +101,9 @@ export const LandingPage = () => {
               </Link>
               <p>
                 Ática es un foro para presentar proyectos y ponerse en contacto
-                con colaboradores que estén interesados en ayudar para llevarlos
-                a cabo. Busca favorecer el desarrollo social, cultural y
-                económico, autogestionado e independiente de cualquier otro
-                poder que no sea la democracia.
+                con personas que estén interesadas en colaborar para llevarlos a
+                cabo. Busca favorecer el desarrollo social, cultural y
+                económico, autogestionado e independiente.
               </p>
               <p>
                 "El que no considera lo que tiene como la riqueza más grande, es
@@ -123,9 +122,9 @@ export const LandingPage = () => {
               <h2>PROYECTOS SOCIALES</h2>
               <p>
                 Un espacio diseñado para fomentar proyectos que satisfagan las
-                necesidades desatendidas de la sociedad. Nadie conoce mejor las
-                necesidades del pueblo que él mismo, así que el pueblo propone y
-                el pueblo dispone.
+                necesidades de la sociedad. Nadie conoce mejor las necesidades
+                del pueblo como él mismo, así que el pueblo propone y el pueblo
+                dispone.
               </p>
               <p>
                 "Recibir sin orgullo, desprenderse sin apego" - Marco Aurelio
@@ -148,9 +147,8 @@ export const LandingPage = () => {
                 Un espacio diseñado para fomentar la creación de proyectos
                 empresariales que generen riqueza y crecimiento económico.
                 Sabemos que una idea de negocio puede surgir en cualquier
-                momento, y aquí brindamos la oportunidad de presentarla y
-                encontrar colaboradores interesados en invertir y apoyar su
-                desarrollo.
+                momento, aquí brindamos la oportunidad de presentarla, encontrar
+                colaboradores interesados en invertir y apoyar su desarrollo.
               </p>
               <Link to="/vistaForo">
                 <button className="botonhome">Ver Proyectos</button>
