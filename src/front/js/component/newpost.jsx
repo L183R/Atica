@@ -68,13 +68,6 @@ export const NuevoPosteo = () => {
     setLoading(false);
   };
 
-  console.log(image);
-  //   function todos(){
-  //     confirmaLaCosa();
-  //     submitImage();
-
-  // }
-
   function confirmaLaCosa2() {
     if (
       malaCategory === 0 &&
@@ -84,7 +77,7 @@ export const NuevoPosteo = () => {
     ) {
       actions.registrarProyecto(category, image, title, text, contact);
       // console.log("OK");
-      navigate("/vistaForo");
+      // navigate("/vistaForo");
     }
   }
 
