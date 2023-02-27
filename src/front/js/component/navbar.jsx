@@ -19,7 +19,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar m-0 p-0">
+      <nav className="navbar m-0 p-2">
         <div className="container d-flex justify-content-between">
           <div className="d-flex justify-content-start">
             <div className="mx-1">
